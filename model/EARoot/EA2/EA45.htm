@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../../ea.css" rel=stylesheet>
-	<title>System View::Database</title>
+	<title>Importer</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">node: Database</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: Importer</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   node: Database  
+				public   component: Importer  
 			</td>
 		</tr>
 		<tr>
@@ -41,11 +41,11 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 11:44:13; Modified: 22/01/2014 11:50:14;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 7:15:28; Modified: 22/01/2014 7:16:11;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
-							<td width="85%" class=ObjectDetailsValue> Active: false; IsRoot: false; IsLeaf: false;</td>
+							<td width="85%" class=ObjectDetailsValue>Multiplicity: 1..*; Active: false; IsRoot: false; IsLeaf: false;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Extension Points:</td>
@@ -53,7 +53,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{28293E1B-903A-45c9-BC50-C1C47A4D9CA7}</td>
+							<td width="85%" class=ObjectDetailsValue>{5E64780F-015D-4098-8D5E-2126A5A43EFB}</td>
 						</tr>
 						<tr>
 							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
@@ -85,7 +85,7 @@
 				See also:
 			</td>
 			<td width="90%">
-				<a href="EA44.htm">Catalog store</a>, <a href="EA30.htm">CMS</a>
+				<a href="../EA5.htm">Guillermo</a>, <a href="../EA4.htm">DaniFdez</a>, <a href="../EA8.htm">Miguel</a>
 			</td>
 		</tr>
 	</tbody>
@@ -97,7 +97,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA26.htm">System View</a>
+				<a href="EA38.htm">System View</a>, <a href="../EA1.htm">JobAssignment</a>
 			</td>
 		</tr>
 	</tbody>
@@ -110,7 +110,7 @@
 		<tr>
 			<td>
 				<UL>
-							<LI>Association  link from node <a href="EA44.htm">[System View].Catalog store</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from component <a href="EA30.htm">[System View].CMS</a> &nbsp;  &nbsp;</LI>	
+							<LI>Association  link from actor <a href="../EA5.htm">[Logical View].Guillermo</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor <a href="../EA4.htm">[Logical View].DaniFdez</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor <a href="../EA8.htm">[Logical View].Miguel</a> &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -127,8 +127,7 @@
 		<tr>
 			<td>
 				<UL>
-										<LI><I>isExecutionEnvironment</I>: False</LI>	
-					<LI><I>isIndirectlyInstantiated</I>: true</LI>	
+										<LI><I>isIndirectlyInstantiated</I>: true</LI>	
 
 				</UL>
 			</td>
@@ -142,7 +141,7 @@
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle">
-				<a Name="#EmbeddedElements">Database</a> Embedded Elements
+				<a Name="#EmbeddedElements">Importer</a> Embedded Elements
 			</td>
 		</tr>
 		<tr>
@@ -154,12 +153,17 @@
 						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
 					</TR>
 					<TR>
-	<TD WIDTH="20%" class="OperationTableRow">SQL Interface</TD>
+	<TD WIDTH="20%" class="OperationTableRow">parser</TD>
 	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
 	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
 </TR>
 <TR>
-	<TD WIDTH="20%" class="OperationTableRow">SQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Parser</TD>
+	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
+	<TD WIDTH="60%" class="OperationTableRow"></TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">save</TD>
 	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
 	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
 </TR>
@@ -177,7 +181,7 @@
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">node: Database</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: Importer</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

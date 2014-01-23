@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../../ea.css" rel=stylesheet>
-	<title>Organization</title>
+	<title>Domain Model::Country</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">class: Organization</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">class: Country</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   &lt;&lt;table&gt;&gt; class: Organization  
+				public   &lt;&lt;table&gt;&gt; class: Country  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 6:40:34; Modified: 23/01/2014 7:02:35;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 22:39:28; Modified: 22/01/2014 22:39:32;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{FC67DBDB-F5B8-447e-869D-FB31433CBA89}</td>
+							<td width="85%" class=ObjectDetailsValue>{6878B356-690F-4aa8-BF94-21F2903506E3}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic>See also: Organization ontology (http://www.w3.org/TR/vocab-org/)</td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
 						</tr>
 					</tbody>
 				</table>
@@ -85,7 +85,7 @@
 				Extends:
 			</td>
 			<td width="90%">
-				
+				<a href="EA27.htm">Region</a>
 			</td>
 		</tr>
 	</tbody>
@@ -97,7 +97,7 @@
 				See also:
 			</td>
 			<td width="90%">
-				<a href="EA8.htm">DataSource</a>
+				<a href="EA27.htm">Region</a>
 			</td>
 		</tr>
 	</tbody>
@@ -109,7 +109,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA3.htm">DataModel</a>
+				<a href="EA13.htm">DataModel</a>
 			</td>
 		</tr>
 	</tbody>
@@ -122,7 +122,7 @@
 		<tr>
 			<td>
 				<UL>
-							<LI>Generalization  link from class <a href="EA16.htm">[Domain Model].Organization</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from class <a href="EA8.htm">[Domain Model].DataSource</a> &nbsp;  &nbsp;</LI>	
+							<LI>Generalization  link to class <a href="EA27.htm">[Domain Model].Region</a> &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -152,7 +152,7 @@
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle">
-				<a Name="Fields">Organization</a> Attributes
+				<a Name="Fields">Country</a> Attributes
 			</td>
 		</tr>
 		<tr>
@@ -163,7 +163,13 @@
 						<TD WIDTH="60%" class="AttribTableHeading">Details</TD>
 					</TR>
 						<TR>
-		<TD WIDTH="40%" class="AttribTableRow" valign = "top"><i>public </i><br><b>&nbsp;&nbsp;name</b></TD>
+		<TD WIDTH="40%" class="AttribTableRow" valign = "top"><i>public </i><br><b>&nbsp;&nbsp;faoURI</b></TD>
+		<TD WIDTH="60%" class="AttribTableRow" valign = "top"><i>&lt;&lt;column&gt;&gt;<br></i></TD>	
+	</TR>	<TR>
+		<TD WIDTH="40%" class="AttribTableRow" valign = "top"><i>public </i><br><b>&nbsp;&nbsp;iso-code2</b></TD>
+		<TD WIDTH="60%" class="AttribTableRow" valign = "top"><i>&lt;&lt;column&gt;&gt;<br></i></TD>	
+	</TR>	<TR>
+		<TD WIDTH="40%" class="AttribTableRow" valign = "top"><i>public </i><br><b>&nbsp;&nbsp;iso-code3</b></TD>
 		<TD WIDTH="60%" class="AttribTableRow" valign = "top"><i>&lt;&lt;column&gt;&gt;<br></i></TD>	
 	</TR>
 				</TABLE>
@@ -179,7 +185,7 @@
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">class: Organization</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">class: Country</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>
