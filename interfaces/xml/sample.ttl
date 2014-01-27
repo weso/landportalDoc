@@ -1,0 +1,68 @@
+@prefix lp: 			<http://landportal.info/ontology/> .
+@prefix datasource:		<http://landportal.info/ontology/datasource/> .
+@prefix importProcess: 	<http://landportal.info/ontology/importProcess/> .
+@prefix user:		 	<http://landportal.info/ontology/user/> .
+@prefix currency:		<http://landportal.info/ontology/currency/> .
+@prefix relation:		<http://landportal.info/ontology/relation/> .
+@prefix indicator:		<http://landportal.info/ontology/indicator/> .
+@prefix country:		<http://landportal.info/ontology/country/> .
+@prefix year:		 	<http://landportal.info/ontology/time/year/> .
+@prefix obs:		 	<http://landportal.info/observation/> .
+@prefix dataset:		<http://landportal.info/dataset/> .
+@prefix slice:			<http://landportal.info/slice/> .
+@prefix relation:		<http://landportal.info/relation/> .
+@prefix qb: 			<http://purl.org/linked-data/cube#> .
+@prefix cex:			<http://purl.org/weso/ontology/computex#> .
+
+
+dataset:dataset1 a qb:DataSet ;
+ lp:importProcess [
+   lp:datasource datasource:OECD ;
+   lp:type importProcess:Excel ;
+   lp:time "2014-02-10T09:00:00"^^<xsd:dateTime> ;
+   lp:user user:User23 
+  ] ;
+ qb:slice slice:slice1 .
+ 
+slice:slice1 
+ qb:observation obs:obs2456 ;
+ qb:observation obs:obs2145 ;
+ qb:observation obs:obs2682 ;
+ qb:observation obs:obs9911 .
+ 
+obs:obs2456 a qb:Observation ;
+ lp:country country:FRA ;
+ cex:value 25000 ;
+ lp:measurement currency:EURO ;
+ cex:indicator indicator:donation ;
+ lp:time year:2010 ;
+ lp:relatedObs obs:obs9911 ;
+ lp:relationProperty relation:donation .
+
+obs:obs2145 a qb:Observation ;
+ lp:country country:ESP ;
+ cex:value 2000 ;
+ lp:measurement currency:EURO ;
+ cex:indicator indicator:donation ;
+ lp:time year:2010 ;
+ lp:relatedObs obs:obs2682 ;
+ lp:relationProperty relation:donation .
+
+obs:obs2682 a qb:Observation ;
+ lp:country country:PER ;
+ cex:value 2000 ;
+ lp:measurement currency:EURO ;
+ cex:indicator indicator:reception ;
+ lp:time year:2010 ;
+ lp:relatedObs obs:obs2145 ;
+ lp:relationProperty relation:reception .
+
+obs:obs9911 a qb:Observation ;
+ lp:country country:PER ;
+ cex:value 25000 ;
+ lp:measurement currency:EURO ;
+ cex:indicator indicator:reception ;
+ lp:time year:2010 ;
+ lp:relatedObs obs:obs2456 ;
+ lp:relationProperty relation:reception .
+

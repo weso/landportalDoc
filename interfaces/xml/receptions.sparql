@@ -1,0 +1,22 @@
+# Donations
+prefix lp: 			<http://landportal.info/ontology/> 
+prefix datasource:		<http://landportal.info/ontology/datasource/> 
+prefix importProcess: 	<http://landportal.info/ontology/importProcess/> 
+prefix user:		 	<http://landportal.info/ontology/user/> 
+prefix currency:		<http://landportal.info/ontology/currency/> 
+prefix relation:		<http://landportal.info/ontology/relation/> 
+prefix indicator:		<http://landportal.info/ontology/indicator/> 
+prefix country:		<http://landportal.info/ontology/country/> 
+prefix year:		 	<http://landportal.info/ontology/time/year/> 
+prefix obs:		 	<http://landportal.info/observation/> 
+prefix dataset:		<http://landportal.info/dataset/> 
+prefix slice:			<http://landportal.info/slice/> 
+prefix relation:		<http://landportal.info/relation/> 
+prefix qb: 			<http://purl.org/linked-data/cube#> 
+prefix cex:			<http://purl.org/weso/ontology/computex#>
+
+SELECT * WHERE {
+ ?x lp:country ?country ;
+    cex:value ?value ;
+	cex:indicator indicator:reception .
+}

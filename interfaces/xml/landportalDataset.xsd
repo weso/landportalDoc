@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="dataset" type="Dataset" />
+    
+    <xs:complexType name="Dataset">
+    	<xs:sequence>
+    		<xs:element name="importProcess" type="ImportProcess" maxOccurs="unbounded" />
+    		<xs:element name="slice" type="Slice" maxOccurs="unbounded" />
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ImportProcess">
+    	<xs:attribute name="datasource" type="xs:anyURI" />
+    	<xs:attribute name="type" type="xs:anyURI" />
+    	<xs:attribute name="time" type="xs:dateTime" />
+    	<xs:attribute name="user" type="xs:anyURI" />
+    </xs:complexType>
+
+    <xs:complexType name="Slice">
+    	<xs:sequence>
+    	 <xs:element name="observation" type="Observation" maxOccurs="unbounded" />
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Observation">
+    	<xs:attribute name="id" 		type="xs:ID" />
+    	<xs:attribute name="country" 	type="xs:anyURI" />
+    	<xs:attribute name="value" 		type="xs:decimal" />
+    	<xs:attribute name="measure" 	type="xs:anyURI" />
+    	<xs:attribute name="indicator" 	type="xs:anyURI" />
+    	<xs:attribute name="time" 		type="xs:anyURI" />
+    	<xs:attribute name="relatedObs" type="ObsReference" use="optional"/>
+    	<xs:attribute name="relationProperty" type="xs:anyURI" use="optional"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="ObsReference">
+     <xs:union memberTypes="xs:anyURI xs:IDREF" />
+    </xs:simpleType>
+
+</xs:schema>

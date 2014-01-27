@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!-- Common definitions -->
+<!DOCTYPE dataset [
+<!ENTITY base 			"http://landportal.info/ontology/" >
+<!ENTITY datasource		"&base;dataSource/" >
+<!ENTITY importProcess	"&base;importProcess/" >
+<!ENTITY user			"&base;user/" >
+<!ENTITY currency 		"&base;currency/" >
+<!ENTITY relation		"&base;relation/" >
+<!ENTITY indicator 		"&base;indicator/" >
+<!ENTITY country 		"&base;country/" >
+<!ENTITY year			"&base;Year/" >
+]>
+<dataset>
+
+<!-- Meta-data about the import process -->
+<importProcess
+ 	datasource="&datasource;OECD"
+ 	type="&importProcess;Excel"
+ 	time="2014-02-10T09:00:00"
+ 	user="&user;User23"
+/>
+<slice>
+ <observation id="obs2456"
+    country="&country;FRA"
+    value="25000"
+    measure="&currency;Euro"
+    indicator="&indicator;donation"
+    time="&year;2010"
+    relatedObs="obs9911"
+    relationProperty="&relation;donation"
+ />
+ <observation id="obs2145"
+    country="&country;ESP"
+    value="2000"
+    measure="&currency;Euro"
+    indicator="&indicator;donation"
+    time="&year;2010"
+    relatedObs="obs2682"
+    relationProperty="&relation;donation"
+ />
+ <observation id="obs2682"
+    country="&country;PER"
+    value="2000"
+    measure="&currency;Euro"
+    indicator="&indicator;receiver"
+    time="&year;2010"
+    relatedObs="obs2145"
+ />
+ <observation id="obs9911"
+    country="&country;PER"
+    value="2000"
+    measure="&currency;Euro"
+    indicator="&indicator;receiver"
+    time="&year;2010"
+    relatedObs="obs2456"
+ />
+</slice>
+</dataset>
