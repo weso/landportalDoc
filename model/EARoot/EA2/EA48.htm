@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../../ea.css" rel=stylesheet>
-	<title>Receiver</title>
+	<title>System View::Searcher</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">component: Receiver</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: Searcher</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   component: Receiver  
+				public   component: Searcher  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 8:10:48; Modified: 22/01/2014 21:56:44;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 24/01/2014 11:11:38; Modified: 24/01/2014 11:11:43;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,7 +53,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{16588E14-AE2E-4ff6-983A-1A289F32B2C1}</td>
+							<td width="85%" class=ObjectDetailsValue>{DC1BE753-F5EB-42cc-9A44-B7E0DE9252DB}</td>
 						</tr>
 						<tr>
 							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
@@ -73,7 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
+				<a href=#CustomProperties>Custom Properties</a>
 			</td>
 		</tr>
 	</tbody>
@@ -85,7 +85,7 @@
 				See also:
 			</td>
 			<td width="90%">
-				<a href="../EA3.htm">Cristian</a>, <a href="../EA5.htm">Guillermo</a>, <a href="../EA4.htm">DaniFdez</a>, <a href="../EA8.htm">Miguel</a>
+				<a href="EA57.htm">Catalog store</a>, <a href="EA58.htm">Database</a>, <a href="EA49.htm">URIRouter</a>
 			</td>
 		</tr>
 	</tbody>
@@ -97,7 +97,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA38.htm">System View</a>, <a href="../EA1.htm">JobAssignment</a>
+				<a href="EA29.htm">System View</a>
 			</td>
 		</tr>
 	</tbody>
@@ -110,7 +110,7 @@
 		<tr>
 			<td>
 				<UL>
-							<LI>Association  link from actor <a href="../EA3.htm">[Logical View].Cristian</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor <a href="../EA5.htm">[Logical View].Guillermo</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor <a href="../EA4.htm">[Logical View].DaniFdez</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor <a href="../EA8.htm">[Logical View].Miguel</a> &nbsp;  &nbsp;</LI>	
+							<LI>Association  link to node <a href="EA57.htm">[System View].Catalog store</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to node <a href="EA58.htm">[System View].Database</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from component <a href="EA49.htm">[System View].URIRouter</a> &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -137,81 +137,11 @@
 		</tr>
 	</tbody>
 </table>
-<table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td class="ObjectSubTitle">
-				<a Name="#EmbeddedElements">Receiver</a> Embedded Elements
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
-					<TR>
-						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
-						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
-						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
-					</TR>
-					<TR>
-	<TD WIDTH="20%" class="OperationTableRow">Export</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">Export RDF</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">ExportRDF</TD>
-	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
-	<TD WIDTH="60%" class="OperationTableRow"></TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">ExportSQL</TD>
-	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
-	<TD WIDTH="60%" class="OperationTableRow"></TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">ExportDataset</TD>
-	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
-	<TD WIDTH="60%" class="OperationTableRow"></TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">addData</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">exportDataset</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">exportRDF</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">saveData</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-
-				</TABLE>
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">component: Receiver</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: Searcher</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>
