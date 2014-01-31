@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>Domain Model::Observation</title>
+	<title>ExcelLoader</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">class: Observation</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: ExcelLoader</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   &lt;&lt;table&gt;&gt; class: Observation  
+				public   component: ExcelLoader  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 6:21:48; Modified: 23/01/2014 6:22:01;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 31/01/2014 7:55:14; Modified: 31/01/2014 7:55:26;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,7 +53,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{5A2632A1-90F9-4c13-A1BE-77D029CA4BD6}</td>
+							<td width="85%" class=ObjectDetailsValue>{CE8F0E2B-5CB4-4ee6-96D3-0E8247FDB4EA}</td>
 						</tr>
 						<tr>
 							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
@@ -73,7 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
 			</td>
 		</tr>
 	</tbody>
@@ -81,36 +81,13 @@
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
-			<td width="10%" class="ObjectSubTitle">
-				See also:
-			</td>
-			<td width="90%">
-				<a href="EA11.html">Indicator</a>, <a href="EA7.html">DataSource</a>, <a href="EA22.html">Region</a>, <a href="EA17.html">MeasurementUnit</a>, <a href="EA24.html">Time</a>, <a href="EA13.html">Instant</a>, <a href="EA4.html">Computation</a>, <a href="EA23.html">Slice</a>, <a href="EA26.html">Value</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<P/><table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td width="10%" class="ObjectSubTitle">
-				Appears in:
-			</td>
-			<td width="90%">
-				<a href="EA1.html">DataModel</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<P/><table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td class="ObjectSubTitle">Connections</td>
+			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
 		</tr>
 		<tr>
 			<td>
 				<UL>
-							<LI>Association  link from class <a href="EA22.html">[Domain Model].Region</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA11.html">[Domain Model].Indicator</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA7.html">[Domain Model].DataSource</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA17.html">[Domain Model].MeasurementUnit</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA24.html">[Domain Model].Time</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA13.html">[Domain Model].Instant</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA4.html">[Domain Model].Computation</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA23.html">[Domain Model].Slice</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA26.html">[Domain Model].Value</a> &nbsp;  &nbsp;</LI>	
+										<LI><I>isIndirectlyInstantiated</I>: true</LI>	
+
 				</UL>
 			</td>
 		</tr>
@@ -122,13 +99,30 @@
 <table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
-			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
+			<td class="ObjectSubTitle">
+				<a Name="#EmbeddedElements">ExcelLoader</a> Embedded Elements
+			</td>
 		</tr>
 		<tr>
 			<td>
-				<UL>
-					
-				</UL>
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+					<TR>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+					</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Parse</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Load</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
+				</TABLE>
 			</td>
 		</tr>
 		<tr>
@@ -136,11 +130,12 @@
 		</tr>
 	</tbody>
 </table>
+
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">class: Observation</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: ExcelLoader</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

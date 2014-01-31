@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>Domain Model::MeasureUnit</title>
+	<title>DataAccess</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">class: MeasureUnit</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: DataAccess</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   class: MeasureUnit  
+				public   component: DataAccess  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 6:26:21; Modified: 23/01/2014 6:28:02;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 30/01/2014 13:02:26; Modified: 31/01/2014 8:05:50;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{CAB72035-5FB4-45b1-868D-61F87CBEA98B}</td>
+							<td width="85%" class=ObjectDetailsValue>{026E7418-88CE-4670-A7CA-0F4912F62981}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic>This component provides the external API for the landportal data.<br>Implemented in Python<br><br>Some example methods:<br>/countries<br>/region<br>/indicators/gdp<br><br></td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,7 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
 			</td>
 		</tr>
 	</tbody>
@@ -81,12 +81,48 @@
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
-			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
+			<td width="10%" class="ObjectSubTitle">
+				Implements:
+			</td>
+			<td width="90%">
+				<a href="EA35.html">API</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td width="10%" class="ObjectSubTitle">
+				See also:
+			</td>
+			<td width="90%">
+				<a href="EA44.html">Database</a>, <a href="EA35.html">API</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td width="10%" class="ObjectSubTitle">
+				Appears in:
+			</td>
+			<td width="90%">
+				<a href="EA7.html">System View</a>, <a href="EA1.html">Graphs</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle">Connections</td>
 		</tr>
 		<tr>
 			<td>
 				<UL>
-					
+							<LI>Association  link to node <a href="EA44.html">[System View].Database</a> &nbsp;  &nbsp;</LI>			<LI>Realisation &lt;&lt;realize&gt;&gt; link to interface <a href="EA35.html">[System View].API</a> &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -95,11 +131,59 @@
 		</tr>
 	</tbody>
 </table>
+<table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
+		</tr>
+		<tr>
+			<td>
+				<UL>
+										<LI><I>isIndirectlyInstantiated</I>: true</LI>	
+
+				</UL>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle">
+				<a Name="#EmbeddedElements">DataAccess</a> Embedded Elements
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+					<TR>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+					</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">JSON</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
+				</TABLE>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">class: MeasureUnit</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: DataAccess</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

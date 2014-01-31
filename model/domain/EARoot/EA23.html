@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>Domain Model::Slice</title>
+	<title>Importer</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">class: Slice</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: Importer</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   &lt;&lt;table&gt;&gt; class: Slice  
+				public   component: Importer  
 			</td>
 		</tr>
 		<tr>
@@ -41,11 +41,11 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 6:53:08; Modified: 23/01/2014 7:01:54;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 7:15:28; Modified: 22/01/2014 7:16:11;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
-							<td width="85%" class=ObjectDetailsValue> Active: false; IsRoot: false; IsLeaf: false;</td>
+							<td width="85%" class=ObjectDetailsValue>Multiplicity: 1..*; Active: false; IsRoot: false; IsLeaf: false;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Extension Points:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{0D85DE35-8F6F-48a8-AED5-00516D044130}</td>
+							<td width="85%" class=ObjectDetailsValue>{5E64780F-015D-4098-8D5E-2126A5A43EFB}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic>This model of observations, slices and datasets is compatible with RDF Data Cube</td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,7 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
 			</td>
 		</tr>
 	</tbody>
@@ -85,7 +85,7 @@
 				See also:
 			</td>
 			<td width="90%">
-				<a href="EA6.html">Dataset</a>, <a href="EA11.html">Indicator</a>, <a href="EA20.html">Observation</a>
+				<a href="EA14.html">ConfigFile</a>
 			</td>
 		</tr>
 	</tbody>
@@ -97,7 +97,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA1.html">DataModel</a>
+				<a href="EA7.html">System View</a>, <a href="EA3.html">Importer</a>
 			</td>
 		</tr>
 	</tbody>
@@ -110,7 +110,7 @@
 		<tr>
 			<td>
 				<UL>
-							<LI>Association  link from class <a href="EA20.html">[Domain Model].Observation</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA6.html">[Domain Model].Dataset</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to class <a href="EA11.html">[Domain Model].Indicator</a> &nbsp;  &nbsp;</LI>	
+							<LI>Dependency  link to artifact <a href="EA14.html">[System View].ConfigFile</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Guillermo &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].DaniFdez &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Miguel &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -127,7 +127,8 @@
 		<tr>
 			<td>
 				<UL>
-					
+										<LI><I>isIndirectlyInstantiated</I>: true</LI>	
+
 				</UL>
 			</td>
 		</tr>
@@ -136,11 +137,66 @@
 		</tr>
 	</tbody>
 </table>
+<table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle">
+				<a Name="#EmbeddedElements">Importer</a> Embedded Elements
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+					<TR>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+					</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">parser</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Start</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Parser</TD>
+	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
+	<TD WIDTH="60%" class="OperationTableRow"></TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">save</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Config</TD>
+	<TD WIDTH="20%" class="OperationTableRow">RequiredInterface</TD>
+	<TD WIDTH="60%" class="OperationTableRow"></TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">parser</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
+				</TABLE>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">class: Slice</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: Importer</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>Domain Model::MeasurementUnit</title>
+	<title>CMS</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">class: MeasurementUnit</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: CMS</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   &lt;&lt;table&gt;&gt; class: MeasurementUnit  
+				public   component: CMS  
 			</td>
 		</tr>
 		<tr>
@@ -33,7 +33,7 @@
 				  <tbody>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Author:</td>
-							<td width="85%" class=ObjectDetailsValue>Labra</td>
+							<td width="85%" class=ObjectDetailsValue></td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Project:</td>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 6:29:04; Modified: 23/01/2014 6:29:31;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 21:43:00; Modified: 26/01/2014 8:40:30;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{D812937D-F52C-44ab-B807-80F2155870E2}</td>
+							<td width="85%" class=ObjectDetailsValue>{9F4688ED-193C-457c-8CE0-294998610703}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic>User Management - OAuth2<br>Multilingual<br>Resource Management<br></td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,7 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>, <a href=#Fields>Fields</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
 			</td>
 		</tr>
 	</tbody>
@@ -85,7 +85,7 @@
 				See also:
 			</td>
 			<td width="90%">
-				<a href="EA20.html">Observation</a>
+				<a href="EA44.html">Database</a>
 			</td>
 		</tr>
 	</tbody>
@@ -97,7 +97,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA1.html">DataModel</a>
+				<a href="EA7.html">System View</a>
 			</td>
 		</tr>
 	</tbody>
@@ -110,7 +110,7 @@
 		<tr>
 			<td>
 				<UL>
-							<LI>Association  link from class <a href="EA20.html">[Domain Model].Observation</a> &nbsp;  &nbsp;</LI>	
+							<LI>Association  link to node <a href="EA44.html">[System View].Database</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Juan &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Cristian &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Guillermo &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -127,7 +127,8 @@
 		<tr>
 			<td>
 				<UL>
-					
+										<LI><I>isIndirectlyInstantiated</I>: true</LI>	
+
 				</UL>
 			</td>
 		</tr>
@@ -136,24 +137,27 @@
 		</tr>
 	</tbody>
 </table>
-	<table cellPadding=0 cellSpacing=0 width="100%">
+<table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle">
-				<a Name="Fields">MeasurementUnit</a> Attributes
+				<a Name="#EmbeddedElements">CMS</a> Embedded Elements
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="AttribTable">
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
 					<TR>
-						<TD WIDTH="40%" class="AttribTableHeading">Attribute</TD>
-						<TD WIDTH="60%" class="AttribTableHeading">Details</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
 					</TR>
-						<TR>
-		<TD WIDTH="40%" class="AttribTableRow" valign = "top"><i>public </i><br><b>&nbsp;&nbsp;name</b></TD>
-		<TD WIDTH="60%" class="AttribTableRow" valign = "top"><i>&lt;&lt;column&gt;&gt;<br></i></TD>	
-	</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Entry</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
 				</TABLE>
 			</td>
 		</tr>
@@ -167,7 +171,7 @@
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">class: MeasurementUnit</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: CMS</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>
