@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>WesCountry</title>
+	<title>URIRouter</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">component: WesCountry</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: URIRouter</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   component: WesCountry  
+				public   component: URIRouter  
 			</td>
 		</tr>
 		<tr>
@@ -33,7 +33,7 @@
 				  <tbody>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Author:</td>
-							<td width="85%" class=ObjectDetailsValue>Labra</td>
+							<td width="85%" class=ObjectDetailsValue></td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Project:</td>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 7:26:22; Modified: 30/01/2014 16:06:12;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 16:26:25; Modified: 23/01/2014 7:22:19;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{721E52D0-28DD-4390-B188-D6B4C5986FED}</td>
+							<td width="85%" class=ObjectDetailsValue>{E48C11A9-8932-418f-8C90-5B2F91BA2CE2}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic>Javascript Library developed by Weso<br>It is based on D3 but it is specific for areas/indicators/time<br>It generates different types of charts</td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,7 +73,19 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td width="10%" class="ObjectSubTitle">
+				See also:
+			</td>
+			<td width="90%">
+				
 			</td>
 		</tr>
 	</tbody>
@@ -85,12 +97,29 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA1.html">Graphs</a>
+				<a href="EA7.html">System View</a>, <a href="EA9.html">URIRouter</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle">Connections</td>
+		</tr>
+		<tr>
+			<td>
+				<UL>
+							<LI>Association  link from actor [JobAssignment].Herminio &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Juan &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Cristian &nbsp;  &nbsp;</LI>	
+				</UL>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
@@ -108,11 +137,91 @@
 		</tr>
 	</tbody>
 </table>
+<table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle">
+				<a Name="#EmbeddedElements">URIRouter</a> Embedded Elements
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+					<TR>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+					</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">API</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">getURI</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">SPARQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">redirectCMS</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">redirectSPARQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">SNORQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">SNORQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
+	<TD WIDTH="60%" class="OperationTableRow"></TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">getURI</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">SNORQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">JSON</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">Redirect</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
+				</TABLE>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">component: WesCountry</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: URIRouter</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

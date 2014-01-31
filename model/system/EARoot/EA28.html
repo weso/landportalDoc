@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>Searcher</title>
+	<title>Receiver</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">component: Searcher</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: Receiver</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   component: Searcher  
+				public   component: Receiver  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 24/01/2014 11:11:38; Modified: 30/01/2014 23:08:00;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 8:10:48; Modified: 31/01/2014 7:34:04;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{DC1BE753-F5EB-42cc-9A44-B7E0DE9252DB}</td>
+							<td width="85%" class=ObjectDetailsValue>{16588E14-AE2E-4ff6-983A-1A289F32B2C1}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic>Search capabilities over the CKAN Catalog and the Database</td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic>Web service that receives data in XML, enriches that data using some SPARQL queries to external RDF Stores and stores the results in the RDF database, in the SQL database and in the CKAN catalogue.<br><br>It is the only entry point for data. The goal is that all data should enter through the receiver to maintain the integrity between the databases.</td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,7 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
 			</td>
 		</tr>
 	</tbody>
@@ -85,7 +85,7 @@
 				See also:
 			</td>
 			<td width="90%">
-				<a href="EA40.html">Catalog store</a>, <a href="EA41.html">Database</a>, <a href="EA29.html">URIRouter</a>
+				
 			</td>
 		</tr>
 	</tbody>
@@ -110,7 +110,7 @@
 		<tr>
 			<td>
 				<UL>
-							<LI>Association  link from component <a href="EA29.html">[System View].URIRouter</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to node <a href="EA40.html">[System View].Catalog store</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to node <a href="EA41.html">[System View].Database</a> &nbsp;  &nbsp;</LI>	
+							<LI>Association  link from actor [JobAssignment].Cristian &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Guillermo &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].DaniFdez &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Miguel &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -137,11 +137,66 @@
 		</tr>
 	</tbody>
 </table>
+<table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td class="ObjectSubTitle">
+				<a Name="#EmbeddedElements">Receiver</a> Embedded Elements
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+					<TR>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+					</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">ExportData</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">getData</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">exportDataset</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">exportRDF</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">EnrichData</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+<TR>
+	<TD WIDTH="20%" class="OperationTableRow">getData</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
+				</TABLE>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">component: Searcher</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: Receiver</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

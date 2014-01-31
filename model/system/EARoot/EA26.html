@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>Receiver</title>
+	<title>ImporterManager</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">component: Receiver</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: ImporterManager</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   component: Receiver  
+				public   component: ImporterManager  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 8:10:48; Modified: 31/01/2014 7:34:04;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 24/01/2014 10:24:21; Modified: 31/01/2014 7:35:20;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{16588E14-AE2E-4ff6-983A-1A289F32B2C1}</td>
+							<td width="85%" class=ObjectDetailsValue>{664F9F64-49E0-438b-87FE-0504AB29B7CE}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic>Web service that receives data in XML, enriches that data using some SPARQL queries to external RDF Stores and stores the results in the RDF database, in the SQL database and in the CKAN catalogue.<br><br>It is the only entry point for data. The goal is that all data should enter through the receiver to maintain the integrity between the databases.</td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic>It triggers the execution of Importers. It has to take into account that importers can be configured to retrieve historical data or to regularly import data with a given frequency from an external source.</td>
 						</tr>
 					</tbody>
 				</table>
@@ -82,18 +82,6 @@
   <tbody>
 		<tr>
 			<td width="10%" class="ObjectSubTitle">
-				See also:
-			</td>
-			<td width="90%">
-				
-			</td>
-		</tr>
-	</tbody>
-</table>
-<P/><table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td width="10%" class="ObjectSubTitle">
 				Appears in:
 			</td>
 			<td width="90%">
@@ -103,23 +91,6 @@
 	</tbody>
 </table>
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td class="ObjectSubTitle">Connections</td>
-		</tr>
-		<tr>
-			<td>
-				<UL>
-							<LI>Association  link from actor [JobAssignment].Cristian &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Guillermo &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].DaniFdez &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Miguel &nbsp;  &nbsp;</LI>	
-				</UL>
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
@@ -141,7 +112,7 @@
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle">
-				<a Name="#EmbeddedElements">Receiver</a> Embedded Elements
+				<a Name="#EmbeddedElements">ImporterManager</a> Embedded Elements
 			</td>
 		</tr>
 		<tr>
@@ -153,27 +124,12 @@
 						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
 					</TR>
 					<TR>
-	<TD WIDTH="20%" class="OperationTableRow">ExportData</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Config</TD>
+	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
+	<TD WIDTH="60%" class="OperationTableRow"></TD>
 </TR>
 <TR>
-	<TD WIDTH="20%" class="OperationTableRow">getData</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">exportDataset</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">exportRDF</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">EnrichData</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Trigger</TD>
 	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
 	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
 </TR>
@@ -191,7 +147,7 @@
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">component: Receiver</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: ImporterManager</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

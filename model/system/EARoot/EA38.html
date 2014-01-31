@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>SPARQL Endpoint</title>
+	<title>External RDF Stores</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">interface: SPARQL Endpoint</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">interface: External RDF Stores</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public abstract  &lt;&lt;interface&gt;&gt; interface: SPARQL Endpoint  
+				public abstract  &lt;&lt;interface&gt;&gt; interface: External RDF Stores  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 11:50:44; Modified: 22/01/2014 11:50:55;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 30/01/2014 22:36:17; Modified: 30/01/2014 22:36:44;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{4A4F5540-70E8-46ea-A040-109EA86E0DCB}</td>
+							<td width="85%" class=ObjectDetailsValue>{58CFD228-4D76-4d45-AE97-70AFA0A3EA0B}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic>Example: DBPedia</td>
 						</tr>
 					</tbody>
 				</table>
@@ -70,10 +70,10 @@
   <tbody>
 		<tr>
 			<td width="10%" class="ObjectSubTitle">
-				See also:
+				Goto:
 			</td>
 			<td width="90%">
-				<a href="EA44.html">RDF Store</a>
+				<a href=#EmbeddedElements>Embedded Elements</a>
 			</td>
 		</tr>
 	</tbody>
@@ -85,7 +85,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA7.html">System View</a>, <a href="EA9.html">URIRouter</a>
+				<a href="EA7.html">System View</a>
 			</td>
 		</tr>
 	</tbody>
@@ -93,13 +93,25 @@
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
-			<td class="ObjectSubTitle">Connections</td>
+			<td class="ObjectSubTitle">
+				<a Name="#EmbeddedElements">External RDF Stores</a> Embedded Elements
+			</td>
 		</tr>
 		<tr>
 			<td>
-				<UL>
-							<LI>Realisation &lt;&lt;realize&gt;&gt; link from node <a href="EA44.html">[System View].RDF Store</a> &nbsp;  &nbsp;</LI>			<LI>Dependency  link from port [System View].SPARQL &nbsp;  &nbsp;</LI>			<LI>Dependency  link from providedinterface [System View].SNORQL &nbsp;  &nbsp;</LI>			<LI>Dependency  link from port [System View].SNORQL &nbsp;  &nbsp;</LI>	
-				</UL>
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+					<TR>
+						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
+						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
+						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+					</TR>
+					<TR>
+	<TD WIDTH="20%" class="OperationTableRow">SPARQL</TD>
+	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
+	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
+</TR>
+
+				</TABLE>
 			</td>
 		</tr>
 		<tr>
@@ -107,11 +119,12 @@
 		</tr>
 	</tbody>
 </table>
+
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">interface: SPARQL Endpoint</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">interface: External RDF Stores</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

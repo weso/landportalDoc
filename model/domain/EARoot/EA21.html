@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>External Source</title>
+	<title>Domain Model::Organization</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">component: External Source</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">class: Organization</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   &lt;&lt;external&gt;&gt; component: External Source  
+				public   &lt;&lt;table&gt;&gt; class: Organization  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 31/01/2014 7:58:15; Modified: 31/01/2014 8:02:45;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 23/01/2014 6:40:34; Modified: 23/01/2014 7:02:35;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,10 +53,10 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{41C3DB81-1181-4c11-8E42-8B04AA80D8A5}</td>
+							<td width="85%" class=ObjectDetailsValue>{FC67DBDB-F5B8-447e-869D-FB31433CBA89}</td>
 						</tr>
 						<tr>
-							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
+							<td colspan="2" width="100%" class=ObjectDetailsTopic>See also: Organization ontology (http://www.w3.org/TR/vocab-org/)</td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,7 +73,31 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
+				<a href=#CustomProperties>Custom Properties</a>, <a href=#Fields>Fields</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td width="10%" class="ObjectSubTitle">
+				Extends:
+			</td>
+			<td width="90%">
+				
+			</td>
+		</tr>
+	</tbody>
+</table>
+<P/><table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
+			<td width="10%" class="ObjectSubTitle">
+				See also:
+			</td>
+			<td width="90%">
+				<a href="EA7.html">DataSource</a>, <a href="EA25.html">User</a>
 			</td>
 		</tr>
 	</tbody>
@@ -85,7 +109,7 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA7.html">System View</a>
+				<a href="EA1.html">DataModel</a>
 			</td>
 		</tr>
 	</tbody>
@@ -93,13 +117,12 @@
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
-			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
+			<td class="ObjectSubTitle">Connections</td>
 		</tr>
 		<tr>
 			<td>
 				<UL>
-										<LI><I>isIndirectlyInstantiated</I>: true</LI>	
-
+							<LI>Association  link from class <a href="EA7.html">[Domain Model].DataSource</a> &nbsp;  &nbsp;</LI>			<LI>Generalization  link from class <a href="EA21.html">[Domain Model].Organization</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from class <a href="EA25.html">[Domain Model].User</a> &nbsp;  &nbsp;</LI>	
 				</UL>
 			</td>
 		</tr>
@@ -111,24 +134,38 @@
 <table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
+			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
+		</tr>
+		<tr>
+			<td>
+				<UL>
+					
+				</UL>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+	<table cellPadding=0 cellSpacing=0 width="100%">
+  <tbody>
+		<tr>
 			<td class="ObjectSubTitle">
-				<a Name="#EmbeddedElements">External Source</a> Embedded Elements
+				<a Name="Fields">Organization</a> Attributes
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
+				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="AttribTable">
 					<TR>
-						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
-						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
-						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
+						<TD WIDTH="40%" class="AttribTableHeading">Attribute</TD>
+						<TD WIDTH="60%" class="AttribTableHeading">Details</TD>
 					</TR>
-					<TR>
-	<TD WIDTH="20%" class="OperationTableRow">Load</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-
+						<TR>
+		<TD WIDTH="40%" class="AttribTableRow" valign = "top"><i>public </i><br><b>&nbsp;&nbsp;name</b></TD>
+		<TD WIDTH="60%" class="AttribTableRow" valign = "top"><i>&lt;&lt;column&gt;&gt;<br></i></TD>	
+	</TR>
 				</TABLE>
 			</td>
 		</tr>
@@ -142,7 +179,7 @@
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">component: External Source</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">class: Organization</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>
