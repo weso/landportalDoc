@@ -13,6 +13,7 @@
 
     <xs:complexType name="ImportProcess">
     	<xs:attribute name="datasource" type="xs:anyURI" />
+    	<xs:attribute name="license" type="xs:string" />
     	<xs:attribute name="type" type="xs:anyURI" />
     	<xs:attribute name="time" type="xs:dateTime" />
     	<xs:attribute name="user" type="xs:anyURI" />
@@ -22,6 +23,7 @@
     	<xs:sequence>
     	 <xs:element name="observation" type="Observation" maxOccurs="unbounded" />
     	</xs:sequence>
+    	<xs:attribute name="id" type="xs:anyURI" />
     </xs:complexType>
 
     <xs:complexType name="Observation">

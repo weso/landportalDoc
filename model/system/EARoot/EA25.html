@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link href="../ea.css" rel=stylesheet>
-	<title>System View::URIRouter</title>
+	<title>Parser</title>
 </head>
 
 <body>
 	<TABLE class="HeaderTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Header">component: URIRouter</TD>
+		<TD colspan=2 WIDTH="100%" class="Header">component: Parser</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="HeaderDetails"></TD>
@@ -24,7 +24,7 @@
   <tbody>
 		<tr>
 			<td class=ObjectTitle>
-				public   component: URIRouter  
+				public   component: Parser  
 			</td>
 		</tr>
 		<tr>
@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Dates:</td>
-							<td width="85%" class=ObjectDetailsValue>Created: 22/01/2014 16:26:25; Modified: 23/01/2014 7:22:19;</td>
+							<td width="85%" class=ObjectDetailsValue>Created: 24/01/2014 11:19:58; Modified: 24/01/2014 11:20:01;</td>
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>Flags:</td>
@@ -53,7 +53,7 @@
 						</tr>
 						<tr>
 							<td width="15%" class=ObjectDetailsTopic>UUID:</td>
-							<td width="85%" class=ObjectDetailsValue>{E48C11A9-8932-418f-8C90-5B2F91BA2CE2}</td>
+							<td width="85%" class=ObjectDetailsValue>{FCFAED78-326A-4194-ABAC-C5F89458AB9F}</td>
 						</tr>
 						<tr>
 							<td colspan="2" width="100%" class=ObjectDetailsTopic></td>
@@ -73,19 +73,7 @@
 				Goto:
 			</td>
 			<td width="90%">
-				<a href=#CustomProperties>Custom Properties</a>, <a href=#EmbeddedElements>Embedded Elements</a>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<P/><table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td width="10%" class="ObjectSubTitle">
-				See also:
-			</td>
-			<td width="90%">
-				<a href="EA14.html">CMS</a>, <a href="EA24.html">Searcher</a>, <a href="EA28.html">Dataset Catalog API</a>
+				<a href=#CustomProperties>Custom Properties</a>
 			</td>
 		</tr>
 	</tbody>
@@ -97,29 +85,12 @@
 				Appears in:
 			</td>
 			<td width="90%">
-				<a href="EA5.html">System View</a>, <a href="EA7.html">URIRouter</a>
+				<a href="EA3.html">Importer</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
 <P/><table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td class="ObjectSubTitle">Connections</td>
-		</tr>
-		<tr>
-			<td>
-				<UL>
-							<LI>Association  link from actor [JobAssignment].Herminio &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Juan &nbsp;  &nbsp;</LI>			<LI>Association  link to component <a href="EA14.html">[System View].CMS</a> &nbsp;  &nbsp;</LI>			<LI>Association  link from actor [JobAssignment].Cristian &nbsp;  &nbsp;</LI>			<LI>Association  link to component <a href="EA24.html">[System View].Searcher</a> &nbsp;  &nbsp;</LI>			<LI>Association  link to interface <a href="EA28.html">[System View].Dataset Catalog API</a> &nbsp;  &nbsp;</LI>	
-				</UL>
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<table cellPadding=0 cellSpacing=0 width="100%">
   <tbody>
 		<tr>
 			<td class="ObjectSubTitle"><a Name="#CustomProperties">Custom Properties</a></td>
@@ -137,81 +108,11 @@
 		</tr>
 	</tbody>
 </table>
-<table cellPadding=0 cellSpacing=0 width="100%">
-  <tbody>
-		<tr>
-			<td class="ObjectSubTitle">
-				<a Name="#EmbeddedElements">URIRouter</a> Embedded Elements
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<TABLE align="center" BORDER=1 CELLSPACING=0 CELLPADDING=1 bordercolor="white" class="OperationTable">
-					<TR>
-						<TD WIDTH="20%" class="OperationTableHeading">Element</TD>
-						<TD WIDTH="20%" class="OperationTableHeading">Type</TD>
-						<TD WIDTH="60%" class="OperationTableHeading">Details</TD>
-					</TR>
-					<TR>
-	<TD WIDTH="20%" class="OperationTableRow">API</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">getURI</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">SPARQL</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">redirectCMS</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">redirectSPARQL</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">SNORQL</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">SNORQL</TD>
-	<TD WIDTH="20%" class="OperationTableRow">ProvidedInterface</TD>
-	<TD WIDTH="60%" class="OperationTableRow"></TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">getURI</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-<TR>
-	<TD WIDTH="20%" class="OperationTableRow">SNORQL</TD>
-	<TD WIDTH="20%" class="OperationTableRow">Port</TD>
-	<TD WIDTH="60%" class="OperationTableRow"><i>isService</i> = true</TD>
-</TR>
-
-				</TABLE>
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-
 <TABLE class="FooterTable" align="center" cellSpacing=0 cellPadding=0>
   <TBODY >
 	<TR><TD colspan="2" width="100%"><HR></TD></TR>
 	<TR>
-		<TD colspan=2 WIDTH="100%" class="Footer">component: URIRouter</TD>
+		<TD colspan=2 WIDTH="100%" class="Footer">component: Parser</TD>
 	</TR>
 	<TR>
 		<TD WIDTH="48%" class="FooterDetails"></TD>

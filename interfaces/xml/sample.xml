@@ -20,7 +20,7 @@
  	time="2014-02-10T09:00:00"
  	user="&user;User23"
 />
-<slice>
+<slice id="slice1">
  <observation id="obs2456"
     country="&country;FRA"
     value="25000"
