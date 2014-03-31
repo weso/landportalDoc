@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LandPortal - Data Documentation</title>
+    <title>LandPortal Technical Documentation: RDF Data Portal Model</title>
     <meta charset='utf-8'>
     <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
             async class='remove'></script>
@@ -52,6 +52,7 @@
       </p>
 	  <p>The main sources of data are observations which have several dimensions, 
 	     like the area (country or region), the time of the observation and the value.</p>
+
 	  <p>The data portal follows the RDF Data Cube vocabulary where there are 
 	   single observations with different dimensions grouped by slices and datasets.</p>
 	   </section>
@@ -128,7 +129,7 @@ Along this document <code>{base}</code> refers to the previous URI.
 <p>In the LandPortal, we consider three main dimensions for each observation:
 	  <ul>
 	  <li><a href="http://purl.org/weso/ontology/computex#ref-area">cex:ref-area</a>: A geographic area (a country or a region)</li>
-	  <li><a href="http://purl.org/weso/ontology/computex#ref-time">cex:ref-time</a>: The time that is referred by that observation (a year or an interval)</li>
+	  <li><a href="http://purl.org/weso/ontology/computex#ref-time">cex:ref-time</a>: The time that is referred by that observation (usually a year or time interval)</li>
 	  <li><a href="http://purl.org/weso/ontology/computex#indicator">cex:indicator</a>:: The reference indicator</li>
 	  </ul>
 <p>An observation has a numeric value <a href="http://purl.org/weso/ontology/computex#value">cex:value</a> 
@@ -155,29 +156,25 @@ where
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
-&lt;Observation> { 
-      cex:md5-checksum xsd:string ,                    # MD5 from observationId#weso#Area#year     
-      cex:computation @&lt;Computation> ,              # 
-      dcterms:issued xsd:int ,                         # timestamp 
-      dcterms:publisher wi-org:WebFoundation , 
-      qb:dataSet @&lt;Dataset> ,                       # Represents the dataset to which an observation belongs
-      rdf:type ( qb:Observation wi-onto:Observation ),
-      rdfs:label xsd:string@en ,
-      sdmx-concept:obsStatus @&lt;ObsStatus> ,			 
-      wi-onto:ref-area @&lt;Area>,                     # In WebIndex, the ref-area are usually countries 
-      wi-onto:ref-indicator 
-	     ( <a href="#indicator">@&lt;Indicator></a>
-		 | <a href="#component">@&lt;Component></a> 
-		 | <a href="#subindex">@&lt;Subindex></a> 
-		 | <a href="#index">@&lt;Index></a>) ,          # Indicators can be single indicators, components, subindexes or indexes
-      wi-onto:ref-year xsd:int ,                       # Year of the observation
-      cex:value xsd:double                             # Value of the observation
- } </pre>
+&LT;Observation> { 
+    cex:ref-area           @<Area>,            # Area affected by observation
+    cex:ref-indicator      @<Indicator>,       # Indicator
+    cex:ref-time           @<Time> ,           # Time of observation
+    cex:value              xsd:double,         # Value of the observation
+    cex:computation        @<Computation> ,    # 
+    dcterms:issued 	       xsd:date ,          # timestamp 
+    qb:dataSet 	           @<Dataset> ,        # Dataset to which an observation belongs
+    rdf:type               ( qb:Observation ),     
+    rdfs:label 	           xsd:string ,
+    sdmx-concept:obsStatus @<ObsStatus> 			 
+}
+</pre>
 </section>
 </section> <!-- Observation -->
 
 <section>
 <h2 id="indicator">Indicators</h2>
+<p>TODO: Review </p>
 <p>There are primary indicators (answers from questionnaries) and 
  secondary indicators (obtained from external sources). 
  Indicators are grouped into <a href="#component">components</a>.
@@ -192,12 +189,14 @@ where
 </pre>
 </section>
 
+<!--
 <section>
 <h2>Example</h2>
 <code>
 <a href="http://data.webfoundation.org/webindex/v2013/indicator/WEF_L">http://data.webfoundation.org/webindex/v2013/indicator/WEF_L</a>
 </code>
 </section>
+-->
 
 <section>
 <h2>Schema</h2>
@@ -221,114 +220,8 @@ where
 
 
 <section>
-<h2 id="component">Components</h2>
-<p>Components are grouped into subindexes.</p>
-
-<section>
-<h2>URI Template</h2>
-<pre data-lang="text/turtle">{base}/component/{componentId}</pre>
-where
-<pre data-lang="text/turtle">
-{base} = Base URI for WebIndex
-{componentId} = Id of this component
-</pre>
-</section>
-
-<section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/component/economic">http://data.webfoundation.org/webindex/v2013/component/economic</a>
-</code>
-</section>
-
-<section>
-<h2>Schema</h2>
-<pre data-lang="text/turtle">
-&lt;Component> { 
-      wf-onto:order xsd:integer ,              # In which position is should be visualized
-      dcterms:contributor wf-onto:WESO ,
-	  dcterms:issued xsd:integer ,             # timestamp
-	  cex:element <a href="#indicator">@&lt;Indicator></a> ,
-	  rdf:type cex:Component, 
-	  rdfs:label xsd:string,
-	  skos:notation xsd:string,
- } </pre>
-</section>
-</section> <!-- Component -->
-
-<section>
-<h2 id="subindex">Subindexes</h2>
-<p>Subindexes form the index</p>
-
-<section>
-<h2>URI Template</h2>
-<pre data-lang="text/turtle">{base}/subindex/{subindexId}</pre>
-where
-<pre data-lang="text/turtle">
-{base} = Base URI for WebIndex
-{subindexId} = Id of this subindex
-</pre>
-</section>
-
-<section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/subindex/access">http://data.webfoundation.org/webindex/v2013/subindex/access</a>
-</code>
-</section>
-
-<section>
-<h2>Schema</h2>
-<pre data-lang="text/turtle">
-&lt;Subindex> { 
-      wf-onto:order xsd:integer ,              # In which position is should be visualized
-      wf-onto:colour xsd:string ,              # In which colour is should be visualized
-	  cex:element @&lt;Component> ,
-	  rdf:type cex:SubIndex, 
-	  rdfs:label xsd:string,
-	  skos:notation xsd:string,
- } </pre>
-</section>
-</section>  <!-- Subindex -->
-
-<section>
-<h2 id="index">Index</h2>
-<p>Index</p>
-
-<section>
-<h2>URI Template</h2>
-<pre data-lang="text/turtle">{base}/index/{indexId}</pre>
-where
-<pre data-lang="text/turtle">
-{base} = Base URI for WebIndex
-{indexId} = Id of this index
-</pre>
-</section>
-
-<section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/index/index">http://data.webfoundation.org/webindex/v2013/index/index</a>
-</code>
-</section>
-
-<section>
-<h2>Schema</h2>
-<pre data-lang="text/turtle">
-&lt;index> { 
-      wf-onto:order xsd:integer ,              # In which position is should be visualized
-      wf-onto:colour xsd:string ,              # In which colour is should be visualized
-	  cex:element @&lt;Subindex> ,
-	  rdf:type cex:Index, 
-	  rdfs:label xsd:string,
-	  skos:notation xsd:string,
- } </pre>
-</section>
-</section>  <!-- Index -->
-
-
-<section>
 <h2 id="dataset">Slice</h2>
+<p>TODO: Review</p>
 <p>A Slice is a grouping of observations. In the case of the WebIndex slices are usually groupings
  of observations with the same indicator, year and dataset but different countries.</p>
 
@@ -360,10 +253,11 @@ where
  } 
 </pre>
 </section>
-</section>  <!-- Dataset -->
+</section>  <!-- Slice -->
 
 <section>
 <h2 id="dataset">Dataset</h2>
+<p>TODO: Review</p>
 <p>A Dataset is a grouping of slices. In the case of the WebIndex there are two main types of datasets: 
  datasets that are imported from excel sheets and computed datasets that correspond with the different 
  computation phases. 
@@ -415,6 +309,7 @@ where
 
 <section>
 <h2 id="country">Country</h2>
+<p>TODO: Review</p>
 <p>Country concept</p>
 
 <section>
@@ -448,6 +343,7 @@ where
 
 <section>
 <h2 id="region">Region</h2>
+<p>TODO: Review</p>
 <p>Region concept</p>
 
 <section>
@@ -479,7 +375,6 @@ where
 </section> <!-- Region -->
 
 </section> <!-- Countries and Regions -->
-
 
 <section>
 <h2 id="organization">Organization</h2>
@@ -694,7 +589,7 @@ where
 <section>
 <h2 id="ontology">Ontology</h2>
 	 
-<p>The WebIndex data portal terms are defined in the following ontologies:</p>
+<p>The Landportal book data portal terms are defined in the following ontologies:</p>
 <ul>
 <li>Computex Ontology: Terms related to 
   index definition and computation. Available in
@@ -709,6 +604,7 @@ where
   and
   <a href="http://purl.org/weso/ontology/wf#">RDF/XML</a>
   </li>
+  
 <li>RDF Data Cube vocabulary: statistical terms.
  Described  
  <a href="http://www.w3.org/TR/vocab-data-cube/">here</a>
