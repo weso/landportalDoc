@@ -1,0 +1,14 @@
+        <observation id="OBSIPFRI2">
+            <issued>2014-03-27T10:59:47</issued>
+            <obs-status>http://purl.org/linked-data/sdmx/2009/code#obsStatus-A</obs-status>
+            <value>5.2</value>
+            <computation>purl.org/weso/ontology/computex#Raw</computation>
+            <country>DZA</country>
+            <time unit="years">
+                <interval>
+                    <beginning>1990</beginning>
+                    <end>1992</end>
+                </interval>
+            </time>
+            <indicator-ref indicator="INDIPFRI0"/>
+        </observation>

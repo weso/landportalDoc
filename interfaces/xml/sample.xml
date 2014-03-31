@@ -30,6 +30,17 @@
     relatedObs="obs9911"
     relationProperty="&relation;donation"
  />
+</slice>
+<slice id="slice2">
+ <observation id="obs2456"
+    country="&country;FRA"
+    value="25000"
+    measure="&currency;Euro"
+    indicator="&indicator;donation"
+    time="&year;2010"
+    relatedObs="obs9911"
+    relationProperty="&relation;donation"
+ />
  <observation id="obs2145"
     country="&country;ESP"
     value="2000"

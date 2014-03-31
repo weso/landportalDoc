@@ -1,0 +1,64 @@
+prefix cex: 	      <http://purl.org/weso/computex/ontology#> 
+prefix dcterms:      <http://purl.org/dc/terms/> 
+prefix lp:           <http://purl.org/weso/landportal/ontology#> 
+prefix qb: 	      <http://purl.org/linked-data/cube#> 
+prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: 	      <http://www.w3.org/2000/01/rdf-schema#>
+prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> 
+prefix time:         <http://www.w3.org/2006/time#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+<Observation> { 
+      cex:ref-area        @<Area>,            # Area affected by observation
+      cex:ref-indicator   @<Indicator>,       # Indicator
+      cex:ref-time	  @<Time> ,           # Time of observation
+      cex:value           xsd:double,         # Value of the observation
+      cex:computation 	  @<Computation> ,    # 
+      dcterms:issued 	  xsd:date ,          # timestamp 
+      qb:dataSet 	  @<Dataset> ,        # Dataset to which an observation belongs
+      rdf:type 		 ( qb:Observation ),     
+      rdfs:label 	  xsd:string ,
+      sdmx-concept:obsStatus @<ObsStatus> 			 
+}
+
+# Area should be an abstract type with Countries and Regions as subtypes
+<Area> {
+  rdf:type   cex:Area,
+  rdfs:label xsd:string 
+}
+
+# <Country> {
+# &<Area> ,
+# rdf:type lp:Country .
+# }
+
+<Indicator> {
+ rdf:type   cex:Indicator,
+ rdfs:label xsd:string
+}
+
+<Time> {
+}
+
+# <Year> {
+#    & <Time> ,
+#	time:year xsd:gYear 
+#}
+
+#<Interval> {
+#    & <Time> ,
+#	time:hasBeginning xsd:dateTime,
+#	time:hasEnd       xsd:dateTime
+#}
+
+<Computation> {
+}
+
+#<Raw> {
+# &<Computation> ,
+# rdf:type             cex:Raw 
+#}
+
+<ObsStatus> {
+}
