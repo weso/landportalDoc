@@ -60,6 +60,8 @@
         <xs:element ref="ind_description_en"/>
         <xs:element ref="ind_description_es"/>
         <xs:element ref="ind_description_fr"/>
+        <xs:element ref="topic-ref"/>
+        <xs:element ref="preferable_tendency"/>
         <xs:element ref="measure_unit"/>
         <xs:choice>
             <xs:element ref="relatedWith"/>
@@ -86,6 +88,7 @@
         <xs:element ref="ind_description_es"/>
         <xs:element ref="ind_description_fr"/>
         <xs:element ref="topic-ref"/>
+        <xs:element ref="preferable_tendency"/>
         <xs:element ref="measure_unit"/>
         <xs:element minOccurs="2" maxOccurs="unbounded" ref="indicator-ref"/>
       </xs:sequence>
@@ -177,6 +180,7 @@
   <xs:element name="ind_description_es" type="xs:string"/>
   <xs:element name="ind_description_fr" type="xs:string"/>
   <xs:element name="topic-ref" type="xs:NMTOKEN"/>
+  <xs:element name="preferable_tendency" type="xs:NMTOKEN"/>
   <xs:element name="measure_unit" type="xs:anyURI"/>
   <xs:element name="indicator-ref">
     <xs:complexType>
