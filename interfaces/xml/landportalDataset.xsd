@@ -160,7 +160,7 @@
         <xs:element ref="obs-status"/>
         <xs:element minOccurs="0" maxOccurs="1" ref="value"/>
         <xs:element ref="computation"/>
-        <xs:element ref="country"/>
+        <xs:element ref="region"/>
         <xs:element ref="indicator-ref"/>
         <xs:element ref="time"/>
       </xs:sequence>
@@ -172,7 +172,6 @@
   <xs:element name="obs-status" type="xs:anyURI"/>
   <xs:element name="value" type="xs:string"/> <!-- It could also be a number -->
   <xs:element name="computation" type="xs:anyURI"/>
-  <xs:element name="country" type="xs:anyURI"/>
   <xs:element name="ind_name_en" type="xs:string"/>
   <xs:element name="ind_name_es" type="xs:string"/>
   <xs:element name="ind_name_fr" type="xs:string"/>
