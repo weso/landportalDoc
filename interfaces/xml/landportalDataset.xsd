@@ -104,9 +104,6 @@
   </xs:element>
   <xs:element name="indicator_group">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="1" maxOccurs="unbounded" ref="observation-ref"/>
-      </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:string"/>
       <xs:attribute name="indicator-ref" use="required" type="xs:anyURI"/>
     </xs:complexType>
