@@ -66,13 +66,13 @@
         <xs:element ref="preferable_tendency"/>
         <xs:element ref="measure_unit"/>
         <xs:choice>
-            <xs:element ref="relatedWith"/>
+            <xs:element ref="splitsIn"/>
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="relatedWith">
+  <xs:element name="splitsIn">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="1" maxOccurs="unbounded" ref="indicator-ref"/>
@@ -93,6 +93,9 @@
         <xs:element ref="preferable_tendency"/>
         <xs:element ref="measure_unit"/>
         <xs:element minOccurs="2" maxOccurs="unbounded" ref="indicator-ref"/>
+        <xs:choice>
+            <xs:element ref="splitsIn"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:anyURI"/>
     </xs:complexType>
