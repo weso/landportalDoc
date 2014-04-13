@@ -1,44 +1,51 @@
 prefix cex: 	      <http://purl.org/weso/computex/ontology#> 
-prefix dcterms:      <http://purl.org/dc/terms/> 
-prefix lp:           <http://purl.org/weso/landportal/ontology#> 
-prefix qb: 	      <http://purl.org/linked-data/cube#> 
-prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix dcterms:       <http://purl.org/dc/terms/> 
+prefix lb:            <http://purl.org/weso/landbook/ontology#> 
+prefix qb: 	          <http://purl.org/linked-data/cube#> 
+prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 prefix rdfs: 	      <http://www.w3.org/2000/01/rdf-schema#>
-prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> 
-prefix time:         <http://www.w3.org/2006/time#> 
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix sdmx-concept:  <http://purl.org/linked-data/sdmx/2009/concept#> 
+prefix time:          <http://www.w3.org/2006/time#> 
+prefix xsd:           <http://www.w3.org/2001/XMLSchema#>
+prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 
 
+# Schema for Observations 
 <Observation> { 
-      cex:ref-area        @<Area>,            # Area affected by observation
-      cex:ref-indicator   @<Indicator>,       # Indicator
-      cex:ref-time	  @<Time> ,           # Time of observation
-      cex:value           xsd:double,         # Value of the observation
-      cex:computation 	  @<Computation> ,    # 
-      dcterms:issued 	  xsd:date ,          # timestamp 
-      qb:dataSet 	  @<Dataset> ,        # Dataset to which an observation belongs
-      rdf:type 		 ( qb:Observation ),     
-      rdfs:label 	  xsd:string ,
-      sdmx-concept:obsStatus @<ObsStatus> 			 
+  a                      ( qb:Observation )
+, cex:ref-area           @<Area>            # Area affected by observation
+, cex:ref-indicator      @<Indicator>       # Indicator
+, cex:ref-time           @<Time>            # Time of observation
+, cex:value              xsd:double         # Value of the observation
+, cex:computation        @<Computation>     # Computation from which this observation has been obtained
+, dcterms:issued         xsd:dateTime       # timestamp 
+, qb:dataSet             @<DataSet>         # Dataset to which an observation belongs
+, qb:slice               @<Slice>           # Slice to which this observation belongs
+, rdfs:label             xsd:string         # Pattern "Value of {Region} in {Time} for indicator {Indicator}"@en
 }
 
 # Area should be an abstract type with Countries and Regions as subtypes
 <Area> {
-  rdf:type   cex:Area,
-  rdfs:label xsd:string 
+   a ( cex:Area )
+ , rdfs:label xsd:string
 }
 
-# <Country> {
-# &<Area> ,
-# rdf:type lp:Country .
-# }
+<Country> {
+   a ( lb:Country )
+ , rdfs:label xsd:string  
+ , lb:faoURI shex:IRI  
+ , lb:iso2 xsd:string 
+ , lb:iso3 xsd:string
+}
 
 <Indicator> {
- rdf:type   cex:Indicator,
- rdfs:label xsd:string
+  a   ( cex:Indicator )
+, rdfs:label xsd:string
 }
 
 <Time> {
+  a ( cex:Time )
+, rdfs:label xsd:string
 }
 
 # <Year> {
@@ -53,6 +60,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 #}
 
 <Computation> {
+ a ( cex:Computation )
 }
 
 #<Raw> {
@@ -60,5 +68,11 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 # rdf:type             cex:Raw 
 #}
 
-<ObsStatus> {
+
+<DataSet>{
+ a ( qb:DataSet )
+}
+
+<Slice> {
+ a ( qb:Slice)
 }

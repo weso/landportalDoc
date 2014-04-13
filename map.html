@@ -1,7 +1,32 @@
-<p>Map from Data model to RDF properties
+<html>
+<head>
+<title>Mapping from Fields to RDF Properties</title>
+</head>
+<body>
+<h1>Mapping from Fields to RDF Properties</h1>
+
+<p>Map from Data model to RDF properties</p>
+<p>The Reference Data model is described in Python 
+ <a href="https://github.com/weso/landportal_model/blob/develop/models.py">here</a></p>
+ 
 
 <table>
-<tr><th>Table</th><th>Field</th><th>RDF Property</th></tr>
-<tr><th>Observation</th><th>id</th><th>URI: <code>/observation/{id}</code></th></tr>
-<tr><th>Observation</th><th>ref_time</th><th>cex:ref_time</th></tr>
+<tr><th>Table</th><th>Field</th><th>RDF Property</th><th>Range</th></tr>
+<tr><th>Observation</th><th>id</th><th>URI: <code>/observation/{id}</code></th><th></th></tr>
+<tr><th>Observation</th><th>ref_time</th><th>cex:ref_time</th><th>cex:Time</th></tr>
+<tr><th>Observation</th><th>region</th><th>cex:ref-area</th><th>@Region</th></tr>
+<tr><th>Observation</th><th>indicator</th><th>cex:indicator</th><th>cex:Indicator</th></tr>
+<tr><th>Observation</th><th>value</th><th>cex:value</th><th>xsd:Double</th></tr>
+<tr><th>Observation</th><th>issued</th><th>dcterms:issued</th><th>xsd:DateTime</th></tr>
+<tr><th>Observation</th><th>computation</th><th>cex:computation</th><th>cex:Computation</th></tr>
+<tr><th>Observation</th><th>dataset</th><th>qb:dataset</th><th>qb:DataSet</th></tr>
+<tr><th>Observation</th><th>slice</th><th>qb:slice</th><th>qb:Slice</th></tr>
+
+
+
+
+
+
 </table>
+</body>
+</html>

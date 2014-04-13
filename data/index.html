@@ -36,7 +36,8 @@
   <body>
     <section id='abstract'>
       <p>
-        This document describes the RDF Data Portal developed as part of the LandPortal project
+        This document describes the RDF Data Portal developed as part of the LandBook project.
+        The LandBook project is part of <a href="http://landportal.info">LandPortal</a>
       </p>
     </section>
 
@@ -47,14 +48,16 @@
     <section class='informative'>
       <h2>Introduction</h2>
       <p>
-	  The <a href="http://landportal.org">LandPortal</a> project contains
-	  statistical data about countries and regions.
+	  The <a href="http://landportal.org">LandBook</a> project contains statistical data 
+	  on land governance across the world.
       </p>
 	  <p>The main sources of data are observations which have several dimensions, 
 	     like the area (country or region), the time of the observation and the value.</p>
 
-	  <p>The data portal follows the RDF Data Cube vocabulary where there are 
-	   single observations with different dimensions grouped by slices and datasets.</p>
+	  <p>The data portal follows the 
+	   <a href="http://www.w3.org/TR/vocab-data-cube/">RDF Data Cube</a> vocabulary 
+	   where there are single observations with different dimensions grouped by 
+	   slices and datasets.</p>
 	   </section>
     
      <section>
@@ -86,31 +89,22 @@ This is the list of external namespace prefixes employed:
 	 
 <section>
 <h2>Base URI</h2>
-<p>The base URI of the LandPortal data is
+<p>The base URI of the LandBook data is
 <code><a href="http://book.landportal.org/">http://book.landportal.org</a></code>. 
 
 Along this document <code>{base}</code> refers to the previous URI.
 </p>
 </section>
 
-<h2 id="prefixes">LandPortal namespace prefixes</h2>
+<h2 id="prefixes">LandBook namespace prefixes</h2>
 
-The list of namespace prefixes defined in the LandPoral is:
+The list of namespace prefixes defined in the LandBook is:
 <dl>
-<dt><code>lp</code></dt><dd><code><a href="http://book.landportal.org/">http://book.landportal.org/</a></code></dd>
-<dt><code>indicator</code></dt><dd><code><a href="http://book.landportal.org/indicator">{base}/indicator</a></code></dd>
+<dt><code>lb</code></dt><dd><code><a href="http://book.landportal.org/">http://book.landportal.org/</a></code></dd>
+<dt><code>ind</code></dt><dd><code><a href="http://book.landportal.org/indicator">{base}/indicator</a></code></dd>
 <dt><code>obs</code></dt><dd><code><a href="http://book.landportal.org/observation">{base}/observation</a></code></dd>
 <dt><code>country</code></dt><dd><code><a href="http://book.landportal.org/country">{base}/country</a></code></dd>
 </dl>
-
-<section>
-<h2 id="BaseURI">Base URI</h2>
-<p>The base URI of the LandPortal data is
-<code><a href="http://book.landportal.org/">http://book.landportal.org</a></code>. 
-
-Along this document <code>{base}</code> refers to the previous URI.
-</p>
-</section>
 
 <section>
 <h2>Entities</h2>
@@ -126,14 +120,14 @@ Along this document <code>{base}</code> refers to the previous URI.
    Conceptually, an observation is the most basic unit of information. 
    It is usually a cell value from an excel sheet although 
     observations can be obtained from other sources.
-<p>In the LandPortal, we consider three main dimensions for each observation:
+<p>We consider three main dimensions for each observation:
 	  <ul>
 	  <li><a href="http://purl.org/weso/ontology/computex#ref-area">cex:ref-area</a>: A geographic area (a country or a region)</li>
 	  <li><a href="http://purl.org/weso/ontology/computex#ref-time">cex:ref-time</a>: The time that is referred by that observation (usually a year or time interval)</li>
 	  <li><a href="http://purl.org/weso/ontology/computex#indicator">cex:indicator</a>:: The reference indicator</li>
 	  </ul>
 <p>An observation has a numeric value <a href="http://purl.org/weso/ontology/computex#value">cex:value</a> 
- which is a number</p>
+</p>
 
 <section> 
 <h2>URI Template</h2>
@@ -141,7 +135,7 @@ Along this document <code>{base}</code> refers to the previous URI.
 where
 <pre data-lang="text/turtle">
 {base} = Base URI for LandPortal 
-{Dataset} = Sheet or source from which this observation has been obtained
+{Dataset} = Dataset from which this observation has been obtained
 {observationId} = Id of this observation
 </pre>
 </section>
@@ -153,20 +147,21 @@ where
 </code>
 </section>
 -->
+
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
-&LT;Observation> { 
-    cex:ref-area           @<Area>,            # Area affected by observation
-    cex:ref-indicator      @<Indicator>,       # Indicator
-    cex:ref-time           @<Time> ,           # Time of observation
-    cex:value              xsd:double,         # Value of the observation
-    cex:computation        @<Computation> ,    # 
-    dcterms:issued 	       xsd:date ,          # timestamp 
-    qb:dataSet 	           @<Dataset> ,        # Dataset to which an observation belongs
-    rdf:type               ( qb:Observation ),     
-    rdfs:label 	           xsd:string ,
-    sdmx-concept:obsStatus @<ObsStatus> 			 
+&lt;Observation&gt; { 
+  a                      ( qb:Observation )
+, cex:ref-area           @&lt;Area&gt;            # Area affected by observation
+, cex:ref-indicator      @&lt;Indicator&gt;       # Indicator
+, cex:ref-time           @&lt;Time&gt;            # Time of observation
+, cex:value              xsd:double         # Value of the observation
+, cex:computation        @&lt;Computation&gt;     # Computation from which this observation has been obtained
+, dcterms:issued         xsd:dateTime       # timestamp 
+, qb:dataSet             @&lt;DataSet&gt;         # Dataset to which an observation belongs
+, qb:slice               @&lt;Slice&gt;           # Slice to which this observation belongs
+, rdfs:label             xsd:string         # Pattern &quot;Value of {Region} in {Time} for indicator {Indicator}&quot;@en
 }
 </pre>
 </section>
@@ -308,36 +303,39 @@ where
 <h2>Countries and regions</h2>
 
 <section>
-<h2 id="country">Country</h2>
-<p>TODO: Review</p>
-<p>Country concept</p>
+<h2 id="country">Countries</h2>
+<p>Countries are represented by three main properties: 
+   The iso-codes with 2 and 3 letters and their FAO URI</p>
 
 <section>
 <h2>URI Template</h2>
 <pre data-lang="text/turtle">{base}/country/{countryCode}</pre>
 where
 <pre data-lang="text/turtle">
-{base} = Base URI for WebIndex
+{base} = Base URI for LandBook 
 {countryCode} = Iso-Code Alpha 3
 </pre>
 </section>
 
-<section>
+<!-- <section>
 <h2>Example</h2>
 <code>
 <a href="http://data.webfoundation.org/webindex/v2013/country/ESP">http://data.webfoundation.org/webindex/v2013/country/ESP</a>
 </code>
 </section>
+-->
 
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
-&lt;Country> { 
-   rdf:type	                   wf-onto:Country,
-   wf-onto:has-iso-alpha2-code xsd:string ,
-   wf-onto:has-iso-alpha3-code xsd:string ,
-   rdfs:label				   xsd:string,
- } </pre>
+&lt;Country&gt; {
+   a ( lb:Country )
+ , rdfs:label xsd:string  
+ , lb:faoURI shex:IRI  
+ , lb:iso2 xsd:string 
+ , lb:iso3 xsd:string
+}
+</pre>
 </section>
 </section> <!-- Country -->
 

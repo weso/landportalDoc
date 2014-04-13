@@ -1,24 +1,43 @@
-prefix cex: 	      <http://purl.org/weso/computex/ontology#> 
+prefix cex: 	     <http://purl.org/weso/computex/ontology#> 
 prefix dcterms:      <http://purl.org/dc/terms/> 
-prefix lp:           <http://purl.org/weso/landportal/ontology#> 
-prefix qb: 	      <http://purl.org/linked-data/cube#> 
+prefix lb:           <http://purl.org/weso/landbook/ontology#> 
+prefix qb: 	     <http://purl.org/linked-data/cube#> 
 prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-prefix rdfs: 	      <http://www.w3.org/2000/01/rdf-schema#>
+prefix rdfs: 	     <http://www.w3.org/2000/01/rdf-schema#>
 prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> 
 prefix time:         <http://www.w3.org/2006/time#> 
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-prefix : <http://example.org/>
+prefix xsd:          <http://www.w3.org/2001/XMLSchema#>
+prefix :             <http://example.org/>
 
 :o1 a qb:Observation ;
-    cex:ref-area :Spain ;
-    cex:ref-time :year2013 ;
-    cex:ref-indicator :hdi ;
-    cex:value 2.3 ;
-    cex:computation cex:Raw ;
-    dcterms:issued 2013 ;
-    rdfs:label "Observation of Spain in 2013" ;
-    sdmx-concept:obsStatus cex:Raw .
+ ; cex:ref-area           :Spain 
+ ; cex:ref-time           :year2013 
+ ; cex:ref-indicator      :hdi 
+ ; cex:value              "2.3"^^xsd:double 
+ ; cex:computation        cex:Raw 
+ ; dcterms:issued         "2013-03-02T09:00"^^xsd:dateTime 
+ ; qb:dataSet             :dataset1 
+ ; qb:slice               :slice1 
+ ; rdfs:label             "Observation of Spain in 2013 for indicator hdi"@en 
+ .
 
-:Spain a :Country .
-:year2013 a :Time .
-:hdi a cex:Indicator .
+:Spain a cex:Area
+ ; rdfs:label "Spain"@en 
+ .
+
+:France a lb:Country
+ ; rdfs:label "France"@en
+ ; lb:faoURI <http://www.fao.org/countryprofiles/index/en/?iso3=fra>
+ ; lb:iso2 "FR"
+ ; lb:iso3 "FRA" 
+ .
+
+:year2013 a cex:Time 
+ ; rdfs:label "Year 2013"@en .
+
+:hdi a cex:Indicator 
+ ; rdfs:label "Human Development Index"@en .
+
+:dataset1 a qb:DataSet .
+:slice1 a qb:Slice .
+cex:Raw a cex:Computation .
