@@ -181,7 +181,7 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 
 # Uploads
 
-<Upload> {                        # Represents a process ofinserting data into the landbook
+<Upload> {                        # Represents the process of uploading data into the system
   a              ( lb:Upload )    
 , lb:user        @<User>          # User that uploaded the data
 , lb:timestamp   xsd:dateTime     # Timestamp

@@ -66,8 +66,7 @@
 
 This is the list of external namespace prefixes employed:
 <dl>
-<dt><code>cex</code></dt>
-<dd><code><a href="http://purl.org/weso/ontology/computex#">http://purl.org/weso/ontology/computex#</a></code></dd>
+<dt><code>cex</code></dt><dd><code><a href="http://purl.org/weso/ontology/computex#">http://purl.org/weso/ontology/computex#</a></code></dd>
 <dt><code>dbpedia</code></dt><dd><code><a href="http://dbpedia.org/resource/">http://dbpedia.org/resource/</a></code></dd>
 <dt><code>dcterms</code></dt><dd><code><a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></code></dd>
 <dt><code>geo</code></dt><dd><code><a href="http://www.w3.org/2003/01/geo/wgs84_pos#">http://www.w3.org/2003/01/geo/wgs84_pos#</a></code></dd>
@@ -77,9 +76,9 @@ This is the list of external namespace prefixes employed:
 <dt><code>rdf</code></dt><dd><code><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></code></dd>
 <dt><code>rdfs</code></dt><dd><code><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></code></dd>
 <dt><code>sdmxAttribute</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/attribute#">http://purl.org/linked-data/sdmx/2009/attribute#</a></code></dd>
-<dt><code>sdmxCode</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/code#">http://purl.org/linked-data/sdmx/2009/code#</a></code></dd>
-<dt><code>sdmxConcept</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/concept#">http://purl.org/linked-data/sdmx/2009/concept#</a></code></dd>
-<dt><code>sdmxSubject</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/subject#">http://purl.org/linked-data/sdmx/2009/subject#</a></code></dd>
+<dt><code>sdmx-code</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/code#">http://purl.org/linked-data/sdmx/2009/code#</a></code></dd>
+<dt><code>sdmx-concept</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/concept#">http://purl.org/linked-data/sdmx/2009/concept#</a></code></dd>
+<dt><code>sdmx-subject</code></dt><dd><code><a href="http://purl.org/linked-data/sdmx/2009/subject#">http://purl.org/linked-data/sdmx/2009/subject#</a></code></dd>
 <dt><code>skos</code></dt><dd><code><a href="http://www.w3.org/2004/02/skos/core#">http://www.w3.org/2004/02/skos/core#</a></code></dd>
 <dt><code>time</code></dt><dd><code><a href="http://www.w3.org/2006/time#">http://www.w3.org/2006/time#</a></code></dd>
 <dt><code>xsd</code></dt><dd><code><a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a></code></dd>
@@ -108,8 +107,18 @@ The list of namespace prefixes defined in the LandBook is:
 
 <section>
 <h2>Entities</h2>
-<p>For each entity we give a description, the URI template, an example and a Schema using 
- the <a href="http://www.w3.org/2013/ShEx/Primer.html">ShEx RDF schema language</a></p>
+<p>For each entity we give a description, 
+ the URI template, 
+ an example and the Shape Expression. 
+ The complete Shape Expression is defined in 
+ <a href="shEx/landportal.shex">this document</a> 
+ which employs
+ the 
+ <a href="http://www.w3.org/2013/ShEx/Primer.html">Shape Expressions language</a>.
+ 
+ A simplified example is available <a href="shEx/example-observation.ttl">here</a>.
+ 
+</p>
 
 <section>
 <h2>Structural elements</h2>
@@ -140,39 +149,64 @@ where
 </pre>
 </section>
 
-<!--<section>		  
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/observation/obs6704">http://data.webfoundation.org/webindex/v2013/observation/obs6704</a>
-</code>
-</section>
--->
-
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
 &lt;Observation&gt; { 
   a                      ( qb:Observation )
-, ( cex:ref-area         @&lt;Country&gt;         # Country affected by observation
-  | cex:ref-area         @&lt;Region&gt;          # Region affected by observation
+, (                                         # Area of observation. Can be:
+    cex:ref-area         @&lt;Country&gt;         #    Country 
+  | cex:ref-area         @&lt;Region&gt;          #    Region 
   )
 , cex:ref-indicator      @&lt;Indicator&gt;       # Indicator
-, cex:ref-time           @&lt;Time&gt;            # Time of observation
+, (                                         # Time of observation. Can be:
+    cex:ref-time         @&lt;Year&gt;            #    Year
+  | cex:ref-time         @&lt;Interval&gt;        #    Interval
+  ) 
 , cex:value              xsd:double         # Value of the observation
 , cex:computation        @&lt;Computation&gt;     # Computation from which this observation has been obtained
 , dcterms:issued         xsd:dateTime       # timestamp 
 , qb:dataSet             @&lt;DataSet&gt;         # Dataset to which an observation belongs
 , qb:slice               @&lt;Slice&gt;           # Slice to which this observation belongs
 , rdfs:label             xsd:string         # Pattern &quot;Value of {Region} in {Time} for indicator {Indicator}&quot;@en
+, sdmx-concept:obsStatus ( 
+                         sdmx-code:obsStatus-A  # Normal
+                         )
+, lb:source              @&lt;Upload&gt;
 }
 </pre>
 </section>
+
+<section>		  
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:o1 a qb:Observation 
+ ; cex:ref-area           :France 
+ ; cex:ref-time           :year2013 
+ ; cex:ref-indicator      :hdi 
+ ; cex:value              "2.3"^^xsd:double 
+ ; cex:computation        cex:Raw 
+ ; dcterms:issued         "2013-03-02T09:00:00"^^xsd:dateTime 
+ ; qb:dataSet             :dataSet1 
+ ; qb:slice               :slice1 
+ ; rdfs:label             "Observation of Spain in 2013 for indicator hdi"@en 
+ ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
+ ; lb:source              :upload1
+ .
+</pre>
+</section>
+
 </section> <!-- Observation -->
 
 <section>
 <h2 id="indicator">Indicators</h2>
-<p>Indicators are the dimensions used to categorize observations.
- Indicators can be grouped. 
+<p>Indicators are entities that provide specific information on the 
+ value of something.
+
+<p>For example, the Human development index is an indicator that provides
+ information about the human development of a country.  
+
+<p>Indicators can be simple or compound
 
 <section>
 <h2>URI Template</h2>
@@ -184,21 +218,12 @@ where
 </pre>
 </section>
 
-<!--
-<section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/indicator/WEF_L">http://data.webfoundation.org/webindex/v2013/indicator/WEF_L</a>
-</code>
-</section>
--->
-
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
 &lt;Indicator&gt; {
   a   ( cex:Indicator )
-, lb:preferable_tendency (cex:decrease cex:increase)
+, lb:preferable_tendency ( cex:decrease cex:increase cex:irrelevant )
 , lb:measurement         @&lt;Measurement&gt;
 , lb:last_update         xsd:dateTime
 , lb:starred             xsd:boolean
@@ -209,11 +234,29 @@ where
 }
 </pre>
 </section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:hdi a cex:Indicator 
+ ; lb:preferable_tendency cex:decrease
+ ; lb:measurement :measurement1
+ ; lb:last_update "2014-04-04T11:50:18"^^xsd:dateTime
+ ; lb:starred "true"^^xsd:boolean
+ ; lb:topic :development
+ ; lb:indicatorType lb:Simple
+ ; rdfs:label "Human Development Index"@en 
+ ; rdfs:comment "Longer description of indicator Human Development Index"@en
+ .
+</pre>
+</section>
+
+
 </section> <!-- Indicator -->
 
 
 <section>
-<h2 id="dataset">Slice</h2>
+<h2 id="slice">Slice</h2>
 <p>A Slice is a grouping of observations. 
 </p>
 
@@ -222,29 +265,42 @@ where
 <pre data-lang="text/turtle">{base}/slice/{sliceId}</pre>
 where
 <pre data-lang="text/turtle">
-{base} = Base URI for WebIndex
+{base} = Base URI for LandBook
 {sliceId} = Id of this slice
 </pre>
 </section>
 
-<!-- 
-<section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/slice/computed_2013_1386752461095_89400">http://data.webfoundation.org/webindex/v2013/slice/computed_2013_1386752461095_89400</a>
-</code>
-</section>
--->
-
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
+&lt;Slice&gt; {
+  a ( qb:Slice)
+, cex:indicator @&lt;Indicator&gt;       # Indicator of this slice
+, lb:dimension  (                  # Different types of dimensions in landbook. Can be:
+                  lb:Time              # time varies
+                  lb:Area              # area varies
+                )?
+, qb:observation @&lt;Observation&gt;*   # List of observations of this slice
+}
 </pre>
 </section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:slice1 a qb:Slice 
+ ; cex:indicator :hdi 
+ ; qb:observation :o1, :o2
+ ; lb:dimension lb:Area  
+ ; qb:dataSet :dataSet1 
+ .
+</pre>
+</section>
+
 </section>  <!-- Slice -->
 
 <section>
-<h2 id="dataset">Dataset</h2>
+<h2 id="dataSet">DataSet</h2>
 <p>A Dataset is a grouping of slices. 
 <p>This concept is the same as the <a href="http://www.w3.org/TR/vocab-data-cube/#ref_qb_DataSet">qb:DataSet</a> concept 
  from RDF Data Cube</p>
@@ -259,27 +315,44 @@ where
 </pre>
 </section>
 
-<!-- <section>
-<h2>Examples</h2>
-<ul>
-<li>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/dataset/IEA_A-Imputed">http://data.webfoundation.org/webindex/v2013/dataset/IEA_A-Imputed</a>
-</code>
-<li>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/dataset/ClusterIndicators_2013">http://data.webfoundation.org/webindex/v2013/dataset/ClusterIndicators_2013</a>
-</code>
-</ul>
-</section>
--->
 
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
+&lt;DataSet&gt;{
+  a ( qb:DataSet )
+, lb:dataSource @&lt;DataSource&gt;
+, lb:license @&lt;License&gt;
+, qb:slice @&lt;Slice&gt;*                  # List of slices of this dataset
+, sdmx-concept:freq (                 # Frequency. Codes from: http://purl.org/linked-data/sdmx/2009/code.
+                                      # It can be:
+                     sdmx-code:freq-A #   Annual
+                     sdmx-code:freq-S #   Semester
+                     sdmx-code:freq-Q #   Quarterly
+                     sdmx-code:freq-M #   Monthly
+                     sdmx-code:freq-W #   Weekly
+                     sdmx-code:freq-D #   Daily
+                     sdmx-code:freq-B #   Daily (business day)
+                     sdmx-code:freq-N #   Minutely
+                    )  
+}
 </pre>
 </section>
-</section>  <!-- Dataset -->
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:dataSet1 a qb:DataSet 
+ ; sdmx-concept:freq sdmx-code:freq-A
+ ; lb:dataSource :dataSource1 
+ ; lb:license :license1
+ ; qb:slice :slice1
+ .
+</pre>
+</section>
+
+
+</section>  <!-- DataSet -->
 
 </section> <!-- Structural elements -->
 
@@ -301,14 +374,6 @@ where
 </pre>
 </section>
 
-<!-- <section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/country/ESP">http://data.webfoundation.org/webindex/v2013/country/ESP</a>
-</code>
-</section>
--->
-
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
@@ -318,14 +383,31 @@ where
  , lb:faoURI shex:IRI  
  , lb:iso2 xsd:string 
  , lb:iso3 xsd:string
+ , lb:is_part_of @&lt;Region&gt;?
 }
 </pre>
 </section>
+
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:France a lb:Country
+ ; rdfs:label &quot;France&quot;@en
+ ; lb:faoURI &lt;http://www.fao.org/countryprofiles/index/en/?iso3=fra&gt;
+ ; lb:iso2 &quot;FR&quot;
+ ; lb:iso3 &quot;FRA&quot; 
+ ; lb:is_part_of :Europe
+ .
+</pre>
+</section>
+
 </section> <!-- Country -->
 
 <section>
 <h2 id="region">Region</h2>
-<p>Concept of a Region. </p>
+<p>Concept of a region. </p>
+<p>A region can be part of another region
 
 <section>
 <h2>URI Template</h2>
@@ -336,15 +418,6 @@ where
 {regionId} = Region Id
 </pre>
 </section>
-
-<!-- 
-<section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/webindex/v2013/region/Europe">http://data.webfoundation.org/webindex/v2013/region/Europe</a>
-</code>
-</section>
--->
 
 <section>
 <h2>Schema</h2>
@@ -357,9 +430,66 @@ where
 }
 </pre>
 </section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:Europe a lb:Region
+ ; rdfs:label &quot;Europe&quot;@en
+ ; lb:UNCode &quot;EU&quot;
+ .
+</pre>
+</section>
+
+
 </section> <!-- Region -->
 
 </section> <!-- Countries and Regions -->
+
+<section>
+<h2 id="time">Time</h2>
+<p>Represents some time: it canbe an interval or an instant</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/organization/{orgId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for LandBook
+{orgId} = Organization Id
+</pre>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Time&gt; {
+  a ( cex:Time )
+, rdfs:label xsd:string
+}
+
+&lt;Year&gt; {
+  a ( cex:Year )
+, time:year xsd:gYear 
+}
+
+&lt;Interval&gt; {
+    &amp; &lt;Time&gt; ,
+	time:hasBeginning xsd:dateTime,
+	time:hasEnd       xsd:dateTime
+}
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:year2013 a cex:Year 
+ ; time:year &quot;2013&quot;^^xsd:gYear .
+</pre>
+</section>
+
+</section>
 
 <section>
 <h2 id="organization">Organization</h2>
@@ -375,16 +505,7 @@ where
 </pre>
 </section>
 
-<!-- 
 <section>
-<h2>Example</h2>
-<code>
-<a href="http://data.webfoundation.org/organization/IEA">http://data.webfoundation.org/organization/IEA</a>
-</code>
-</section>
-<section>
--->
-
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
 &lt;Organization&gt; {
@@ -397,7 +518,143 @@ where
 </pre>
 </section>
 
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:faostat a org:Organization 
+ ; rdfs:label &quot;The statistics division of FAO&quot;@en 
+ ; foaf:homepage &lt;http://faostat.fao.org/&gt;
+ .
+</pre>
+</section>
+
 </section>	   
+
+
+<section>
+<h2 id="datasource">Data source</h2>
+<p>A source of data</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/datasource/{datasourceId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for LandBook
+{datasourceId} = Datasource Id
+</pre>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;DataSource&gt; {
+  a (lb:DataSource)
+, rdfs:label xsd:string
+, lb:organization @&lt;Organization&gt;
+, dcterms:creator @&lt;User&gt;
+, dcterms:description xsd:string?
+, dcterms:title xsd:string?
+}
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:dataSource1 a lb:DataSource 
+ ; rdfs:label &quot;Data source name&quot;@en 
+ ; lb:organization :faostat
+ ; dcterms:creator :john
+ .
+</pre>
+</section>
+
+
+<section>
+<h2 id="user">User</h2>
+<p>A user or agent that operates the system. It can be a person who 
+ uploads data to the system.</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/user/{userId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for LandBook
+{userId} = User Id
+</pre>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;User&gt; {
+  a (                             # Type of users (Agent's or People)
+       foaf:Agent                 #    Agent could be some automatic web services 
+       foaf:Person                #    Person    
+    )                  
+, rdfs:label xsd:string
+, foaf:name xsd:string            # Name of user
+, foaf:account xsd:string?        # Account of this user in the landportal
+, org:memberOf @&lt;Organization&gt;+
+}
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:john a foaf:Person
+ ; rdfs:label &quot;John Smith&quot;
+ ; foaf:name &quot;John Smith&quot;
+ ; foaf:account &quot;john&quot;
+ ; org:memberOf :faostat
+ .
+</pre>
+</section>
+
+<section>
+<h2 id="upload">Upload</h2>
+<p>Represents an upload: a process by which some data has been uploaded into
+ the system</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/upload/{uploadId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for LandBook
+{uploadId} = Upload Id
+</pre>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Upload&gt; {                        # Represents the process of uploading data into the system
+  a              ( lb:Upload )    
+, lb:user        @&lt;User&gt;          # User that uploaded the data
+, lb:timestamp   xsd:dateTime           # Timestamp
+, lb:ip          xsd:string             # IP address from which it has been uploaded
+, lb:observation @&lt;Observation&gt;*  # List of observations that have been uploaded
+, lb:dataSource  @&lt;DataSource&gt;    # Data source
+}</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<pre data-lang="text/turtle">
+:upload1 a lb:Upload
+ ; lb:user :john
+ ; lb:timestamp &quot;2014-04-04T11:50:18&quot;^^xsd:dateTime
+ ; lb:ip &quot;156.34.56.23&quot; 
+ ; lb:observation :o1, :o2
+ ; lb:dataSource :dataSource1
+ .
+</pre>
+</section>
+
 
 </section> <!-- Entities -->
 
