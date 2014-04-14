@@ -1,3 +1,4 @@
-<ul>
-<li>Ensure that 
-</ul>
+- Ensure that computex ontology handles cex:ref-area, cex:ref-time and cex:indicator
+- ref-area refers to area (inheritance)
+ 
+ 

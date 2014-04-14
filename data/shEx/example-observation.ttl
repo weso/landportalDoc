@@ -1,6 +1,8 @@
 prefix cex: 	     <http://purl.org/weso/computex/ontology#> 
 prefix dcterms:      <http://purl.org/dc/terms/> 
+prefix foaf:         <http://xmlns.com/foaf/0.1/>
 prefix lb:           <http://purl.org/weso/landbook/ontology#> 
+prefix org:          <http://www.w3.org/ns/org#>
 prefix qb: 	     <http://purl.org/linked-data/cube#> 
 prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 prefix rdfs: 	     <http://www.w3.org/2000/01/rdf-schema#>
@@ -8,21 +10,32 @@ prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#>
 prefix time:         <http://www.w3.org/2006/time#> 
 prefix xsd:          <http://www.w3.org/2001/XMLSchema#>
 prefix :             <http://example.org/>
+prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
 
 :o1 a qb:Observation ;
- ; cex:ref-area           :Spain 
+ ; cex:ref-area           :France 
  ; cex:ref-time           :year2013 
  ; cex:ref-indicator      :hdi 
  ; cex:value              "2.3"^^xsd:double 
  ; cex:computation        cex:Raw 
- ; dcterms:issued         "2013-03-02T09:00"^^xsd:dateTime 
- ; qb:dataSet             :dataset1 
+ ; dcterms:issued         "2013-03-02T09:00:00"^^xsd:dateTime 
+ ; qb:dataSet             :dataSet1 
  ; qb:slice               :slice1 
  ; rdfs:label             "Observation of Spain in 2013 for indicator hdi"@en 
+ ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
  .
 
-:Spain a cex:Area
- ; rdfs:label "Spain"@en 
+:o2 a qb:Observation ;
+ ; cex:ref-area           :Europe 
+ ; cex:ref-time           :year2013 
+ ; cex:ref-indicator      :hdi 
+ ; cex:value              "2.3"^^xsd:double 
+ ; cex:computation        cex:Raw 
+ ; dcterms:issued         "2013-03-02T09:00:00"^^xsd:dateTime 
+ ; qb:dataSet             :dataSet1 
+ ; qb:slice               :slice1 
+ ; rdfs:label             "Observation of Europe in 2013 for indicator hdi"@en 
+ ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
  .
 
 :France a lb:Country
@@ -30,14 +43,61 @@ prefix :             <http://example.org/>
  ; lb:faoURI <http://www.fao.org/countryprofiles/index/en/?iso3=fra>
  ; lb:iso2 "FR"
  ; lb:iso3 "FRA" 
+ ; lb:is_part_of :Europe
  .
 
-:year2013 a cex:Time 
- ; rdfs:label "Year 2013"@en .
+:Europe a lb:Region
+ ; rdfs:label "Europe"@en
+ ; lb:UNCode "EU"
+ .
+
+:year2013 a cex:Year 
+ ; time:year "2013"^^xsd:gYear .
 
 :hdi a cex:Indicator 
- ; rdfs:label "Human Development Index"@en .
+ ; lb:preferable_tendency cex:decrease
+ ; lb:measurement :measurement1
+ ; lb:last_update "2014-04-04T11:50:18"^^xsd:dateTime
+ ; lb:starred "true"^^xsd:boolean
+ ; lb:topic :topic1
+ ; lb:indicatorType lb:Simple
+ ; rdfs:label "Human Development Index"@en 
+ ; rdfs:comment "Longer description"@en
+ .
 
-:dataset1 a qb:DataSet .
-:slice1 a qb:Slice .
-cex:Raw a cex:Computation .
+:topic1 a lb:Topic
+ ; rdfs:label "Topic 1"@en 
+ .
+
+:measurement1 a lb:Measurement
+ ; rdfs:label "Measurement..."@en .
+
+:dataSet1 a qb:DataSet 
+ ; sdmx-concept:freq "Yearly" 
+ ; lb:dataSource :dataSource1 
+ ; lb:license :license1
+ ; qb:slice :slice1
+ .
+
+:dataSource1 a lb:DataSource 
+ ; rdfs:label "Data source name"@en 
+ ; lb:organization :organization1 
+ .
+
+:organization1 a org:Organization 
+ ; rdfs:label "Organization 1"@en 
+ ; foaf:homepage <http://example.org/organization1>
+ .
+
+:license1 a lb:License
+ .
+
+:slice1 a qb:Slice 
+ ; cex:indicator :hdi 
+ ; qb:observation :o1, :o2
+ ; lb:dimension :dimension1  
+ ; qb:dataSet :dataSet1 
+ .
+
+:dimension1 a lb:Dimension 
+ .

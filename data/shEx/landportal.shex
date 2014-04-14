@@ -1,10 +1,13 @@
 prefix cex: 	      <http://purl.org/weso/computex/ontology#> 
 prefix dcterms:       <http://purl.org/dc/terms/> 
+prefix foaf:          <http://xmlns.com/foaf/0.1/>
 prefix lb:            <http://purl.org/weso/landbook/ontology#> 
-prefix qb: 	          <http://purl.org/linked-data/cube#> 
+prefix org:           <http://www.w3.org/ns/org#>
+prefix qb:            <http://purl.org/linked-data/cube#> 
 prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 prefix rdfs: 	      <http://www.w3.org/2000/01/rdf-schema#>
 prefix sdmx-concept:  <http://purl.org/linked-data/sdmx/2009/concept#> 
+prefix sdmx-code:     <http://purl.org/linked-data/sdmx/2009/code#> 
 prefix time:          <http://www.w3.org/2006/time#> 
 prefix xsd:           <http://www.w3.org/2001/XMLSchema#>
 prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
@@ -13,15 +16,24 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 # Schema for Observations 
 <Observation> { 
   a                      ( qb:Observation )
-, cex:ref-area           @<Area>            # Area affected by observation
+, (                                         # Area of observation. Can be:
+    cex:ref-area         @<Country>         #    Country 
+  | cex:ref-area         @<Region>          #    Region 
+  )
 , cex:ref-indicator      @<Indicator>       # Indicator
-, cex:ref-time           @<Time>            # Time of observation
+, (                                         # Time of observation. Can be:
+    cex:ref-time         @<Year>            #    Year
+  | cex:ref-time         @<Interval>        #    Interval
+  ) 
 , cex:value              xsd:double         # Value of the observation
 , cex:computation        @<Computation>     # Computation from which this observation has been obtained
 , dcterms:issued         xsd:dateTime       # timestamp 
 , qb:dataSet             @<DataSet>         # Dataset to which an observation belongs
 , qb:slice               @<Slice>           # Slice to which this observation belongs
 , rdfs:label             xsd:string         # Pattern "Value of {Region} in {Time} for indicator {Indicator}"@en
+, sdmx-concept:obsStatus ( 
+                         sdmx-code:obsStatus-A  # Normal
+                         ) 
 }
 
 # Area should be an abstract type with Countries and Regions as subtypes
@@ -36,10 +48,36 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
  , lb:faoURI shex:IRI  
  , lb:iso2 xsd:string 
  , lb:iso3 xsd:string
+ , lb:is_part_of @<Region>?
+}
+
+<Region> {
+   a ( lb:Region )
+ , rdfs:label xsd:string  
+ , lb:UNCode xsd:string  
+ , lb:is_part_of @<Region>?
 }
 
 <Indicator> {
   a   ( cex:Indicator )
+, lb:preferable_tendency (cex:decrease cex:increase)
+, lb:measurement         @<Measurement>
+, lb:last_update         xsd:dateTime
+, lb:starred             xsd:boolean
+, lb:topic               @<Topic>
+, lb:indicatorType       shex:IRI  
+, rdfs:label             xsd:string
+, rdfs:comment           xsd:string
+}
+
+
+<Topic> {
+  a (lb:Topic)
+, rdfs:label xsd:string    # Label of the topic in different languages
+}
+
+<Measurement> {
+  a (lb:Measurement)
 , rdfs:label xsd:string
 }
 
@@ -48,31 +86,61 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 , rdfs:label xsd:string
 }
 
-# <Year> {
-#    & <Time> ,
-#	time:year xsd:gYear 
-#}
-
-#<Interval> {
-#    & <Time> ,
-#	time:hasBeginning xsd:dateTime,
-#	time:hasEnd       xsd:dateTime
-#}
-
-<Computation> {
- a ( cex:Computation )
+<Year> {
+  a ( cex:Year )
+, time:year xsd:gYear 
 }
 
-#<Raw> {
-# &<Computation> ,
-# rdf:type             cex:Raw 
-#}
+<Interval> {
+    & <Time> ,
+	time:hasBeginning xsd:dateTime,
+	time:hasEnd       xsd:dateTime
+}
 
+<Computation> {
+  a ( cex:Computation )
+, rdfs:label xsd:string ?        # Label of computation
+}
 
 <DataSet>{
- a ( qb:DataSet )
+  a ( qb:DataSet )
+, sdmx-concept:freq xsd:string  # 
+, lb:dataSource @<DataSource>
+, lb:license @<License>
+, qb:slice @<Slice>*            # List of slices of this dataset
 }
 
 <Slice> {
- a ( qb:Slice)
+  a ( qb:Slice)
+, cex:indicator @<Indicator>       # Indicator of this slice
+, lb:dimension  @<Dimension>?      # Dimension. TODO: What is a dimension?
+, qb:observation @<Observation>*   # List of observations of this slice
+}
+
+<Dimension> {
+ a ( lb:Dimension )
+}
+
+<License> {
+   a ( lb:License)  
+}
+
+<DataSource> {
+  a (lb:DataSource)
+, rdfs:label xsd:string
+, lb:organization @<Organization>
+}
+
+<Organization> {
+  a ( org:Organization )
+, rdfs:label xsd:string
+, foaf:homepage shex:IRI
+, org:subOrganizationOf @<Organization>*
+, org:hasSubOrganization @<Organization>*
+}
+
+<User> {
+  a (foaf:Agent)
+, rdfs:label xsd:string
+, org:memberOf @<Organization>+
 }

@@ -1,0 +1,18 @@
+prefix cex: 	     <http://purl.org/weso/computex/ontology#> 
+prefix dcterms:      <http://purl.org/dc/terms/> 
+prefix foaf:         <http://xmlns.com/foaf/0.1/>
+prefix lb:           <http://purl.org/weso/landbook/ontology#> 
+prefix org:          <http://www.w3.org/ns/org#>
+prefix qb: 	     <http://purl.org/linked-data/cube#> 
+prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: 	     <http://www.w3.org/2000/01/rdf-schema#>
+prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> 
+prefix time:         <http://www.w3.org/2006/time#> 
+prefix xsd:          <http://www.w3.org/2001/XMLSchema#>
+prefix :             <http://example.org/>
+prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
+
+select ?name where {
+ ?country a lb:Country ;
+          rdfs:label ?name .
+}
