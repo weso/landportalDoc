@@ -23,6 +23,7 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  ; qb:slice               :slice1 
  ; rdfs:label             "Observation of Spain in 2013 for indicator hdi"@en 
  ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
+ ; lb:source              :upload1
  .
 
 :o2 a qb:Observation ;
@@ -36,8 +37,25 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  ; qb:slice               :slice1 
  ; rdfs:label             "Observation of Europe in 2013 for indicator hdi"@en 
  ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
+ ; lb:source              :upload1
  .
 
+:o3 a qb:Observation ;
+ ; cex:ref-area           :Spain 
+ ; cex:ref-time           :year2014
+ ; cex:ref-indicator      :indipfri1 
+ ; cex:value              "3.6"^^xsd:double 
+ ; cex:computation        cex:Raw 
+ ; dcterms:issued         "2014-03-02T09:00:00"^^xsd:dateTime 
+ ; qb:dataSet             :dataSet2 
+ ; qb:slice               :slice2
+ ; rdfs:label             "Observation of Spain in 2013 for indicator indpfri1"@en 
+ ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
+ ; lb:source              :upload2
+ .
+
+# Countries 
+ 
 :France a lb:Country
  ; rdfs:label "France"@en
  ; lb:faoURI <http://www.fao.org/countryprofiles/index/en/?iso3=fra>
@@ -46,13 +64,31 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  ; lb:is_part_of :Europe
  .
 
+:Spain a lb:Country
+ ; rdfs:label "Spain"@en
+ ; lb:faoURI <http://www.fao.org/countryprofiles/index/en/?iso3=esp>
+ ; lb:iso2 "ES"
+ ; lb:iso3 "ESP" 
+ ; lb:is_part_of :Europe
+ .
+ 
+# Regions
+
 :Europe a lb:Region
  ; rdfs:label "Europe"@en
  ; lb:UNCode "EU"
  .
 
+# Years 
+
 :year2013 a cex:Year 
  ; time:year "2013"^^xsd:gYear .
+
+:year2014 a cex:Year 
+ ; time:year "2014"^^xsd:gYear .
+
+ 
+# Indicators
 
 :hdi a cex:Indicator 
  ; lb:preferable_tendency cex:decrease
@@ -62,42 +98,132 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  ; lb:topic :topic1
  ; lb:indicatorType lb:Simple
  ; rdfs:label "Human Development Index"@en 
- ; rdfs:comment "Longer description"@en
+ ; rdfs:comment "Longer description of indicator Human Development Index"@en
  .
 
+:indipfri1 a cex:Indicator 
+ ; lb:preferable_tendency cex:increase
+ ; lb:measurement :percent
+ ; lb:last_update "2014-04-04T11:50:18"^^xsd:dateTime
+ ; lb:starred "true"^^xsd:boolean
+ ; lb:topic :topic1
+ ; lb:indicatorType lb:Simple
+ ; rdfs:label "Prevalence of underweight in children under five years"@en 
+ ; rdfs:comment "Longer description of indicator Prevalence of underweight in children under five years..."@en
+ .
+
+# Topics
+ 
 :topic1 a lb:Topic
  ; rdfs:label "Topic 1"@en 
  .
 
+# Measurements
+
 :measurement1 a lb:Measurement
  ; rdfs:label "Measurement..."@en .
 
+:percent a lb:Measurement
+ ; rdfs:label "Percent (%)"@en .
+
+
+# Datasets
+ 
 :dataSet1 a qb:DataSet 
- ; sdmx-concept:freq "Yearly" 
+ ; sdmx-concept:freq sdmx-code:freq-A
  ; lb:dataSource :dataSource1 
  ; lb:license :license1
  ; qb:slice :slice1
  .
 
-:dataSource1 a lb:DataSource 
- ; rdfs:label "Data source name"@en 
- ; lb:organization :organization1 
+:dataSet2 a qb:DataSet 
+ ; sdmx-concept:freq sdmx-code:freq-A 
+ ; lb:dataSource :dataSource2
+ ; lb:license :license1
+ ; qb:slice :slice1
  .
 
-:organization1 a org:Organization 
- ; rdfs:label "Organization 1"@en 
- ; foaf:homepage <http://example.org/organization1>
- .
-
-:license1 a lb:License
- .
+# Slices 
 
 :slice1 a qb:Slice 
  ; cex:indicator :hdi 
  ; qb:observation :o1, :o2
- ; lb:dimension :dimension1  
+ ; lb:dimension lb:Area  
  ; qb:dataSet :dataSet1 
  .
 
+:slice2 a qb:Slice 
+ ; cex:indicator :indipfri1 
+ ; qb:observation :o3
+ ; lb:dimension lb:Time  
+ ; qb:dataSet :dataSet2 
+ .
+
 :dimension1 a lb:Dimension 
+ .
+
+ 
+# Datasources
+
+:dataSource1 a lb:DataSource 
+ ; rdfs:label "Data source name"@en 
+ ; lb:organization :faostat
+ ; dcterms:creator :john
+ .
+
+:dataSource2 a lb:DataSource 
+ ; rdfs:label "Upload 2 from ipfri"@en 
+ ; lb:organization :ipfri 
+ ; dcterms:creator :john
+ .
+
+# Uploads
+
+:upload1 a lb:Upload
+ ; lb:user :john
+ ; lb:timestamp "2014-04-04T11:50:18"^^xsd:dateTime
+ ; lb:ip "156.34.56.23" 
+ ; lb:observation :o1, :o2
+ ; lb:dataSource :dataSource1
+ .
+
+:upload2 a lb:Upload
+ ; lb:user :john
+ ; lb:timestamp "2014-04-04T11:50:18"^^xsd:dateTime
+ ; lb:ip "193.25.56.56" 
+ ; lb:observation :o3
+ ; lb:dataSource :dataSource2
+ .
+
+
+# Organizations
+
+:faostat a org:Organization 
+ ; rdfs:label "The statistics division of FAO"@en 
+ ; foaf:homepage <http://faostat.fao.org/>
+ .
+
+:ipfri a org:Organization 
+ ; rdfs:label "International Food Policy Research Institute"@en 
+ ; foaf:homepage <http://www.ifpri.org/>
+ .
+
+# Licenses
+ 
+:license1 a lb:License
+ .
+
+# Computations
+
+cex:Raw a cex:Computation 
+ ; rdfs:label "Raw values obtained directly from source" 
+ .
+
+# Users
+
+:john a foaf:Person
+ ; rdfs:label "John Smith"
+ ; foaf:name "John Smith"
+ ; foaf:account "john"
+ ; org:memberOf :faostat
  .

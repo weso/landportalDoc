@@ -33,7 +33,8 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 , rdfs:label             xsd:string         # Pattern "Value of {Region} in {Time} for indicator {Indicator}"@en
 , sdmx-concept:obsStatus ( 
                          sdmx-code:obsStatus-A  # Normal
-                         ) 
+                         )
+, lb:source              @<Upload>
 }
 
 # Area should be an abstract type with Countries and Regions as subtypes
@@ -60,7 +61,7 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 
 <Indicator> {
   a   ( cex:Indicator )
-, lb:preferable_tendency (cex:decrease cex:increase)
+, lb:preferable_tendency ( cex:decrease cex:increase cex:irrelevant )
 , lb:measurement         @<Measurement>
 , lb:last_update         xsd:dateTime
 , lb:starred             xsd:boolean
@@ -69,7 +70,6 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 , rdfs:label             xsd:string
 , rdfs:comment           xsd:string
 }
-
 
 <Topic> {
   a (lb:Topic)
@@ -80,6 +80,8 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
   a (lb:Measurement)
 , rdfs:label xsd:string
 }
+
+# Time and Intervals
 
 <Time> {
   a ( cex:Time )
@@ -97,23 +99,42 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 	time:hasEnd       xsd:dateTime
 }
 
+# Computations
+
 <Computation> {
   a ( cex:Computation )
 , rdfs:label xsd:string ?        # Label of computation
 }
 
+# Datasets
+
 <DataSet>{
   a ( qb:DataSet )
-, sdmx-concept:freq xsd:string  # 
 , lb:dataSource @<DataSource>
 , lb:license @<License>
-, qb:slice @<Slice>*            # List of slices of this dataset
+, qb:slice @<Slice>*                  # List of slices of this dataset
+, sdmx-concept:freq (                 # Frequency. Codes from: http://purl.org/linked-data/sdmx/2009/code.
+                                      # It can be:
+                     sdmx-code:freq-A #   Annual
+                     sdmx-code:freq-S #   Semester
+                     sdmx-code:freq-Q #   Quarterly
+                     sdmx-code:freq-M #   Monthly
+                     sdmx-code:freq-W #   Weekly
+                     sdmx-code:freq-D #   Daily
+                     sdmx-code:freq-B #   Daily (business day)
+                     sdmx-code:freq-N #   Minutely
+                    )  
 }
+
+# Slices
 
 <Slice> {
   a ( qb:Slice)
 , cex:indicator @<Indicator>       # Indicator of this slice
-, lb:dimension  @<Dimension>?      # Dimension. TODO: What is a dimension?
+, lb:dimension  (                  # Different types of dimensions in landbook. Can be:
+                  lb:Time              # time varies
+                  lb:Area              # area varies
+                )?
 , qb:observation @<Observation>*   # List of observations of this slice
 }
 
@@ -129,7 +150,12 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
   a (lb:DataSource)
 , rdfs:label xsd:string
 , lb:organization @<Organization>
+, dcterms:creator @<User>
+, dcterms:description xsd:string?
+, dcterms:title xsd:string?
 }
+
+# Organizations
 
 <Organization> {
   a ( org:Organization )
@@ -139,8 +165,27 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 , org:hasSubOrganization @<Organization>*
 }
 
+
+# Users that upload information
+
 <User> {
-  a (foaf:Agent)
+  a (                             # Type of users (Agent's or People)
+       foaf:Agent                 #    Agent could be some automatic web services 
+       foaf:Person                #    Person    
+    )                  
 , rdfs:label xsd:string
+, foaf:name xsd:string            # Name of user
+, foaf:account xsd:string?        # Account of this user in the landportal
 , org:memberOf @<Organization>+
+}
+
+# Uploads
+
+<Upload> {                        # Represents a process ofinserting data into the landbook
+  a              ( lb:Upload )    
+, lb:user        @<User>          # User that uploaded the data
+, lb:timestamp   xsd:dateTime     # Timestamp
+, lb:ip          xsd:string       # IP address from which it has been uploaded
+, lb:observation @<Observation>*  # List of observations that have been uploaded
+, lb:dataSource  @<DataSource>    # Data source
 }
