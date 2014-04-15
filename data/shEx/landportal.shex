@@ -16,23 +16,24 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 # Schema for Observations 
 <Observation> { 
   a                      ( qb:Observation )
-, (                                         # Area of observation. Can be:
-    cex:ref-area         @<Country>         #    Country 
-  | cex:ref-area         @<Region>          #    Region 
-  )
+, cex:ref-area           @<Area>            # It can be a Country or a Region
 , cex:ref-indicator      @<Indicator>       # Indicator
-, (                                         # Time of observation. Can be:
-    cex:ref-time         @<Year>            #    Year
-  | cex:ref-time         @<Interval>        #    Interval
-  ) 
-, cex:value              xsd:double         # Value of the observation
+, cex:ref-time           @<Time>            # Time of observation: year, interval, etc.
+, cex:value              xsd:double?        # Value of the observation (if obsStatus is not missing)
 , cex:computation        @<Computation>     # Computation from which this observation has been obtained
 , dcterms:issued         xsd:dateTime       # timestamp 
 , qb:dataSet             @<DataSet>         # Dataset to which an observation belongs
 , qb:slice               @<Slice>           # Slice to which this observation belongs
 , rdfs:label             xsd:string         # Pattern "Value of {Region} in {Time} for indicator {Indicator}"@en
-, sdmx-concept:obsStatus ( 
+, sdmx-concept:obsStatus (                  # Observation status codes obtained from: http://purl.org/linked-data/sdmx/2009/code
                          sdmx-code:obsStatus-A  # Normal
+                         sdmx-code:obsStatus-B  # Break
+                         sdmx-code:obsStatus-E  # Estimated
+                         sdmx-code:obsStatus-E  # Forecast
+                         sdmx-code:obsStatus-I  # Imputed
+                         sdmx-code:obsStatus-M  # Missing
+                         sdmx-code:obsStatus-P  # Provisional
+                         sdmx-code:obsStatus-S  # Strike
                          )
 , lb:source              @<Upload>
 }
@@ -43,19 +44,16 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
  , rdfs:label xsd:string
 }
 
-<Country> {
-   a ( lb:Country )
- , rdfs:label xsd:string  
- , lb:faoURI shex:IRI  
+<Country> &<Area> {
+   lb:faoURI shex:IRI  
  , lb:iso2 xsd:string 
  , lb:iso3 xsd:string
  , lb:is_part_of @<Region>?
+ , a (lb:Country)
 }
 
-<Region> {
-   a ( lb:Region )
- , rdfs:label xsd:string  
- , lb:UNCode xsd:string  
+<Region> &<Area> {
+   lb:UNCode xsd:string  
  , lb:is_part_of @<Region>?
 }
 
@@ -85,12 +83,10 @@ prefix shex:          <http://www.w3.org/2013/ShEx/ns#>
 
 <Time> {
   a ( cex:Time )
-, rdfs:label xsd:string
 }
 
-<Year> {
-  a ( cex:Year )
-, time:year xsd:gYear 
+<Year> &<Time> {
+ time:year xsd:gYear 
 }
 
 <Interval> {

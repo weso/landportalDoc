@@ -117,6 +117,8 @@ The list of namespace prefixes defined in the LandBook is:
  <a href="http://www.w3.org/2013/ShEx/Primer.html">Shape Expressions language</a>.
  
  A simplified example is available <a href="shEx/example-observation.ttl">here</a>.
+ It is possible to see the results of the validation using the 
+ <a href="http://www.w3.org/2013/ShEx/FancyShExDemo?schema=prefix%20cex%3A%20%09%20%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fcomputex%2Fontology%23%3E%20%0Aprefix%20dcterms%3A%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%20%0Aprefix%20foaf%3A%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0Aprefix%20lb%3A%20%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Flandbook%2Fontology%23%3E%20%0Aprefix%20org%3A%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Forg%23%3E%0Aprefix%20qb%3A%20%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E%20%0Aprefix%20rdf%3A%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%20%0Aprefix%20rdfs%3A%20%09%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0Aprefix%20sdmx-concept%3A%20%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E%20%0Aprefix%20sdmx-code%3A%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E%20%0Aprefix%20time%3A%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E%20%0Aprefix%20xsd%3A%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0Aprefix%20shex%3A%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2013%2FShEx%2Fns%23%3E%0A%0A%0A%23%20Schema%20for%20Observations%20%0A%3CObservation%3E%20%7B%20%0A%20%20a%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20(%20qb%3AObservation%20)%0A%2C%20cex%3Aref-area%20%20%20%20%20%20%20%20%20%20%20%40%3CArea%3E%20%20%20%20%20%20%20%20%20%20%20%20%23%20It%20can%20be%20a%20Country%20or%20a%20Region%0A%2C%20cex%3Aref-indicator%20%20%20%20%20%20%40%3CIndicator%3E%20%20%20%20%20%20%20%23%20Indicator%0A%2C%20cex%3Aref-time%20%20%20%20%20%20%20%20%20%20%20%40%3CTime%3E%20%20%20%20%20%20%20%20%20%20%20%20%23%20Time%20of%20observation%3A%20year%2C%20interval%2C%20etc.%0A%2C%20cex%3Avalue%20%20%20%20%20%20%20%20%20%20%20%20%20%20xsd%3Adouble%3F%20%20%20%20%20%20%20%20%23%20Value%20of%20the%20observation%20(if%20obsStatus%20is%20not%20missing)%0A%2C%20cex%3Acomputation%20%20%20%20%20%20%20%20%40%3CComputation%3E%20%20%20%20%20%23%20Computation%20from%20which%20this%20observation%20has%20been%20obtained%0A%2C%20dcterms%3Aissued%20%20%20%20%20%20%20%20%20xsd%3AdateTime%20%20%20%20%20%20%20%23%20timestamp%20%0A%2C%20qb%3AdataSet%20%20%20%20%20%20%20%20%20%20%20%20%20%40%3CDataSet%3E%20%20%20%20%20%20%20%20%20%23%20Dataset%20to%20which%20an%20observation%20belongs%0A%2C%20qb%3Aslice%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%40%3CSlice%3E%20%20%20%20%20%20%20%20%20%20%20%23%20Slice%20to%20which%20this%20observation%20belongs%0A%2C%20rdfs%3Alabel%20%20%20%20%20%20%20%20%20%20%20%20%20xsd%3Astring%20%20%20%20%20%20%20%20%20%23%20Pattern%20%22Value%20of%20%7BRegion%7D%20in%20%7BTime%7D%20for%20indicator%20%7BIndicator%7D%22%40en%0A%2C%20sdmx-concept%3AobsStatus%20(%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Observation%20status%20codes%20obtained%20from%3A%20http%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-A%20%20%23%20Normal%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-B%20%20%23%20Break%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-E%20%20%23%20Estimated%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-E%20%20%23%20Forecast%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-I%20%20%23%20Imputed%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-M%20%20%23%20Missing%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-P%20%20%23%20Provisional%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3AobsStatus-S%20%20%23%20Strike%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%2C%20lb%3Asource%20%20%20%20%20%20%20%20%20%20%20%20%20%20%40%3CUpload%3E%0A%7D%0A%0A%23%20Area%20should%20be%20an%20abstract%20type%20with%20Countries%20and%20Regions%20as%20subtypes%0A%3CArea%3E%20%7B%0A%20%20%20a%20(%20cex%3AArea%20)%0A%20%2C%20rdfs%3Alabel%20xsd%3Astring%0A%7D%0A%0A%3CCountry%3E%20%26%3CArea%3E%20%7B%0A%20%20%20lb%3AfaoURI%20shex%3AIRI%20%20%0A%20%2C%20lb%3Aiso2%20xsd%3Astring%20%0A%20%2C%20lb%3Aiso3%20xsd%3Astring%0A%20%2C%20lb%3Ais_part_of%20%40%3CRegion%3E%3F%0A%20%2C%20a%20(lb%3ACountry)%0A%7D%0A%0A%3CRegion%3E%20%26%3CArea%3E%20%7B%0A%20%20%20lb%3AUNCode%20xsd%3Astring%20%20%0A%20%2C%20lb%3Ais_part_of%20%40%3CRegion%3E%3F%0A%7D%0A%0A%3CIndicator%3E%20%7B%0A%20%20a%20%20%20(%20cex%3AIndicator%20)%0A%2C%20lb%3Apreferable_tendency%20(%20cex%3Adecrease%20cex%3Aincrease%20cex%3Airrelevant%20)%0A%2C%20lb%3Ameasurement%20%20%20%20%20%20%20%20%20%40%3CMeasurement%3E%0A%2C%20lb%3Alast_update%20%20%20%20%20%20%20%20%20xsd%3AdateTime%0A%2C%20lb%3Astarred%20%20%20%20%20%20%20%20%20%20%20%20%20xsd%3Aboolean%0A%2C%20lb%3Atopic%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%40%3CTopic%3E%0A%2C%20lb%3AindicatorType%20%20%20%20%20%20%20shex%3AIRI%20%20%0A%2C%20rdfs%3Alabel%20%20%20%20%20%20%20%20%20%20%20%20%20xsd%3Astring%0A%2C%20rdfs%3Acomment%20%20%20%20%20%20%20%20%20%20%20xsd%3Astring%0A%7D%0A%0A%3CTopic%3E%20%7B%0A%20%20a%20(lb%3ATopic)%0A%2C%20rdfs%3Alabel%20xsd%3Astring%20%20%20%20%23%20Label%20of%20the%20topic%20in%20different%20languages%0A%7D%0A%0A%3CMeasurement%3E%20%7B%0A%20%20a%20(lb%3AMeasurement)%0A%2C%20rdfs%3Alabel%20xsd%3Astring%0A%7D%0A%0A%23%20Time%20and%20Intervals%0A%0A%3CTime%3E%20%7B%0A%20%20a%20(%20cex%3ATime%20)%0A%7D%0A%0A%3CYear%3E%20%26%3CTime%3E%20%7B%0A%20time%3Ayear%20xsd%3AgYear%20%0A%7D%0A%0A%3CInterval%3E%20%7B%0A%20%20%20%20%26%20%3CTime%3E%20%2C%0A%09time%3AhasBeginning%20xsd%3AdateTime%2C%0A%09time%3AhasEnd%20%20%20%20%20%20%20xsd%3AdateTime%0A%7D%0A%0A%23%20Computations%0A%0A%3CComputation%3E%20%7B%0A%20%20a%20(%20cex%3AComputation%20)%0A%2C%20rdfs%3Alabel%20xsd%3Astring%20%3F%20%20%20%20%20%20%20%20%23%20Label%20of%20computation%0A%7D%0A%0A%23%20Datasets%0A%0A%3CDataSet%3E%7B%0A%20%20a%20(%20qb%3ADataSet%20)%0A%2C%20lb%3AdataSource%20%40%3CDataSource%3E%0A%2C%20lb%3Alicense%20%40%3CLicense%3E%0A%2C%20qb%3Aslice%20%40%3CSlice%3E*%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20List%20of%20slices%20of%20this%20dataset%0A%2C%20sdmx-concept%3Afreq%20(%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Frequency.%20Codes%20from%3A%20http%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode.%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20It%20can%20be%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-A%20%23%20%20%20Annual%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-S%20%23%20%20%20Semester%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-Q%20%23%20%20%20Quarterly%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-M%20%23%20%20%20Monthly%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-W%20%23%20%20%20Weekly%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-D%20%23%20%20%20Daily%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-B%20%23%20%20%20Daily%20(business%20day)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sdmx-code%3Afreq-N%20%23%20%20%20Minutely%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%20%20%0A%7D%0A%0A%23%20Slices%0A%0A%3CSlice%3E%20%7B%0A%20%20a%20(%20qb%3ASlice)%0A%2C%20cex%3Aindicator%20%40%3CIndicator%3E%20%20%20%20%20%20%20%23%20Indicator%20of%20this%20slice%0A%2C%20lb%3Adimension%20%20(%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Different%20types%20of%20dimensions%20in%20landbook.%20Can%20be%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lb%3ATime%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20time%20varies%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lb%3AArea%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20area%20varies%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%3F%0A%2C%20qb%3Aobservation%20%40%3CObservation%3E*%20%20%20%23%20List%20of%20observations%20of%20this%20slice%0A%7D%0A%0A%3CDimension%3E%20%7B%0A%20a%20(%20lb%3ADimension%20)%0A%7D%0A%0A%3CLicense%3E%20%7B%0A%20%20%20a%20(%20lb%3ALicense)%20%20%0A%7D%0A%0A%3CDataSource%3E%20%7B%0A%20%20a%20(lb%3ADataSource)%0A%2C%20rdfs%3Alabel%20xsd%3Astring%0A%2C%20lb%3Aorganization%20%40%3COrganization%3E%0A%2C%20dcterms%3Acreator%20%40%3CUser%3E%0A%2C%20dcterms%3Adescription%20xsd%3Astring%3F%0A%2C%20dcterms%3Atitle%20xsd%3Astring%3F%0A%7D%0A%0A%23%20Organizations%0A%0A%3COrganization%3E%20%7B%0A%20%20a%20(%20org%3AOrganization%20)%0A%2C%20rdfs%3Alabel%20xsd%3Astring%0A%2C%20foaf%3Ahomepage%20shex%3AIRI%0A%2C%20org%3AsubOrganizationOf%20%40%3COrganization%3E*%0A%2C%20org%3AhasSubOrganization%20%40%3COrganization%3E*%0A%7D%0A%0A%0A%23%20Users%20that%20upload%20information%0A%0A%3CUser%3E%20%7B%0A%20%20a%20(%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Type%20of%20users%20(Agent%27s%20or%20People)%0A%20%20%20%20%20%20%20foaf%3AAgent%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20%20%20%20Agent%20could%20be%20some%20automatic%20web%20services%20%0A%20%20%20%20%20%20%20foaf%3APerson%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20%20%20%20Person%20%20%20%20%0A%20%20%20%20)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%2C%20rdfs%3Alabel%20xsd%3Astring%0A%2C%20foaf%3Aname%20xsd%3Astring%20%20%20%20%20%20%20%20%20%20%20%20%23%20Name%20of%20user%0A%2C%20foaf%3Aaccount%20xsd%3Astring%3F%20%20%20%20%20%20%20%20%23%20Account%20of%20this%20user%20in%20the%20landportal%0A%2C%20org%3AmemberOf%20%40%3COrganization%3E%2B%0A%7D%0A%0A%23%20Uploads%0A%0A%3CUpload%3E%20%7B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Represents%20the%20process%20of%20uploading%20data%20into%20the%20system%0A%20%20a%20%20%20%20%20%20%20%20%20%20%20%20%20%20(%20lb%3AUpload%20)%20%20%20%20%0A%2C%20lb%3Auser%20%20%20%20%20%20%20%20%40%3CUser%3E%20%20%20%20%20%20%20%20%20%20%23%20User%20that%20uploaded%20the%20data%0A%2C%20lb%3Atimestamp%20%20%20xsd%3AdateTime%20%20%20%20%20%23%20Timestamp%0A%2C%20lb%3Aip%20%20%20%20%20%20%20%20%20%20xsd%3Astring%20%20%20%20%20%20%20%23%20IP%20address%20from%20which%20it%20has%20been%20uploaded%0A%2C%20lb%3Aobservation%20%40%3CObservation%3E*%20%20%23%20List%20of%20observations%20that%20have%20been%20uploaded%0A%2C%20lb%3AdataSource%20%20%40%3CDataSource%3E%20%20%20%20%23%20Data%20source%0A%7D&data=prefix%20cex%3A%20%09%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fcomputex%2Fontology%23%3E%20%0Aprefix%20dcterms%3A%20%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%20%0Aprefix%20foaf%3A%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0Aprefix%20lb%3A%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Flandbook%2Fontology%23%3E%20%0Aprefix%20org%3A%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Forg%23%3E%0Aprefix%20qb%3A%20%09%20%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E%20%0Aprefix%20rdf%3A%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%20%0Aprefix%20rdfs%3A%20%09%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0Aprefix%20sdmx-concept%3A%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E%20%0Aprefix%20time%3A%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E%20%0Aprefix%20xsd%3A%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0Aprefix%20%3A%20%20%20%20%20%20%20%20%20%20%20%20%20%3Chttp%3A%2F%2Fexample.org%2F%3E%0Aprefix%20sdmx-code%3A%20%20%20%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E%0A%0A%3Ao1%20a%20qb%3AObservation%20%0A%20%3B%20cex%3Aref-area%20%20%20%20%20%20%20%20%20%20%20%3AFrance%20%0A%20%3B%20cex%3Aref-time%20%20%20%20%20%20%20%20%20%20%20%3Ayear2013%20%0A%20%3B%20cex%3Aref-indicator%20%20%20%20%20%20%3Ahdi%20%0A%20%3B%20cex%3Avalue%20%20%20%20%20%20%20%20%20%20%20%20%20%20%222.3%22%5E%5Exsd%3Adouble%20%0A%20%3B%20cex%3Acomputation%20%20%20%20%20%20%20%20cex%3ARaw%20%0A%20%3B%20dcterms%3Aissued%20%20%20%20%20%20%20%20%20%222013-03-02T09%3A00%3A00%22%5E%5Exsd%3AdateTime%20%0A%20%3B%20qb%3AdataSet%20%20%20%20%20%20%20%20%20%20%20%20%20%3AdataSet1%20%0A%20%3B%20qb%3Aslice%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Aslice1%20%0A%20%3B%20rdfs%3Alabel%20%20%20%20%20%20%20%20%20%20%20%20%20%22Observation%20of%20Spain%20in%202013%20for%20indicator%20hdi%22%40en%20%0A%20%3B%20sdmx-concept%3AobsStatus%20sdmx-code%3AobsStatus-A%0A%20%3B%20lb%3Asource%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Aupload1%0A%20.%0A%0A%3Ao2%20a%20qb%3AObservation%20%3B%0A%20%3B%20cex%3Aref-area%20%20%20%20%20%20%20%20%20%20%20%3AEurope%20%0A%20%3B%20cex%3Aref-time%20%20%20%20%20%20%20%20%20%20%20%3Ayear2013%20%0A%20%3B%20cex%3Aref-indicator%20%20%20%20%20%20%3Ahdi%20%0A%20%3B%20cex%3Avalue%20%20%20%20%20%20%20%20%20%20%20%20%20%20%222.3%22%5E%5Exsd%3Adouble%20%0A%20%3B%20cex%3Acomputation%20%20%20%20%20%20%20%20cex%3ARaw%20%0A%20%3B%20dcterms%3Aissued%20%20%20%20%20%20%20%20%20%222013-03-02T09%3A00%3A00%22%5E%5Exsd%3AdateTime%20%0A%20%3B%20qb%3AdataSet%20%20%20%20%20%20%20%20%20%20%20%20%20%3AdataSet1%20%0A%20%3B%20qb%3Aslice%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Aslice1%20%0A%20%3B%20rdfs%3Alabel%20%20%20%20%20%20%20%20%20%20%20%20%20%22Observation%20of%20Europe%20in%202013%20for%20indicator%20hdi%22%40en%20%0A%20%3B%20sdmx-concept%3AobsStatus%20sdmx-code%3AobsStatus-A%0A%20%3B%20lb%3Asource%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Aupload1%0A%20.%0A%0A%3Ao3%20a%20qb%3AObservation%20%3B%0A%20%3B%20cex%3Aref-area%20%20%20%20%20%20%20%20%20%20%20%3ASpain%20%0A%20%3B%20cex%3Aref-time%20%20%20%20%20%20%20%20%20%20%20%3Ayear2014%0A%20%3B%20cex%3Aref-indicator%20%20%20%20%20%20%3Aindipfri1%20%0A%20%3B%20cex%3Avalue%20%20%20%20%20%20%20%20%20%20%20%20%20%20%223.6%22%5E%5Exsd%3Adouble%20%0A%20%3B%20cex%3Acomputation%20%20%20%20%20%20%20%20cex%3ARaw%20%0A%20%3B%20dcterms%3Aissued%20%20%20%20%20%20%20%20%20%222014-03-02T09%3A00%3A00%22%5E%5Exsd%3AdateTime%20%0A%20%3B%20qb%3AdataSet%20%20%20%20%20%20%20%20%20%20%20%20%20%3AdataSet2%20%0A%20%3B%20qb%3Aslice%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Aslice2%0A%20%3B%20rdfs%3Alabel%20%20%20%20%20%20%20%20%20%20%20%20%20%22Observation%20of%20Spain%20in%202013%20for%20indicator%20indpfri1%22%40en%20%0A%20%3B%20sdmx-concept%3AobsStatus%20sdmx-code%3AobsStatus-A%0A%20%3B%20lb%3Asource%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Aupload2%0A%20.%0A%0A%23%20Countries%20%0A%20%0A%3AFrance%20a%20cex%3AArea%0A%20%3B%20rdfs%3Alabel%20%22France%22%40en%0A%20%3B%20lb%3AfaoURI%20%3Chttp%3A%2F%2Fwww.fao.org%2Fcountryprofiles%2Findex%2Fen%2F%3Fiso3%3Dfra%3E%0A%20%3B%20lb%3Aiso2%20%22FR%22%0A%20%3B%20lb%3Aiso3%20%22FRA%22%20%0A%20%3B%20lb%3Ais_part_of%20%3AEurope%0A%20.%0A%0A%3ASpain%20a%20cex%3AArea%0A%20%3B%20rdfs%3Alabel%20%22Spain%22%40en%0A%20%3B%20lb%3AfaoURI%20%3Chttp%3A%2F%2Fwww.fao.org%2Fcountryprofiles%2Findex%2Fen%2F%3Fiso3%3Desp%3E%0A%20%3B%20lb%3Aiso2%20%22ES%22%0A%20%3B%20lb%3Aiso3%20%22ESP%22%20%0A%20%3B%20lb%3Ais_part_of%20%3AEurope%0A%20.%0A%20%0A%23%20Regions%0A%0A%3AEurope%20a%20cex%3AArea%0A%20%3B%20rdfs%3Alabel%20%22Europe%22%40en%0A%20%3B%20lb%3AUNCode%20%22EU%22%0A%20.%0A%0A%23%20Years%20%0A%0A%3Ayear2013%20a%20cex%3ATime%20%0A%20%3B%20time%3Ayear%20%222013%22%5E%5Exsd%3AgYear%20.%0A%0A%3Ayear2014%20a%20cex%3ATime%20%0A%20%3B%20time%3Ayear%20%222014%22%5E%5Exsd%3AgYear%20.%0A%0A%20%0A%23%20Indicators%0A%0A%3Ahdi%20a%20cex%3AIndicator%20%0A%20%3B%20lb%3Apreferable_tendency%20cex%3Adecrease%0A%20%3B%20lb%3Ameasurement%20%3Ameasurement1%0A%20%3B%20lb%3Alast_update%20%222014-04-04T11%3A50%3A18%22%5E%5Exsd%3AdateTime%0A%20%3B%20lb%3Astarred%20%22true%22%5E%5Exsd%3Aboolean%0A%20%3B%20lb%3Atopic%20%3Atopic1%0A%20%3B%20lb%3AindicatorType%20lb%3ASimple%0A%20%3B%20rdfs%3Alabel%20%22Human%20Development%20Index%22%40en%20%0A%20%3B%20rdfs%3Acomment%20%22Longer%20description%20of%20indicator%20Human%20Development%20Index%22%40en%0A%20.%0A%0A%3Aindipfri1%20a%20cex%3AIndicator%20%0A%20%3B%20lb%3Apreferable_tendency%20cex%3Aincrease%0A%20%3B%20lb%3Ameasurement%20%3Apercent%0A%20%3B%20lb%3Alast_update%20%222014-04-04T11%3A50%3A18%22%5E%5Exsd%3AdateTime%0A%20%3B%20lb%3Astarred%20%22true%22%5E%5Exsd%3Aboolean%0A%20%3B%20lb%3Atopic%20%3Atopic1%0A%20%3B%20lb%3AindicatorType%20lb%3ASimple%0A%20%3B%20rdfs%3Alabel%20%22Prevalence%20of%20underweight%20in%20children%20under%20five%20years%22%40en%20%0A%20%3B%20rdfs%3Acomment%20%22Longer%20description%20of%20indicator%20Prevalence%20of%20underweight%20in%20children%20under%20five%20years...%22%40en%0A%20.%0A%0A%23%20Topics%0A%20%0A%3Atopic1%20a%20lb%3ATopic%0A%20%3B%20rdfs%3Alabel%20%22Topic%201%22%40en%20%0A%20.%0A%0A%23%20Measurements%0A%0A%3Ameasurement1%20a%20lb%3AMeasurement%0A%20%3B%20rdfs%3Alabel%20%22Measurement...%22%40en%20.%0A%0A%3Apercent%20a%20lb%3AMeasurement%0A%20%3B%20rdfs%3Alabel%20%22Percent%20(%25)%22%40en%20.%0A%0A%0A%23%20Datasets%0A%20%0A%3AdataSet1%20a%20qb%3ADataSet%20%0A%20%3B%20sdmx-concept%3Afreq%20sdmx-code%3Afreq-A%0A%20%3B%20lb%3AdataSource%20%3AdataSource1%20%0A%20%3B%20lb%3Alicense%20%3Alicense1%0A%20%3B%20qb%3Aslice%20%3Aslice1%0A%20.%0A%0A%3AdataSet2%20a%20qb%3ADataSet%20%0A%20%3B%20sdmx-concept%3Afreq%20sdmx-code%3Afreq-A%20%0A%20%3B%20lb%3AdataSource%20%3AdataSource2%0A%20%3B%20lb%3Alicense%20%3Alicense1%0A%20%3B%20qb%3Aslice%20%3Aslice1%0A%20.%0A%0A%23%20Slices%20%0A%0A%3Aslice1%20a%20qb%3ASlice%20%0A%20%3B%20cex%3Aindicator%20%3Ahdi%20%0A%20%3B%20qb%3Aobservation%20%3Ao1%2C%20%3Ao2%0A%20%3B%20lb%3Adimension%20lb%3AArea%20%20%0A%20%3B%20qb%3AdataSet%20%3AdataSet1%20%0A%20.%0A%0A%3Aslice2%20a%20qb%3ASlice%20%0A%20%3B%20cex%3Aindicator%20%3Aindipfri1%20%0A%20%3B%20qb%3Aobservation%20%3Ao3%0A%20%3B%20lb%3Adimension%20lb%3ATime%20%20%0A%20%3B%20qb%3AdataSet%20%3AdataSet2%20%0A%20.%0A%0A%3Adimension1%20a%20lb%3ADimension%20%0A%20.%0A%0A%20%0A%23%20Datasources%0A%0A%3AdataSource1%20a%20lb%3ADataSource%20%0A%20%3B%20rdfs%3Alabel%20%22Data%20source%20name%22%40en%20%0A%20%3B%20lb%3Aorganization%20%3Afaostat%0A%20%3B%20dcterms%3Acreator%20%3Ajohn%0A%20.%0A%0A%3AdataSource2%20a%20lb%3ADataSource%20%0A%20%3B%20rdfs%3Alabel%20%22Upload%202%20from%20ipfri%22%40en%20%0A%20%3B%20lb%3Aorganization%20%3Aipfri%20%0A%20%3B%20dcterms%3Acreator%20%3Ajohn%0A%20.%0A%0A%23%20Uploads%0A%0A%3Aupload1%20a%20lb%3AUpload%0A%20%3B%20lb%3Auser%20%3Ajohn%0A%20%3B%20lb%3Atimestamp%20%222014-04-04T11%3A50%3A18%22%5E%5Exsd%3AdateTime%0A%20%3B%20lb%3Aip%20%22156.34.56.23%22%20%0A%20%3B%20lb%3Aobservation%20%3Ao1%2C%20%3Ao2%0A%20%3B%20lb%3AdataSource%20%3AdataSource1%0A%20.%0A%0A%3Aupload2%20a%20lb%3AUpload%0A%20%3B%20lb%3Auser%20%3Ajohn%0A%20%3B%20lb%3Atimestamp%20%222014-04-04T11%3A50%3A18%22%5E%5Exsd%3AdateTime%0A%20%3B%20lb%3Aip%20%22193.25.56.56%22%20%0A%20%3B%20lb%3Aobservation%20%3Ao3%0A%20%3B%20lb%3AdataSource%20%3AdataSource2%0A%20.%0A%0A%0A%23%20Organizations%0A%0A%3Afaostat%20a%20org%3AOrganization%20%0A%20%3B%20rdfs%3Alabel%20%22The%20statistics%20division%20of%20FAO%22%40en%20%0A%20%3B%20foaf%3Ahomepage%20%3Chttp%3A%2F%2Ffaostat.fao.org%2F%3E%0A%20.%0A%0A%3Aipfri%20a%20org%3AOrganization%20%0A%20%3B%20rdfs%3Alabel%20%22International%20Food%20Policy%20Research%20Institute%22%40en%20%0A%20%3B%20foaf%3Ahomepage%20%3Chttp%3A%2F%2Fwww.ifpri.org%2F%3E%0A%20.%0A%0A%23%20Licenses%0A%20%0A%3Alicense1%20a%20lb%3ALicense%0A%20.%0A%0A%23%20Computations%0A%0Acex%3ARaw%20a%20cex%3AComputation%20%0A%20%3B%20rdfs%3Alabel%20%22Raw%20values%20obtained%20directly%20from%20source%22%20%0A%20.%0A%0A%23%20Users%0A%0A%3Ajohn%20a%20foaf%3APerson%0A%20%3B%20rdfs%3Alabel%20%22John%20Smith%22%0A%20%3B%20foaf%3Aname%20%22John%20Smith%22%0A%20%3B%20foaf%3Aaccount%20%22john%22%0A%20%3B%20org%3AmemberOf%20%3Afaostat%0A%20.%0A&starting-node=%3Chttp%3A%2F%2Fexample.org%2Fo1%3E">FancyShExDemo</a>
  
 </p>
 
@@ -154,23 +156,24 @@ where
 <pre data-lang="text/turtle">
 &lt;Observation&gt; { 
   a                      ( qb:Observation )
-, (                                         # Area of observation. Can be:
-    cex:ref-area         @&lt;Country&gt;         #    Country 
-  | cex:ref-area         @&lt;Region&gt;          #    Region 
-  )
+, cex:ref-area           @&lt;Area&gt;            # It can be a Country or a Region
 , cex:ref-indicator      @&lt;Indicator&gt;       # Indicator
-, (                                         # Time of observation. Can be:
-    cex:ref-time         @&lt;Year&gt;            #    Year
-  | cex:ref-time         @&lt;Interval&gt;        #    Interval
-  ) 
-, cex:value              xsd:double         # Value of the observation
+, cex:ref-time           @&lt;Time&gt;            # Time of observation: year, interval, etc.
+, cex:value              xsd:double?        # Value of the observation (if obsStatus is not missing)
 , cex:computation        @&lt;Computation&gt;     # Computation from which this observation has been obtained
 , dcterms:issued         xsd:dateTime       # timestamp 
 , qb:dataSet             @&lt;DataSet&gt;         # Dataset to which an observation belongs
 , qb:slice               @&lt;Slice&gt;           # Slice to which this observation belongs
 , rdfs:label             xsd:string         # Pattern &quot;Value of {Region} in {Time} for indicator {Indicator}&quot;@en
-, sdmx-concept:obsStatus ( 
+, sdmx-concept:obsStatus (                  # Observation status codes obtained from: http://purl.org/linked-data/sdmx/2009/code
                          sdmx-code:obsStatus-A  # Normal
+                         sdmx-code:obsStatus-B  # Break
+                         sdmx-code:obsStatus-E  # Estimated
+                         sdmx-code:obsStatus-E  # Forecast
+                         sdmx-code:obsStatus-I  # Imputed
+                         sdmx-code:obsStatus-M  # Missing
+                         sdmx-code:obsStatus-P  # Provisional
+                         sdmx-code:obsStatus-S  # Strike
                          )
 , lb:source              @&lt;Upload&gt;
 }
@@ -357,12 +360,42 @@ where
 </section> <!-- Structural elements -->
 
 <section>
-<h2>Countries and regions</h2>
+<h2>Countries, regions and areas</h2>
 
+<p>Countries and regions represent geographical areas. 
+
+<p><code>Area</code> 
+  represents the common parts of both countries and regions:
+
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Area&gt; {
+   a ( cex:Area )
+ , rdfs:label xsd:string
+}
+</pre>
+</section>
+ 
+ 
 <section>
 <h2 id="country">Countries</h2>
 <p>Countries are represented by three main properties: 
    The iso-codes with 2 and 3 letters and their FAO URI</p>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Country&gt; &amp;&lt;Area&gt; {
+   lb:faoURI shex:IRI  
+ , lb:iso2 xsd:string 
+ , lb:iso3 xsd:string
+ , lb:is_part_of @&lt;Region&gt;?
+ , a (lb:Country)
+}
+</pre>
+</section>
 
 <section>
 <h2>URI Template</h2>
@@ -375,24 +408,9 @@ where
 </section>
 
 <section>
-<h2>Schema</h2>
-<pre data-lang="text/turtle">
-&lt;Country&gt; {
-   a ( lb:Country )
- , rdfs:label xsd:string  
- , lb:faoURI shex:IRI  
- , lb:iso2 xsd:string 
- , lb:iso3 xsd:string
- , lb:is_part_of @&lt;Region&gt;?
-}
-</pre>
-</section>
-
-
-<section>
 <h2>Example</h2>
 <pre data-lang="text/turtle">
-:France a lb:Country
+:France a cex:Area
  ; rdfs:label &quot;France&quot;@en
  ; lb:faoURI &lt;http://www.fao.org/countryprofiles/index/en/?iso3=fra&gt;
  ; lb:iso2 &quot;FR&quot;
@@ -422,10 +440,8 @@ where
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
-&lt;Region&gt; {
-   a ( lb:Region )
- , rdfs:label xsd:string  
- , lb:UNCode xsd:string  
+&lt;Region&gt; &amp;&lt;Area&gt; {
+   lb:UNCode xsd:string  
  , lb:is_part_of @&lt;Region&gt;?
 }
 </pre>
@@ -434,7 +450,7 @@ where
 <section>
 <h2>Example</h2>
 <pre data-lang="text/turtle">
-:Europe a lb:Region
+:Europe a cex:Area
  ; rdfs:label &quot;Europe&quot;@en
  ; lb:UNCode &quot;EU&quot;
  .
@@ -448,7 +464,10 @@ where
 
 <section>
 <h2 id="time">Time</h2>
-<p>Represents some time: it canbe an interval or an instant</p>
+<p>Represents some time. There are several types of
+ values to represent time values like years, 
+ time intervals or 
+ instants.</p>
 
 <section>
 <h2>URI Template</h2>
@@ -465,12 +484,10 @@ where
 <pre data-lang="text/turtle">
 &lt;Time&gt; {
   a ( cex:Time )
-, rdfs:label xsd:string
 }
 
-&lt;Year&gt; {
-  a ( cex:Year )
-, time:year xsd:gYear 
+&lt;Year&gt; &amp;&lt;Time&gt; {
+ time:year xsd:gYear 
 }
 
 &lt;Interval&gt; {
@@ -570,6 +587,7 @@ where
 </pre>
 </section>
 
+</section> <!-- Data source -->
 
 <section>
 <h2 id="user">User</h2>
@@ -614,6 +632,8 @@ where
 </pre>
 </section>
 
+</section> <!-- User -->
+
 <section>
 <h2 id="upload">Upload</h2>
 <p>Represents an upload: a process by which some data has been uploaded into
@@ -655,6 +675,7 @@ where
 </pre>
 </section>
 
+</section> <!-- Uploads -->
 
 </section> <!-- Entities -->
 
