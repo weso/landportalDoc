@@ -23,7 +23,7 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  ; qb:slice               :slice1 
  ; rdfs:label             "Observation of Spain in 2013 for indicator hdi"@en 
  ; sdmx-concept:obsStatus sdmx-code:obsStatus-A
- ; lb:source              :upload1
+# ; lb:source              :upload1
  .
 
 :o2 a qb:Observation ;
@@ -56,7 +56,7 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
 
 # Countries 
  
-:France a lb:Country
+:France a cex:Area
  ; rdfs:label "France"@en
  ; lb:faoURI <http://www.fao.org/countryprofiles/index/en/?iso3=fra>
  ; lb:iso2 "FR"
@@ -64,7 +64,7 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  ; lb:is_part_of :Europe
  .
 
-:Spain a lb:Country
+:Spain a cex:Area
  ; rdfs:label "Spain"@en
  ; lb:faoURI <http://www.fao.org/countryprofiles/index/en/?iso3=esp>
  ; lb:iso2 "ES"
@@ -74,17 +74,17 @@ prefix sdmx-code:    <http://purl.org/linked-data/sdmx/2009/code#>
  
 # Regions
 
-:Europe a lb:Region
+:Europe a cex:Area
  ; rdfs:label "Europe"@en
  ; lb:UNCode "EU"
  .
 
 # Years 
 
-:year2013 a cex:Year 
+:year2013 a cex:Time 
  ; time:year "2013"^^xsd:gYear .
 
-:year2014 a cex:Year 
+:year2014 a cex:Time 
  ; time:year "2014"^^xsd:gYear .
 
  
