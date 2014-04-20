@@ -134,12 +134,21 @@
       <xs:sequence>
         <xs:choice>
           <xs:element ref="time"/>
-          <xs:element ref="region"/>
+          <xs:element ref="area"/>
         </xs:choice>
         <xs:element ref="indicator-ref"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="area">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="country"/>
+        <xs:element ref="region"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="country" type="xs:anyURI"/>
   <xs:element name="region" type="xs:anyURI"/>
   <xs:element name="referred">
     <xs:complexType>
@@ -162,7 +171,7 @@
         <xs:element ref="obs-status"/>
         <xs:element minOccurs="0" maxOccurs="1" ref="value"/>
         <xs:element ref="computation"/>
-        <xs:element ref="region"/>
+        <xs:element ref="area"/>
         <xs:element ref="indicator-ref"/>
         <xs:element ref="time"/>
       </xs:sequence>
