@@ -27,7 +27,15 @@
   </xs:element>
   <xs:element name="organization_name" type="xs:string"/>
   <xs:element name="organization_url" type="xs:anyURI"/>
-  <xs:element name="datasource" type="xs:anyURI"/>
+  <xs:element name="datasource">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id" type="xs:NMTOKEN" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="type" type="xs:anyURI"/>
   <xs:element name="user" type="xs:anyURI"/>
   <xs:element name="sdmx_frequency" type="xs:anyURI"/>
