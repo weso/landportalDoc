@@ -182,8 +182,15 @@
   <xs:element name="issued" type="xs:NMTOKEN"/>
   <xs:element name="obs-status" type="xs:anyURI"/>
   <xs:element name="value" type="xs:string"/>
-  <!-- It could also be a number -->
-  <xs:element name="computation" type="xs:anyURI"/>
+  <xs:element name="computation">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" type="xs:NMTOKEN" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ind_name_en" type="xs:string"/>
   <xs:element name="ind_name_es" type="xs:string"/>
   <xs:element name="ind_name_fr" type="xs:string"/>
