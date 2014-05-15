@@ -61,6 +61,22 @@ If you are interested in the other sections or parameters, please have a look at
 
 Importers in python
 ^^^^^^^^^^^^^^^^^^^
+Until now, every importer has been developed in Python, following a similar schema:
+
+ - /data: If needed, this folder contains the files from which the data are extracted (xml, csv, json, ...)
+ - /es/weso//: Is the source code folder, inside there will be different packages depending on the importer, usually here will be placed the importer class itself, and some utility classes like file readers, api callers, etc.
+ - /files: Contains the Python ini files, that will be explained forward.
+ 
+As it was said in the previous section, in order to execute the importers, there is a "main.py" file, located in the root directory of the module that will make the magic happens, this files are always similar (completly equals in some importers) and run the next actions:
+
+ 1. Configure log file 
+ 2. Load and read ini file
+ 3. Run the importer class
+ 4. Update ini file
+
+Having understood this, now a little explanation of the utilities modules will continue, this modules are completly optional, but is highly recommended to give them a try if you are developing a Python importer
+
+
 
 Importers in any other language
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
