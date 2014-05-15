@@ -20,6 +20,7 @@
         <xs:element ref="organization_url"/>
         <xs:element ref="datasource"/>
         <xs:element ref="type"/>
+        <xs:element ref="file_name"/>
         <xs:element ref="user"/>
         <xs:element ref="sdmx_frequency"/>
       </xs:sequence>
@@ -37,6 +38,7 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="type" type="xs:anyURI"/>
+  <xs:element name="file_name" type="xs:anyURI"/>
   <xs:element name="user" type="xs:anyURI"/>
   <xs:element name="sdmx_frequency" type="xs:anyURI"/>
   <xs:element name="license">
