@@ -108,6 +108,7 @@ The importer itself, in this case and due to the differences between files, all 
 FAO Food Security
 """""""""""""""""
 This particular one, relies in a single excel file, but with lof of sheets, that is why every indicator has a sheet name assigned in the config file.
+
 It works as the previous one, loading all the data in a matrix, but with the difference of having only one method to parse every possible sheet, as all of them have the same format.
 
 FAO Gender
@@ -125,6 +126,7 @@ OECD
 RAW
 """
 This is a special one, cause it hasn't been developed for any particular organization.
+
 This one handles a default excel file, that can be fulfilled by the user, with the needed data. Every indicator that wants to be imported must be in a different file and placed under the data folder.
 
 In the configuration.ini file, there should appear the organizations represented by the files (may be more than one) as properties under the section [ORGANIZATIONS], and as value the different file names, separated by commas.
@@ -133,28 +135,48 @@ The importer will generate and organization object for every property placed und
 
 Transparency International
 """"""""""""""""""""""""""
+The same case that with the FAO Agricultural Censues importer, with the difference that this one is adapted to the new model in which every indicator represents a section under the ini file.
+
+Like the other importer, there is a need to know the valid range of rows and columns for data extraction, but in this case, every indicator has its own. Also as there are more than one sheet in the files, it's needed to know the sheet from which the data will be extracted. Again, as the files are totally different is needed more than one function to transform the data into observations, based on the rows-columns where the data is presented.
+
 UNDP
 """"
 World Health Organization
 """""""""""""""""""""""""
 In this case, the World Health organization provides a lot of ways to download its data (csv, excel, etc.) and in different formats (codes, text and both). We are using the verbose ones, which provides both text and codes, so it maked easier to add new indicators.
-As those files, are downloading from and endpoint and it's different for every indicator and indicator endpoint must be passed through the configuration file and transformed into an URL, which is why there are the next properties:
+
+As those files, are downloaded from and endpoint and it's different for every indicator and indicator endpoint must be passed through the configuration file and transformed into an URL, which is why there are the next properties:
+
  - URL pattern: Is used to compound the URL with the indicator endpoint values provided.
  - Indicator: Is a code used by the WHO to identify its indicators
  - Profile: Points the mode in which the file will be downloaded (empty for code, 'text' for text and 'verbose' for both of them)
  - Countries: It may be 'COUNTRY:*' which means all countries are requested or a list of countries with this format 'COUNTRY:XXX;COUNTRY:YYY' being XXX and YYY the ISO3 codes of the countries.
  - Regions: Same as country but with 'REGION:' instead of 'COUNTRY:'
- - 
+
 Once the endpoint is compound the file is downloaded with name given in the indicator section and the data is extracted from it by the importer.
 
 World Bank
 """"""""""
-This is the slowest and the biggest of the importers. It works directly with the WorldBank API, which requires as data the indicator and the country you are looking for, which means that for every indicator there have to be done an equivalent to the number of countries calls (in our case 256), multiply it by the number of indicators (33) and you will have a lot of calls to a free API.
+This is the slowest and the biggest of the importers. It works directly with the WorldBank API, which requires as data the indicator and the country you are looking for, which means that for every indicator there have to be done an equivalent to the number of countries calls (in our case 256), multiply it by the number of indicators (33) and you will have a lot of calls to a free API. On the other hand, it makes quite easy to add a new indicator to parse, the only thing that is need to be done is to add the new indicator to an existing datasource, or, in the case the indicator doesn't belong to the existing ones, add a new datasource under the corresponding section.
 
+Within the configuration.ini file there are two URLs, one of them is used to retrieve a list of 256 countries from the WorldBank API, that will be used then to compound the second URL, which needs both the country code and an indicator ID (those ids are WorldBank custom and need to be consulted in the web).
+
+What this importer does is:
+
+ 1. Generates a country list relying in the Country reconciler and the iso codes obtained from the WorldBank API.
+ 2. Loads all the datasources specified in the ini file.
+ 3. For every datasource loads all the indicators under the corresponding section.
+ 4. Makes a call to the API compounding the url with the country code and the indicator code and transform the response to several observations (one for every year contained in the response).
 
 Importers in any other language
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+There hasn't been developed importers in any other language than Python, but of course, it's possible. The mayor drawback you will have is to adapt the utilities modules provide in Python to the new language.
 
 Implementation advices
 ^^^^^^^^^^^^^^^^^^^^^^
+If you are reading this section, then you have in mind to develop your own importer. Before you do that consider to use the RAW importer, cause the only action you will need to do is fullfill an excel file. If you feel like it has no use fulfilling the file, here are some advices that will help your path during the development process.
 
+ - Try to develop in an object oriented methodology, the domain of the data is really huge, and having some objects to rely in will be usefull.
+ - In case you are using different files, try to make them as similar as possible. You don't want to end developing an importer with a function to read and parse every file differently.
+ - If you are considering calling an API, take into account the time it will take to the importer to retrieve all the data (sometimes it's easier to locate and download the files from whom the API extracts the data). 
+ - Sometimes you will find a data source in a web page, but you won't be able to locate the data, API, etc. which can lead you to think about scraping the web... it's possible, but not recommended (if you really want to use data from a source you should contact with the providers)
