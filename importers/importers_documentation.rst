@@ -76,6 +76,80 @@ As it was said in the previous section, in order to execute the importers, there
 
 Having understood this, now a little explanation of the utilities modules will continue, this modules are completly optional, but is highly recommended to give them a try if you are developing a Python importer
 
+Land portal entities
+""""""""""""""""""""
+This package is as useful as easy to understand. It contains object representations of the different entities in the model, so it's easier to compound them when parsing data. Also, some of them has default values assigned to match default entities.
+
+Country reconciler
+""""""""""""""""""
+As it was said before, countries are represented in several ways, this module, relying in an excel file, which contains the countries and every possible representation, will build the country object based in the entities module from whatever value you provide (name, iso2, iso3, ...)
+
+ModelToXML
+""""""""""
+The most important action of an importer, is building the XML file that will be send to the receiver. This module, relying into the Entities module, will parse all information into a valid XML file.
+
+So, now that you know the utilites modules, and more or less how an importer works, it's time to see them deeply, and as I said, as every importer has it's differences, here will be listed everyone explaining (in the case they are) why they are special.
+
+FAO Agricultural Censues
+""""""""""""""""""""""""
+FAO organization has four different importers, depending on where we have find the data, this one in particular handles three different excel files, which represents the same indicators through time. Every excel file has a different format which made impossible the development of an heterogenous importer, driving to this situation:
+
+In the configuration.ini file there are the next properties:
+ - file_names: Points what files there have to been parser, separated by commas.
+ - data_range_rows_file_name: Indicates the valid rows of the excel file separated by '-'
+ - data_range_cols_file_name: Indicated the valid cols of the excel file separated by '-'
+ 
+Those properties are needed because the excel files contain a lot of metadata, which is useless for the importer.
+
+The excel reader, as many others importers, load a data matrix with the required cells of the file, making it easier to the importer to work with them.
+
+The importer itself, in this case and due to the differences between files, all of them has a customize method in which are specified the columns for every indicator, but at the end all this methods rely in a last one that is the same for every file.
+
+FAO Food Security
+"""""""""""""""""
+This particular one, relies in a single excel file, but with lof of sheets, that is why every indicator has a sheet name assigned in the config file.
+It works as the previous one, loading all the data in a matrix, but with the difference of having only one method to parse every possible sheet, as all of them have the same format.
+
+FAO Gender
+""""""""""
+FAO Stat
+""""""""
+Foncier
+"""""""
+IPFRI
+"""""
+LandMatrix
+""""""""""
+OECD
+""""
+RAW
+"""
+This is a special one, cause it hasn't been developed for any particular organization.
+This one handles a default excel file, that can be fulfilled by the user, with the needed data. Every indicator that wants to be imported must be in a different file and placed under the data folder.
+
+In the configuration.ini file, there should appear the organizations represented by the files (may be more than one) as properties under the section [ORGANIZATIONS], and as value the different file names, separated by commas.
+
+The importer will generate and organization object for every property placed under the [ORGANIZATIONS] section and will load them with the indicators specified in the files. As in any time, more files could be added for the same organization, the importer also generated a custom ini file for them, saving the indicator id, the generated datasets, and the number of generated observations for this particular organization.
+
+Transparency International
+""""""""""""""""""""""""""
+UNDP
+""""
+World Health Organization
+"""""""""""""""""""""""""
+In this case, the World Health organization provides a lot of ways to download its data (csv, excel, etc.) and in different formats (codes, text and both). We are using the verbose ones, which provides both text and codes, so it maked easier to add new indicators.
+As those files, are downloading from and endpoint and it's different for every indicator and indicator endpoint must be passed through the configuration file and transformed into an URL, which is why there are the next properties:
+ - URL pattern: Is used to compound the URL with the indicator endpoint values provided.
+ - Indicator: Is a code used by the WHO to identify its indicators
+ - Profile: Points the mode in which the file will be downloaded (empty for code, 'text' for text and 'verbose' for both of them)
+ - Countries: It may be 'COUNTRY:*' which means all countries are requested or a list of countries with this format 'COUNTRY:XXX;COUNTRY:YYY' being XXX and YYY the ISO3 codes of the countries.
+ - Regions: Same as country but with 'REGION:' instead of 'COUNTRY:'
+ - 
+Once the endpoint is compound the file is downloaded with name given in the indicator section and the data is extracted from it by the importer.
+
+World Bank
+""""""""""
+This is the slowest and the biggest of the importers. It works directly with the WorldBank API, which requires as data the indicator and the country you are looking for, which means that for every indicator there have to be done an equivalent to the number of countries calls (in our case 256), multiply it by the number of indicators (33) and you will have a lot of calls to a free API.
 
 
 Importers in any other language
