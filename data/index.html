@@ -720,138 +720,163 @@ where
 
 <section>
 <h2>Example queries</h2>
-<p>This section contains a list of common queries. 
-   The queries appear without their <a href="#prefixes">prefixes</a></p>
+<p>
+  This section contains a list of common queries. 
+   </p>
 
-<section>
-<h2>List all the countries</h2>
-<pre data-lang="application/x-sparql-query">
-select ?name where {
- ?country a lb:Country ;
-          rdfs:label ?name .
-}
-</pre>
-<!-- <a href="http://data.webfoundation.org/sparql?default-graph-uri=&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0Aselect+distinct+%3Fcountry+%3Flabel+%3Fvalue+where+{%0D%0A+%3Fcountry+a+wf-onto%3ACountry+%3B%0D%0A++++++++++rdfs%3Alabel+%3Flabel+.%0D%0A+%3Fobservation+cex%3Acomputation+[a+cex%3ARanking]+%3B%0D%0A++++++wf-onto%3Aref-area+%3Fcountry+%3B%0D%0A++++++wf-onto%3Aref-year+2013+%3B%0D%0A++++++cex%3Avalue+%3Fvalue+.%0D%0A+%3Fslice+cex%3Aindicator+wi-index%3Aindex+%3B%0D%0A++++++++qb%3Aobservation+%3Fobservation+.%0D%0A}%0D%0Aorder+by+asc%28%3Fvalue%29&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">Try It</a> -->
-</section>
 
-<!-- <section>
-<h2>List the rankings in 2011 and 2012 of all the countries</h2>
-<pre data-lang="application/x-sparql-query">
 
-select distinct ?country ?label ?value2011 ?value2012 where {
- ?country a wf-onto:Country ;
-          rdfs:label ?label .
- 
-  ?obs2011 cex:indicator wi-index:index ;
-          cex:computation [a cex:Score] ;
-          wf-onto:ref-area ?country ;
-          wf-onto:ref-year 2011 ;
-          cex:value ?value2011 .
- 
-  ?obs2012 cex:indicator wi-index:index ;
-          cex:computation [a cex:Score] ;
-          wf-onto:ref-area ?country ;
-          wf-onto:ref-year 2012 ;
-          cex:value ?value2012 .
+  <section>
+  <h3>List all the topics.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
 
-} order by ?country</pre>
-<a href="http://data.webfoundation.org/sparql?default-graph-uri=&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0Aselect+distinct+%3Fcountry+%3Flabel+%3Fvalue2011+%3Fvalue2012+where+{%0D%0A+%3Fcountry+a+wf-onto%3ACountry+%3B%0D%0A++++++++++rdfs%3Alabel+%3Flabel+.%0D%0A+%0D%0A++%3Fobs2011+cex%3Aindicator+wi-index%3Aindex+%3B%0D%0A++++++++++cex%3Acomputation+[a+cex%3AScore]+%3B%0D%0A++++++++++wf-onto%3Aref-area+%3Fcountry+%3B%0D%0A++++++++++wf-onto%3Aref-year+2011+%3B%0D%0A++++++++++cex%3Avalue+%3Fvalue2011+.%0D%0A+%0D%0A++%3Fobs2012+cex%3Aindicator+wi-index%3Aindex+%3B%0D%0A++++++++++cex%3Acomputation+[a+cex%3AScore]+%3B%0D%0A++++++++++wf-onto%3Aref-area+%3Fcountry+%3B%0D%0A++++++++++wf-onto%3Aref-year+2012+%3B%0D%0A++++++++++cex%3Avalue+%3Fvalue2012+.%0D%0A%0D%0A}+order+by+%3Fcountry%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">Try It</a>
+    select * where                              # Print every variable. In this case, only &quot;topic&quot;.
+    {
+      ?topic rdf:type lbonto:Topic .            # &quot;topic&quot; is of type lbonto:Topic .
+    }  </pre>
 </section>
 
 <section>
-<h2>List all the primary indicators and their label</h2>
-<pre data-lang="application/x-sparql-query">
-SELECT ?indicator ?label WHERE {
- ?indicator a wf-onto:PrimaryIndicator ;
-    rdfs:label ?label .
-}
-ORDER BY ?indicator
-</pre>
-<a href="http://data.webfoundation.org/sparql?default-graph-uri=http%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0ASELECT+%3Findicator+%3Flabel+WHERE+%7B%0D%0A+%3Findicator+a+wf-onto%3APrimaryIndicator+%3B%0D%0A++++rdfs%3Alabel+%3Flabel+.%0D%0A%7D%0D%0AORDER+BY+%3Findicator+%3Flabel&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">Try It</a>
+  <h3>Print every available information for each topic.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
+
+    select ?topic, ?predicate, ?object where          # Print &quot;topic&quot;, &quot;predicate&quot; and &quot;object&quot;
+    {
+      ?topic rdf:type lbonto:Topic .                  # &quot;topic&quot; is of type lbonto:Topic .
+      ?topic ?predicate ?object .                     #  &quot;topic&quot; has a property &quot;predicate&quot; with an object &quot;object&quot; .
+
+    }
+  </pre>
 </section>
 
 <section>
-<h2>List all the weights</h2>
-<pre data-lang="application/x-sparql-query">
-SELECT ?weight ?indicator ?value WHERE {
- ?weight a cex:WeightSchema .
- ?weight cex:weight 
-   [ cex:element ?indicator ;
-     cex:value ?value ;
-   ] .
-}
-</pre>
-<a href="http://data.webfoundation.org/sparql?default-graph-uri=&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0ASELECT+%3Fweight+%3Findicator+%3Fvalue+WHERE+%7B%0D%0A+%3Fweight+a+cex%3AWeightSchema+.%0D%0A+%3Fweight+cex%3Aweight+%0D%0A+++%5B+cex%3Aelement+%3Findicator+%3B%0D%0A+++++cex%3Avalue+%3Fvalue+%3B%0D%0A+++%5D+.%0D%0A%7D%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">Try It</a>
-</section>
+  <h3>Print URI and name of every indicator.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
+    PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 
-<section>
-<h2>Get values of a given country for a given indicator</h2>
-<p>Get the values of country <a href="http://data.webfoundation.org/webindex/v2013/country/FRA">France</a> 
- for indicator <a href="http://data.webfoundation.org/webindex/v2013/indicator/ITU_A">ITU_A</a> </p>
 
-<pre data-lang="application/x-sparql-query">
-SELECT ?year ?value 
-WHERE {
- ?obs rdf:type qb:Observation ;
-      wf-onto:ref-area wi-country:FRA ;
-      wf-onto:ref-year ?year ;
-      sdmxConcept:obsStatus cex:Normalized ;
-      cex:indicator wi-indicator:ITU_A ;
-      cex:value ?value .
-} 
-ORDER BY ?year
-</pre>
-<a href="http://data.webfoundation.org/sparql?default-graph-uri=&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0ASELECT+%3Fyear+%3Fvalue+%0D%0AWHERE+%7B%0D%0A+%3Fobs+rdf%3Atype+qb%3AObservation+%3B%0D%0A++++++wf-onto%3Aref-area+wi-country%3AFRA+%3B%0D%0A++++++wf-onto%3Aref-year+%3Fyear+%3B%0D%0A++++++sdmxConcept%3AobsStatus+cex%3ANormalized+%3B%0D%0A++++++cex%3Aindicator+wi-indicator%3AITU_A+%3B%0D%0A++++++cex%3Avalue+%3Fvalue+.%0D%0A%7D+%0D%0AORDER+BY+%3Fyear&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">Try it</a>
+    select * where 
+    {
+      ?indicator rdf:type cex:Indicator .
+      ?indicator rdfs:label ?name .
+    }
+  </pre>
 </section>
 
 
 <section>
-<h2>Get the countries in first position for all components</h2>
-<p>Obtains the countries in first position for all components.</p>
+  <h3>Print name and description of every topic that has "LAND_USE" as topic.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
+    PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
 
-<pre data-lang="application/x-sparql-query">
-select ?country ?element 
-FROM <http://data.webfoundation.org/webindex/v2013/>
-where {
- ?country a wf-onto:Country .
- ?sliceRanking wf-onto:ref-year 2013 ;
-               qb:observation ?obsRanking ;
-               cex:indicator ?element .
- ?element a cex:Component ;
-          wf-onto:order ?order .
- ?obsRanking wf-onto:ref-area ?country ;
-	     cex:value 1 ;
-	     cex:computation [a cex:Ranking] .
-}
-ORDER BY ?order 
-</pre>
-<a href="http://data.webfoundation.org/sparql?default-graph-uri=&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0Aselect+%3Fcountry+%3Felement+%0D%0AFROM+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E%0D%0Awhere+%7B%0D%0A+%3Fcountry+a+wf-onto%3ACountry+.%0D%0A+%3FsliceRanking+wf-onto%3Aref-year+2013+%3B%0D%0A+++++++++++++++qb%3Aobservation+%3FobsRanking+%3B%0D%0A+++++++++++++++cex%3Aindicator+%3Felement+.%0D%0A+%3Felement+a+cex%3AComponent+%3B%0D%0A++++++++++wf-onto%3Aorder+%3Forder+.%0D%0A+%3FobsRanking+wf-onto%3Aref-area+%3Fcountry+%3B%0D%0A%09+++++cex%3Avalue+1+%3B%0D%0A%09+++++cex%3Acomputation+%5Ba+cex%3ARanking%5D+.%0D%0A%7D%0D%0AORDER+BY+%3Forder+%0D%0A%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">
- Try it</a>
+    select ?indicator, ?name, ?description  where 
+    {
+      ?indicator rdf:type cex:Indicator .
+      ?indicator lbonto:topic cex:LAND_USE .
+      ?indicator rdfs:label ?name .
+      ?indicator rdfs:comment ?description .
+    }
+    
+  </pre>
 </section>
 
-<section id="scoresQuery">
-<h2>Get the scores of all countries in 2013</h2>
-<p>The scores are values between 0 and 100</p>
+<section>
+  <h3>URL of the page in FAO´s portal of every African country stored in the system.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
+    PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
 
-<pre data-lang="application/x-sparql-query">
-select distinct ?country ?code3 ?score where {
- ?country a wf-onto:Country ;
-    rdfs:label ?countryName ;
-    wf-onto:has-iso-alpha3-code ?code3 .
- ?obs wf-onto:ref-area ?country ;
-      wf-onto:ref-year 2013 ;
-      cex:indicator wi-index:index ;
-      cex:computation [ a cex:Score ] ;
-      cex:value ?score .
-}
-order by asc(?code3)
-</pre>
-<a href="http://data.webfoundation.org/sparql?default-graph-uri=&query=PREFIX+cex%3A+%3Chttp%3A%2F%2Fpurl.org%2Fweso%2Fontology%2Fcomputex%23%3E+%0D%0APREFIX+dbpedia%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2F%3E+%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0APREFIX+geo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2003%2F01%2Fgeo%2Fwgs84_pos%23%3E+%0D%0APREFIX+odb%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2F%3E+%0D%0APREFIX+odb-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+odb-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+odb-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+odb-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+odb-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+odb-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+odb-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+odb-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+odb-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+odb-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+odb-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fodb%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+owl%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E+%0D%0APREFIX+qb%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E+%0D%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E+%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E+%0D%0APREFIX+sdmxAttribute%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fattribute%23%3E+%0D%0APREFIX+sdmxCode%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fcode%23%3E+%0D%0APREFIX+sdmxConcept%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fconcept%23%3E+%0D%0APREFIX+sdmxSubject%3A+%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fsdmx%2F2009%2Fsubject%23%3E+%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E+%0D%0APREFIX+test%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Ftest%2Fv2013%2F%3E+%0D%0APREFIX+time%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2006%2Ftime%23%3E+%0D%0APREFIX+webindex%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2F%3E+%0D%0APREFIX+wf-onto%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fontology%2F%3E+%0D%0APREFIX+wf-org%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Forganization%2F%3E+%0D%0APREFIX+wf-people%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fpeople%2F%3E+%0D%0APREFIX+wi-component%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomponent%2F%3E+%0D%0APREFIX+wi-computation%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcomputation%2F%3E+%0D%0APREFIX+wi-country%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fcountry%2F%3E+%0D%0APREFIX+wi-dataset%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fdataset%2F%3E+%0D%0APREFIX+wi-index%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findex%2F%3E+%0D%0APREFIX+wi-indicator%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Findicator%2F%3E+%0D%0APREFIX+wi-obs%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fobservation%2F%3E+%0D%0APREFIX+wi-ranking%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Franking%2F%3E+%0D%0APREFIX+wi-region%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fregion%2F%3E+%0D%0APREFIX+wi-slice%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2Fslice%2F%3E+%0D%0APREFIX+wi-weightSchema%3A+%3Chttp%3A%2F%2Fdata.webfoundation.org%2Fwebindex%2Fv2013%2FweightSchema%2F%3E+%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E+%0D%0A%0D%0Aselect+distinct+%3Fcountry+%3Fcode3+%3Fscore+where+{%0D%0A+%3Fcountry+a+wf-onto%3ACountry+%3B%0D%0A++++rdfs%3Alabel+%3FcountryName+%3B%0D%0A++++wf-onto%3Ahas-iso-alpha3-code+%3Fcode3+.%0D%0A+%3Fobs+wf-onto%3Aref-area+%3Fcountry+%3B%0D%0A++++++wf-onto%3Aref-year+2013+%3B%0D%0A++++++cex%3Aindicator+wi-index%3Aindex+%3B%0D%0A++++++cex%3Acomputation+[+a+cex%3AScore+]+%3B%0D%0A++++++cex%3Avalue+%3Fscore+.%0D%0A}%0D%0Aorder+by+asc%28%3Fcode3%29%0D%0A&should-sponge=&format=text%2Fhtml&timeout=0&debug=on">
- Try it</a>
+
+    select ?iso3, ?name, ?url where 
+    {
+      ?country rdf:type cex:Area .
+      ?country lbonto:iso3 ?iso3 .
+      ?country lbonto:is_part_of &quot;Africa&quot; .
+      ?country rdfs:label ?name .
+      ?country lbonto:faoURI ?url .
+
+    }
+  </pre>
 </section>
--->
 
-</section> <!-- Examples -->
+
+<section>
+  <h3>URL of the page in FAO´s portal of every African country that has at least a deal in the industrial sector.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
+    PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
+    PREFIX qb: &lt;http://purl.org/linked-data/cube#&gt; 
+    PREFIX : &lt;http://book.landportal.org/&gt;
+
+    select ?iso3, ?name, ?url where                 # Print iso3, name and url 
+    {
+      ?country rdf:type cex:Area ;                   # Country is a cex:Area
+               lbonto:iso3 ?iso3 ;                   # Country must have an iso3
+               lbonto:is_part_of &quot;Africa&quot; ;          # Country must be part of &quot;Africa&quot;
+               rdfs:label ?name ;                    # Conttry must have a label, that we call &quot;name&quot;
+               lbonto:faoURI ?url .                  # Country must have a faoURI  
+
+      ?obs cex:ref-area ?country ;                   # There is something called obs that has our country as ref-area
+           rdf:type qb:Observation ;                 # This &quot;obs&quot; is an observation
+           cex:ref-indicator :INDLM4 ;               # This observation has INDLM4 as ref-indicator
+           cex:value ?value ;                        # This &quot;obs&quot; has a value 
+           
+      FILTER(?value &gt; 0) .                        # This value must be greater than zero
+
+    }
+  </pre>
+</section>
+
+
+<section>
+  <h3>URL of the page in FAO´s portal of every country that has some observation obtained from the organization called "World Bank".</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
+    PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
+    PREFIX qb: &lt;http://purl.org/linked-data/cube#&gt; 
+    PREFIX w3: &lt;http://www.w3.org/ns/org#&gt;
+    PREFIX : &lt;http://book.landportal.org/&gt;
+
+    select ?iso3, ?name, ?url where  
+    {
+      ?country rdf:type cex:Area ;                    # Country is a cex:Area
+               lbonto:iso3 ?iso3 ;                    # Country must have an iso3
+               rdfs:label ?name ;                     # Conttry must have a label, that we call &quot;name&quot;
+               lbonto:faoURI ?url .                   # Country must have a faoURI  
+
+      ?obs cex:ref-area ?country ;                    # There is something called obs that has our country as ref-area
+           rdf:type qb:Observation ;                  # This &quot;obs&quot; is an observation .
+           qb:dataSet ?dataset .                      # The observation has as a dataSet &quot;dataset&quot;
+
+      ?dataset rdf:type qb:DataSet ;                  # dataSet is a DataSet
+               lbonto:dataSource ?datasource.         # &quot;dataset&quot; has as a dataSource  &quot;datasource&quot;
+
+      ?datasource rdf:type lbonto:DataSource ;        # &quot;datasource&quot; is a DataSource
+                  lbonto:organization ?org .          # &quot;datasource&quot; has a organization  &quot;org&quot;
+
+      ?org rdf:type w3:Organization ;                 # &quot;org&quot; is a w3:organization
+           rdfs:label &quot;Land Portal&quot; .                 # &quot;org&quot; has as Label &quot;World Bank&quot;
+    }
+  </pre>
+</section>
+</section>
+
+
 
 </body>
 <script>
