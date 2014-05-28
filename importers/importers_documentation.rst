@@ -11,7 +11,7 @@ What is an importer?
 An importer is an independent module with the goal of tracking data from an organization/datasource and introducing them in the LandPortal DataBase. In order to do that, it has to download/request the info from the target source and convert it to a xml with a concrete format. Once it has that xml built, it has to send it to the Receiver module in LandPortal Architecture.
 
 Restrictions:
- - Language: You can develop an importer in any language, there is no restriction about this. Anyway, it is recommended to built importers in python so you will have some support with modules/libraries developed in python to do some typical and common operations easily and efficiently.
+ - Language: You can develop an importer in any language, there is no restriction about this. Anyway, it is recommended to build importers in python so you will have some support with modules/libraries developed in python to do some typical and common operations easily and efficiently.
  - IDs (identifiers): The produced xml contains a set of observations, slices and info about license use, datasource, organization, indicators, etc. Most of this entities, such as observations, must have an unique ID in the system, and it is the importer module which asigns the identifiers to them. So, there must be a defined strategy to generate the indentifiers. More on this in Section "IDs asignation". If the importer produces repeated IDs in entities such as observations, the receiver will reject the xml. On the other hand, the importer needs to ensure that other entities such as indicator always have the same ID. 
  - Write acces: All the developed importers need to write some intermediate files while executing, and chances are that the new ones will also need it. So, the importer must be executed with write acces in its directory.
  - Executions modes: Every developed importer should have two execution modes: one for tracking every data of the source and other for tracking only those that had not been processed yet. 
@@ -113,12 +113,108 @@ It works as the previous one, loading all the data in a matrix, but with the dif
 
 FAO Gender
 """"""""""
+We can download data through a REST API that gives back data in XML format, but this importer can be really troublestone because of the quality of this information: It is poor and it looks quite unstable. It is highly possible that the way in which data is presented could change in the future.
+
+Despite of the xml is valid and well-formed, all the usefull info (date, observation, indicator) is given in a single node mixed with HTML tags, sometimes encoded, sometimes not. Also, depending on the consulted country in each petition, the result cames in different languages (usually cames in the officil language of the consulted country).
+
+For instance, if you put this URL in your browser, you will obtain data for Spain: http://data.fao.org/developers/api/landrights/xml-country?topic=sls&version=1.0&country=ESP
+
+As you can see, all the resull are written in Spanish, and there are a lot of unusefull characters referred to style, html, etc.
+
+Currently, the importer can manage all this to produce clean info, but several things had to be beared in mind:
+
+* If several languajes are available, there will be more than one <lang> node under <country> node. We don't have to care about languaje, just take a random one (the first). In <subtopic>, the att "code" is constant accross different languajes, and the node.text that we have to parse does not contain meaningfull words.
+* The content in subnode "GCI" is not coherent with the rest of the <subtopic> nodes: dates, numbers, special elements,.... but it is not a problem. Only four indicator are requested, and GCI is not one of them.
+* It looks that there are two ways to say "No data available" inside a subtopic. Containing the text "N/A" or containing the text "N.D.".
+* Dates are placed between "[]". It looks that there can be single years or intervals. i.e.: [2009] or [2008-2010].
+* The concret data could be hard to parse, because: 
+
+ - It is mixed with everything: extrange chars, dates, ranks, html notation...
+ - When numbers are bigger than 999, they try to make a graphical separation with blank spaces between every 3 digits. i.e.: 111 222 333 means the number 111222333.
+
+ So, to parse it we will have to:
+  + Remove text between "[]" (dates)
+  + Remove text between "()" (rank)
+  + Remove text between "<>" (html notations)
+  + Remove twxt between "&" and ";" (special html chars)
+  + After all these things, remove every white space in the resulting chain.
+
+ Following that steps we should obtain a string parseable to a number that represents the observation value.
+
+* If we send a petition for a country non-stored we will obtanin an xml such as the next:
+
+ <country iso3="SOMECOUNTRY" name="">No records found</country>
+
+* 3 ways to identify it, that looks constant:
+
+  - empty attribute name
+  - only a node, not children
+  - node.text = No records found.
+
+ Probably the safest option to determine if we have data or not, and maybe even the fastest, is the second one. Whit no children there is no info, not mattering the rest of the content. And thinking in computing terms, we would only have to check the existence or not of childs. Similar to check if name is empty, but better that checking the third option.
+
+The way to filter old data is specifying the fisrt valid year in the configuration.ini file, with the value of the property "first_valid_year". Anyway, the importer will deduce that value in every execution, to be prepeared for the next time it has to be executed.  
+
 FAO Stat
 """"""""
+The way in which importer works is:
+
+* It downloads a huge CSV file containing all the info available of Faostat database related to "Resources Land".
+* It converts each line of the csv into an intermediate object that represents it.
+* It filters this list of objects, removing all those that:
+
+ - They contain data of indicators that had not been requested.
+ - They refers to countries or regions that are not in the officil list of countries.
+ - They contain observations that has been already incorpored to the system (when the importer is not execurint in historical mode).
+
+* It turns that intermediate objects in objects of the common model.
+
+It looks that the file that contains the entire database has a name that does not depend on dates, so it could be possible that in the next time that the importer need to execute the Download url may not change. If it does, the new URL must be specified in "zip_url", in the configuration.ini file. 
+
+The importer expects an URL pointing to a zip that contains a single CSV file.
+
 Foncier
 """""""
-IPFRI
+
+Tha importers obtain the data thorugh a REST API that gives back XML content. The content is ¡easily parseable, and the API has a coherent pattern. This importer must be manually configured in order to know the years to query. 
+
+This is the pattern to make a petition to the API: "http://www.observatoire-foncier.mg/xml-api.php?year={YEAR}&month={MONTH}"
+
+The importer will give to MONTH values between 1 and 12 and to YEAR values between "first_year" and "last_year", and will send a request with every combination. Those values can be set in the configuration.ini file.
+
+The param "last_checked_year" in hte same file is used for executing in non historical mode: Only the observations with a date higher than this value will be taken into account. This value can be manually configured, but the importer will deduce it in every execution.
+
+IFPRI
 """""
+
+This importer downloads several xls files and parse it. The problem is that the URL pattern to request these files is coherent, but the internal format of the files is not.
+
+The changes between the files looks minimal, but are really troublestone to produce an unified parsing algoritmh. Main reasons:
+
+ * Before the data sometimes there are comments, sometimes not.
+ * An observations sometimes is containes in a single column, sometimes in two.
+ * Indicator's names have different names acrross tge different files.
+ * Indicators data has different width (different number of columns) across different files.
+ * Sometimes white columns between indicators appear, sometimes not.
+ * There are non numeric values referring to a numeric indeterminated quantity ("<5").
+
+The strategy followed in this case is not trivial. The importer parse the files making as less assumptions as possible, ir order to be ready to manage future changes, and turns the xsl data into an intermediate objects. Then, it transforms these objects into ones of the common model.
+
+However, it this tendency continues in future updatings, it could happen that the importer could not manage nthe new format. In this case, it will be necessary to produce a new algorithm or adapt the current one.
+
+The pattern of the available files to download is url_pattern = http://www.ifpri.org/sites/default/files/ghi{year}datam.xlsx
+
+Currently, only 2012 and 2013 are available. In case oo new datasets, the parammeter "available_years" in the configuraton file should be modified, adding the new year with a comma, in order to substitute {year} in the url pattern by this new value.
+
+Example: the current "available_years" value is:
+
+available_years = 2012,2013
+
+If a new dataset of 2014 is published, then we should actualize "available_years" as follows:
+
+available_years = 2012,2013,2014
+
+
 LandMatrix
 """"""""""
 OECD
@@ -150,7 +246,7 @@ As those files, are downloaded from and endpoint and it's different for every in
  - URL pattern: Is used to compound the URL with the indicator endpoint values provided.
  - Indicator: Is a code used by the WHO to identify its indicators
  - Profile: Points the mode in which the file will be downloaded (empty for code, 'text' for text and 'verbose' for both of them)
- - Countries: It may be 'COUNTRY:*' which means all countries are requested or a list of countries with this format 'COUNTRY:XXX;COUNTRY:YYY' being XXX and YYY the ISO3 codes of the countries.
+ - Countries: It may be 'COUNTRY:\*' which means all countries are requested or a list of countries with this format 'COUNTRY:XXX;COUNTRY:YYY' being XXX and YYY the ISO3 codes of the countries.
  - Regions: Same as country but with 'REGION:' instead of 'COUNTRY:'
 
 Once the endpoint is compound the file is downloaded with name given in the indicator section and the data is extracted from it by the importer.
