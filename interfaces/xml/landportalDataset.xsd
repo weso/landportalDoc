@@ -18,6 +18,7 @@
       <xs:sequence>
         <xs:element ref="organization_name"/>
         <xs:element ref="organization_url"/>
+        <xs:element ref="organization_id"/>
         <xs:element ref="organization_description_en"/>
         <xs:element ref="organization_description_es"/>
         <xs:element ref="organization_description_fr"/>
@@ -31,6 +32,7 @@
   </xs:element>
   <xs:element name="organization_name" type="xs:string"/>
   <xs:element name="organization_url" type="xs:anyURI"/>
+  <xs:element name="organization_id" type="xs:NMTOKEN"/>
   <xs:element name="organization_description_en" type="xs:string"/>
   <xs:element name="organization_description_es" type="xs:string"/>
   <xs:element name="organization_description_fr" type="xs:string"/>
