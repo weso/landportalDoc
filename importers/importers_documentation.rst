@@ -217,8 +217,25 @@ available_years = 2012,2013,2014
 
 LandMatrix
 """"""""""
+This importer downloads the entire landmatrix database in xml format, but the observations have a complex nature, hard to fit in the general model. A node of information in the landmatrix does not reffer to a concrete country, with a concrete indicator and a single value in a concrete date. The indicators builded are aggragation of values, such as "total number of delas in some sector".
+The python project of the importer includes a file "strategy.txt" where the indicators are detailed.
+
+The date assigned to each observation is the highest date found when parsing a value that belongs to its aggregate. For this reason, when executing again the importer to incorpore new data, it may be something to consider to remove from the system all the old observation adn run the program in historical mode.
+
+The miporter is, as the other, preppeared to ignore date with a date lower than the value specified in the "first_valid_year" (tahta can be manually set or automatically calculed by the importer) of the configuration.ini file. However, doing this, we will get observations of data aggregates between the specified date and the current one, menawhile the old observations are aggregates of every available date. The meaning will not be consistent. By removing all the old observations we will obtain new ones that are aggregates of the old and the new vallues.
+
 OECD
 """"
+This source may present problems to incorpore new data or may not: it entirely depends on the critery when offering new data of its owners. Anyway, it looks it will be troublestone. Currently, all teh data are tracked in json format, but not all the data is stored in the same dataset. Data refferred to 2009 or older, is stored in a a database. Newr data is stored in a different one.
+So, to dowload it, despite of there ir a powerfull API, you have to do petitions to different databases using this API.
+
+The databases are represented by an identifier that you shuold use when making the request, but that identifier is not build with a pattern: the old database's ID is GID2, meanwhile the one of the new database is GIDDB2012. So there is no way to predict the name of the new database, and it has to be set manually.
+
+However, this is a minor problem. This importer retrieve data in json format, but the most anoying thing about it is that it does it with a different internal structure accross the different databases: field to feres country or region, codes of indicatros, date formats... the algorithm of the importer is a bit complex because it must reconcilie all this changes between datasets to treat it in a homogeneus ways.
+
+To incorpore new data, first of all, a new general query with must be added after a character "|" in the field "querys" of the configuration file, situated in "es/weso/oecdextractor/configutation/data_sources.ini". It will probably look like the other querys that you can find there, but code identification and database id could change. If the structure of the new database does not change compared with GID2, GIDDB2012, the importer should work. In any other case, the algoritmh shuold be refined.
+
+
 RAW
 """
 This is a special one, cause it hasn't been developed for any particular organization.
@@ -237,6 +254,17 @@ Like the other importer, there is a need to know the valid range of rows and col
 
 UNDP
 """"
+The most particular thing with this importer is that it was thougth to be able to download and transform several sections of UNDP data. The source is organized in topics, such as "Health", "Education" or "Human Development Index Trends". The last one is the only one that has been requested so, at the end, the importer only process this dataset. Anyway, the algorithm was thougth to treat more than one dataset in an homogeneus way, downloading it in xml format.
+
+If case you want to amplify this importer to track the rest of the data, most of the work will be done by uncomment a line in the file "files/undp_table_names". In that file all the name of the available datasets and the URL to download it in xml are stored.
+Each line of that archive is expected to be formed by a table name, a '\t' char and a URL to download data in xml format. Lines that start with "#" are ignored. Most of the work to incorpore a new dataset will be done just uncommenting (removing "#") the line that contains the target information. There would also be needed to incorpore info abpout the new indicators in the "files/configuration.ini" and code in the application to buold an indicator object with this new data.
+
+If the source is actualized, incorporing new data, the importer may not need any changes to work, but it entirely depends on if the owners decide to change the url where the data is available or not. If the url (and the structure of the xml) does not change, the importer will work and will be able to distinguis between old and new data.
+
+In the configuration.ini file the field "first_valid_year" indicates the earliest date in which data will be taken in account when executing in non historical mode. This value can be set manually, but the importer automatically calculates it after every execution.
+
+
+
 World Health Organization
 """""""""""""""""""""""""
 In this case, the World Health organization provides a lot of ways to download its data (csv, excel, etc.) and in different formats (codes, text and both). We are using the verbose ones, which provides both text and codes, so it maked easier to add new indicators.
