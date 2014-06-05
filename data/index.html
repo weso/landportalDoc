@@ -777,11 +777,12 @@ where
     PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
     PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
     PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
+    PREFIX base-topic: &lt;http://book.landportal.org/topic/&gt;
 
     select ?indicator, ?name, ?description  where 
     {
       ?indicator rdf:type cex:Indicator .
-      ?indicator lbonto:topic cex:LAND_USE .
+      ?indicator lbonto:topic base-topic:LAND_USE .
       ?indicator rdfs:label ?name .
       ?indicator rdfs:comment ?description .
     }
@@ -796,13 +797,14 @@ where
     PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
     PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
     PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
+    PREFIX base: &lt;http://book.landportal.org/&gt;
 
 
     select ?iso3, ?name, ?url where 
     {
       ?country rdf:type cex:Area .
       ?country lbonto:iso3 ?iso3 .
-      ?country lbonto:is_part_of &quot;Africa&quot; .
+      ?country lbonto:is_part_of base:Africa .
       ?country rdfs:label ?name .
       ?country lbonto:faoURI ?url .
 
@@ -819,19 +821,20 @@ where
     PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
     PREFIX lbonto: &lt;http://purl.org/weso/landbook/ontology#&gt;
     PREFIX qb: &lt;http://purl.org/linked-data/cube#&gt; 
-    PREFIX : &lt;http://book.landportal.org/&gt;
+    PREFIX base: &lt;http://book.landportal.org/&gt;
+    PREFIX base-ind: &lt;http://book.landportal.org/indicator/&gt;
 
     select ?iso3, ?name, ?url where                 # Print iso3, name and url 
     {
       ?country rdf:type cex:Area ;                   # Country is a cex:Area
                lbonto:iso3 ?iso3 ;                   # Country must have an iso3
-               lbonto:is_part_of &quot;Africa&quot; ;          # Country must be part of &quot;Africa&quot;
+               lbonto:is_part_of base:Africa ;       # Country must be part of &quot;Africa&quot;
                rdfs:label ?name ;                    # Conttry must have a label, that we call &quot;name&quot;
                lbonto:faoURI ?url .                  # Country must have a faoURI  
 
       ?obs cex:ref-area ?country ;                   # There is something called obs that has our country as ref-area
            rdf:type qb:Observation ;                 # This &quot;obs&quot; is an observation
-           cex:ref-indicator :INDLM4 ;               # This observation has INDLM4 as ref-indicator
+           cex:ref-indicator base-ind:INDLM4 ;               # This observation has INDLM4 as ref-indicator
            cex:value ?value ;                        # This &quot;obs&quot; has a value 
            
       FILTER(?value &gt; 0) .                        # This value must be greater than zero
@@ -842,7 +845,7 @@ where
 
 
 <section>
-  <h3>URL of the page in FAO´s portal of every country that has some observation obtained from the organization called "World Bank".</h3>
+  <h3>URL of the page in FAO´s portal of every country that has some observation obtained from the organization called "UNDP: United Nations Development Programme".</h3>
   <pre data-lang="application/x-sparql-query">
     PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
     PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
@@ -870,8 +873,37 @@ where
                   lbonto:organization ?org .          # &quot;datasource&quot; has a organization  &quot;org&quot;
 
       ?org rdf:type w3:Organization ;                 # &quot;org&quot; is a w3:organization
-           rdfs:label &quot;World Bank&quot; .                 # &quot;org&quot; has as Label &quot;World Bank&quot;
+           rdfs:label &quot;UNDP: United Nations Development Programme&quot; .                 # &quot;org&quot; has as Label &quot;World Bank&quot;
     }
+  </pre>
+</section>
+<section>
+  <h3>Country, year and value of every observation of 2010 or more recent that has INDUNDP0 as indicator.</h3>
+  <pre data-lang="application/x-sparql-query">
+    PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; 
+    PREFIX cex: &lt;http://purl.org/weso/computex/ontology#&gt;
+    PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    PREFIX qb: &lt;http://purl.org/linked-data/cube#&gt; 
+    PREFIX base-ind: &lt;http://book.landportal.org/indicator/&gt;
+
+
+    select ?country_name, ?year, ?value where
+       {
+         ?obs rdf:type qb:Observation ;
+              cex:value ?value        ;
+              cex:ref-time ?date      ;
+              cex:ref-indicator base-ind:INDUNDP1;
+              cex:ref-area ?country   .
+              
+
+         ?country rdf:type cex:Area   ;
+                  rdfs:label ?country_name    .
+
+         ?date cex:year ?year .
+
+         FILTER (?year &gt; 2011)
+
+       }
   </pre>
 </section>
 </section>
