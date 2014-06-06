@@ -93,6 +93,8 @@ Land portal entities
 """"""""""""""""""""
 This package is as useful as easy to understand. It contains object representations of the different entities in the model, so it's easier to compound them when parsing data. Also, some of them has default values assigned to match default entities.
 
+In most cases, every parameter that the "__init__" accept is needed to build a complete object, despite of "None" is specified as default value. This have been done only for not force the programmers to pass every argument when building the object. Most of the times it is easier to assign the parameter after calling the init, because of the internal complexity of some of the objects passed.
+
 Country reconciler
 """"""""""""""""""
 As it was said before, countries are represented in several ways, this module, relying in an excel file, which contains the countries and every possible representation, will build the country object based in the entities module from whatever value you provide (name, iso2, iso3, ...)
