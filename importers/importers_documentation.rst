@@ -322,13 +322,26 @@ What this importer does is:
 
 Importers in any other language
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There hasn't been developed importers in any other language than Python, but it's possible. The mayor drawback you will have is to adapt the utilities modules provide in Python to the new language.
+There hasn't been developed importers in any other language than Python, but it's possible. The mayor drawback you will have is to adapt the utilities modules provide in Python to the new language, or ensuring that you implement an algorithm that does the same work without using them. The restrictions you have to bear in mind are:
+
+ * You must ensure that there are not mistakes when you associate an observation with a country: no losses of observations and no observations with wrong countries. Those countries must be identified in the final xml with their official iso3 code (or un_code for regions).
+ * You must manage ids properly: 
+  - A concrete indicator should always have the same id in different executions. The same for datasources.
+  - The id of indicators, datasets, observations, etc, should contain a reference to its organization. See "ID Assignation".
+  - There can not be two entities with the same id, nor an entity with different ids in different executions.
+ * Your final xml should fit in the xsd schema provided in this repository (interfaces/xml/landportalDataset.xsd)
+ * If you introduce of a datasource that belongs to an organization already present in the system, you should use the same info (name, descriptions, image) that is being used in the rest of the importers.
+ * The Receiver module expects a request with the next fields:
+  - xml: xml content with all the info.
+  - file: content of the original local file of which the information was taken, or base URL of the API/web page consulted.
+  - api_key: security API KEY to send a request. Currently, the receiver uses the one associated with an special user. Other importers could use a different key.
+
 
 Implementation advices
 ^^^^^^^^^^^^^^^^^^^^^^
 If you are reading this section, then you have in mind to develop your own importer. Before you do that consider to use the RAW importer, cause the only action you will need to do is fulfill an excel file. If you feel like it has no use fulfilling the file, here are some advices that will help your path during the development process.
 
- - Try to develop in an object oriented methodology, the domain of the data is really huge, and having some objects to rely in will be usefull.
+ - Try to develop in an object oriented methodology, the domain of the data is really huge, and having some objects to rely in will be useful.
  - In case you are using different files, try to make them as similar as possible. You don't want to end developing an importer with a function to read and parse every file differently.
  - If you are considering calling an API, take into account the time it will take to the importer to retrieve all the data (sometimes it's easier to locate and download the files from whom the API extracts the data). 
  - Sometimes you will find a data source in a web page, but you won't be able to locate the data, API, etc. which can lead you to think about scraping the web... it's possible, but not recommended (if you really want to use data from a source you should contact with the providers).
