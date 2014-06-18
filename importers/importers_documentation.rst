@@ -201,6 +201,8 @@ It looks that the file that contains the entire database has a name that does no
 
 The importer expects an URL pointing to a zip that contains a single CSV file.
 
+You may notice that the log of this importers produces many warnings. In general, it is not something to worry about: it is the normal behavior of the importer. The algorithm downloads the entire database of Fao Stat and filters unneeded data. In that process, many observations referred to unsupported regions are detected as "unknown countries" and registered in the log as it. But that observations should not be present in the final system.
+
 Foncier
 """""""
 
