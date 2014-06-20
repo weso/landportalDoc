@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>URIRouter</title>
+<link href="../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="PageBody">
+	
+<img src="EA10.png" usemap="#EA10" border="0" />
+
+<MAP NAME="EA10">
+<area shape="rect" coords="706,192,721,207" href="EA89.htm">
+<area shape="rect" coords="562,147,577,162" href="EA102.htm">
+<area shape="rect" coords="706,144,721,159" href="EA77.htm">
+<area shape="rect" coords="247,177,262,192" href="EA108.htm">
+<area shape="rect" coords="452,176,467,191" href="EA100.htm">
+<area shape="rect" coords="100,176,115,191" href="EA107.htm">
+<area shape="rect" coords="167,177,182,192" href="EA82.htm">
+<area shape="rect" coords="562,197,577,212" href="EA101.htm">
+<area shape="rect" coords="706,57,721,72" href="EA86.htm">
+<area shape="rect" coords="809,109,899,199" href="EA37.htm">
+<area shape="rect" coords="951,91,1041,181" href="EA33.htm">
+<area shape="rect" coords="254,150,364,210" href="EA88.htm">
+<area shape="rect" coords="261,58,362,108" href="EA81.htm">
+<area shape="rect" coords="10,104,107,253" href="EA80.htm">
+<area shape="rect" coords="459,125,569,247" href="EA92.htm">
+<area shape="rect" coords="174,10,713,345" href="../linkdocs/EAID_E48C11A9_8932_418f_8C90_5B2F91BA2CE2.htm">
+</MAP>
+
+	<div class="ObjectTitle">URIRouter : compositestructure diagram</div>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">23/01/2014 7:19:56</td>
+		</tr>
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Modified:</td>
+			<td width="85%" class="ObjectDetailsValue">30/01/2014 23:13:29</td>
+		</tr>
+		<tr style="padding-top: 10px;">
+			<td width="15%" class="ObjectDetailsTopic"><img src="../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td width="85%" class="ObjectDetailsValue"></td>			
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td width="15%" class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td width="85%" class="ObjectDetailsValue">Dani</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td width="15%" class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td width="85%" class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic"><img src="../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td width="85%" class="ObjectDetailsValue"></td>			
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td width="15%" class="ObjectDetailsTopic" style="padding-left: 18px;">ID:</td>
+			<td width="85%" class="ObjectDetailsValue">{5603893A-29AB-42a0-AE9B-2A0A220EB163}</td>
+		</tr>
+	</table>
+	
+</div>
+ 
+</body>
+</html>
