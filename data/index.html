@@ -492,27 +492,54 @@ where
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
+
 &lt;Time&gt; {
-  a ( cex:Time )
+  a ( time:DateTimeInterval )
 }
 
-&lt;Year&gt; &amp;&lt;Time&gt; {
- time:year xsd:gYear 
+&lt;YearInterval&gt; &amp;&lt;Time&gt; {
+  time:hasBeginning               xsd:dateTime,
+  time:hasEnd                     xsd:dateTime,
+  time:hasDateTimeDescription     time:DateTimeDescription,
+  base-time:year                  xsd:int  
+}
+
+&lt;MonthInterval&gt; {
+    &amp; &lt;Time&gt; ,
+	time:hasBeginning               xsd:dateTime,
+  time:hasEnd                     xsd:dateTime,
+  time:hasDateTimeDescription     time:DateTimeDescription,
+  base-time:year                  xsd:int,
+  base-time:month                 xsd:int
 }
 
 &lt;Interval&gt; {
     &amp; &lt;Time&gt; ,
-	time:hasBeginning xsd:dateTime,
-	time:hasEnd       xsd:dateTime
+  time:hasBeginning               xsd:dateTime,
+  time:hasEnd                     xsd:dateTime,
 }
+
 </pre>
 </section>
 
 <section>
 <h2>Example</h2>
 <pre data-lang="text/turtle">
-:year2013 a cex:Year 
- ; time:year &quot;2013&quot;^^xsd:gYear .
+:year2013 a                               time:DateTimeInterval      ;
+          time:hasBeginning               :instant_2013_1_1          ;
+          time:hasEnd                     :instant_2013_12_31        ;
+          time:hasDateTimeDescription     :year2013_desc             ;
+          base-time:year                  &quot;2013&quot;^^xsd:int          .
+
+:year2013_desc  time:year         &quot;2013&quot;^^xsd:gYear   ;
+                time:unitType     time:unitYear         .
+
+:instant_2013_1_1    a                    time:Instant                      ;
+                     time:inXSDDateTime   &quot;2013-01-01T00:00:00Z&quot;          .
+
+:instant_2013_1_1    a                    time:Instant                      ;
+                     time:inXSDDateTime   &quot;2013-01-01T00:00:00Z&quot;          . 
+
 </pre>
 </section>
 
