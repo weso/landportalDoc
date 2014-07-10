@@ -11,6 +11,7 @@
 @prefix earl:  <http://www.w3.org/ns/earl#> .
 @prefix lb: <http://purl.org/weso/landbook/ontology#> .
 @prefix geopol: <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix schema: <http://schema.org/> .
 
 
 <http://purl.org/weso/landbook/ontology>
@@ -167,7 +168,13 @@ lb:Indicator a owl:Class ;
 
 lb:Country a owl:Class ;
         rdfs:subClassOf lb:Region ;
+		rdfs:subClassOf schema:Place ;
         rdfs:label "Country in Landbook"@en ;
+		.
+
+lb:Region a owl:Class ;
+        rdfs:subClassOf schema:Place ;
+        rdfs:label "Region in Landbook"@en ;
 		.
 		
 lb:DataSource a owl:Class ;
