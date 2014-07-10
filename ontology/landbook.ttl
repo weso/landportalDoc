@@ -1,0 +1,195 @@
+@prefix cex: <http://purl.org/weso/ontology/computex#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix lg:  <http://linkedgeodata.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix earl:  <http://www.w3.org/ns/earl#> .
+@prefix lb: <http://purl.org/weso/landbook/ontology#> .
+@prefix geopol: <http://aims.fao.org/aos/geopolitical.owl#> .
+
+
+<http://purl.org/weso/landbook/ontology>
+    a owl:Ontology;
+    owl:versionInfo "0.1";
+    rdfs:label "Landbook Ontology"@en;
+    rdfs:comment "Vocabulary for describing some properties used in the Landbook project."@en;
+    dcterms:created "2014-04-07"^^xsd:date;
+    dcterms:modified "2014-07-10"^^xsd:date;
+    dcterms:title "Landbook ontology"@en;
+    dcterms:author <http://www.di.uniovi.es/~labra#me>, <http://www.weso.es> ;
+	dcterms:license <http://www.opendatacommons.org/licenses/pddl/1.0/> ;
+	.
+
+
+#------------------------------------------
+# Properties
+
+lb:source a owl:ObjectProperty ;
+          rdfs:domain lb:Observation ;
+		  rdfs:range lb:Upload ;
+		  rdfs:label "Source of observation"@en ;
+		  .
+
+lb:preferable_tendency a owl:ObjectProperty ;
+          rdfs:domain lb:Indicator ;
+		  rdfs:label "Preferable tendency: decrease, increase or irrelevant"@en
+		  .
+
+lb:measurement a owl:ObjectProperty ;
+          rdfs:domain lb:Indicator ;
+		  rdfs:range lb:Measurement ;
+		  rdfs:label "Measurement"@en
+		  .
+		  
+lb:last_update a owl:DataProperty ;
+        rdfs:domain lb:Indicator ;
+	    rdfs:range xsd:dateTime ;
+		rdfs:label "Last update of a landbook indicator"@en ;
+	    .
+
+lb:starred a owl:DataProperty ;
+        rdfs:domain lb:Indicator ;
+	    rdfs:range xsd:boolean ;
+		rdfs:label "Starred observation?"@en ;
+	    .
+
+lb:topic a owl:ObjectProperty ;
+        rdfs:domain lb:Indicator ;
+	    rdfs:range lb:Topic ;
+		rdfs:label "Landbook topic"@en ;
+	    .
+
+lb:indicatorType a owl:ObjectProperty ;
+        rdfs:domain lb:Indicator ;
+	    rdfs:label "Indicator type"@en ;
+	    .
+		
+lb:dimension a owl:ObjectProperty ;
+        rdfs:domain qb:Slice ;
+        rdfs:label "Dimension of a slice in landbook"@en ;
+        .		
+		
+lb:dataSource a owl:ObjectProperty ;
+        rdfs:domain qb:DataSet ;
+		rdfs:range lb:DataSource ;
+        rdfs:label "Data source of a DataSet"@en ;
+        .		
+
+lb:license a owl:ObjectProperty ;
+        rdfs:domain qb:DataSet ;
+		rdfs:range lb:License ;
+        rdfs:label "License of a DataSet"@en ;
+        .		
+		
+lb:faoURI a owl:ObjectProperty ;
+        rdfs:domain lb:Country ;
+		rdfs:label "URI in Geopolitical FAO Ontology"@en ;
+	    .
+		
+lb:iso3 a owl:DataProperty ;
+        rdfs:domain lb:Country ;
+	    rdfs:range xsd:string ;
+        skos:related geopol:codeISO3 ;
+		rdfs:label "ISO3 country code"@en ;
+	    .
+	
+lb:iso2 a owl:DataProperty ;
+        rdfs:domain lb:Country ;
+	    rdfs:range xsd:string ;
+        skos:related geopol:codeISO2 ;
+		rdfs:label "ISO2 country code"@en ;
+	    .
+
+lb:is_part_of a owl:ObjectProperty ;
+        rdfs:domain lb:Region ;
+	    rdfs:range lb:Region ;
+        rdfs:subPropertyOf dcterms:isPartOf ;
+		rdfs:label "Is part of"@en ;
+	    .
+
+lb:UNCode a owl:DataProperty ;
+        rdfs:domain lb:Region ;
+	    rdfs:range xsd:string ;
+		rdfs:label "UN code"@en ;
+	    .
+		
+lb:organization a owl:ObjectProperty ;
+        rdfs:domain lb:DataSource ;
+	    rdfs:range  lb:Organization ;
+		rdfs:label "UN code"@en ;
+	    .
+		
+lb:user a owl:ObjectProperty ;
+        rdfs:domain lb:Upload ;
+	    rdfs:range  lb:User ;
+		rdfs:label "User that has done an upload"@en ;
+	    .
+		
+lb:timestamp a owl:DataProperty ;
+        rdfs:domain lb:Upload ;
+	    rdfs:range  xsd:dateTime ;
+		rdfs:label "Timestamp of an upload"@en ;
+	    .
+
+lb:ip a owl:DataProperty ;
+        rdfs:domain lb:Upload ;
+	    rdfs:range  xsd:string ;
+		rdfs:label "IP from which an upload has been done"@en ;
+	    .
+		
+lb:observation a owl:ObjectProperty ;
+        rdfs:domain lb:Upload ;
+	    rdfs:range  lb:Observation ;
+		rdfs:label "Observation made in an Upload"@en ;
+	    .
+		
+lb:dataSource a owl:ObjectProperty ;
+        rdfs:domain lb:Upload ;
+	    rdfs:range  lb:DataSource ;
+		rdfs:label "DataSource made in an Upload"@en ;
+	    .
+		
+#------------------------------------------
+# Landbook Classes 
+
+lb:Observation a owl:Class ;
+        rdfs:label "Landbook Observation"@en ;
+		.
+
+lb:Indicator a owl:Class ;
+        rdfs:label "Landbook Indicator"@en ;
+		.
+
+lb:Country a owl:Class ;
+        rdfs:subClassOf lb:Region ;
+        rdfs:label "Country in Landbook"@en ;
+		.
+		
+lb:DataSource a owl:Class ;
+        rdfs:label "Landbook Data source"@en ;
+		.
+
+lb:License a owl:Class ;
+        rdfs:label "License"@en ;
+		.
+		
+lb:Measurement a owl:Class ;
+        rdfs:label "Measurement"@en ;
+		.
+
+lb:Organization a owl:Class ;
+        rdfs:label "Organization"@en ;
+		.
+		
+lb:User a owl:Class ;
+        rdfs:label "User"@en ;
+		.
+
+lb:Upload a owl:Class ;
+        rdfs:label "An Upload of data in Landbook"@en ;
+		.
