@@ -1,17 +1,18 @@
 <rdf:RDF
     xmlns:geopol="http://aims.fao.org/aos/geopolitical.owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:cex="http://purl.org/weso/ontology/computex#"
+    xmlns:schema="http://schema.org/"
+    xmlns:sdmx-concept="http://purl.org/linked-data/sdmx/2009/concept#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:earl="http://www.w3.org/ns/earl#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:lb="http://purl.org/weso/landbook/ontology#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:lg="http://linkedgeodata.org/ontology/"
     xmlns:qb="http://purl.org/linked-data/cube#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:sdmx-concept="http://purl.org/linked-data/sdmx/2009/concept#">
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
   <owl:Ontology rdf:about="http://purl.org/weso/landbook/ontology">
     <owl:versionInfo>0.1</owl:versionInfo>
     <dcterms:author rdf:resource="http://www.weso.es"/>
@@ -40,11 +41,16 @@
   <owl:Class rdf:about="http://purl.org/weso/landbook/ontology#Observation">
     <rdfs:label xml:lang="en">Landbook Observation</rdfs:label>
   </owl:Class>
+  <owl:Class rdf:about="http://purl.org/weso/landbook/ontology#Region">
+    <rdfs:subClassOf rdf:resource="http://schema.org/Place"/>
+    <rdfs:label xml:lang="en">Region in Landbook</rdfs:label>
+  </owl:Class>
   <owl:Class rdf:about="http://purl.org/weso/landbook/ontology#Measurement">
     <rdfs:label xml:lang="en">Measurement</rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/weso/landbook/ontology#Country">
     <rdfs:subClassOf rdf:resource="http://purl.org/weso/landbook/ontology#Region"/>
+    <rdfs:subClassOf rdf:resource="http://schema.org/Place"/>
     <rdfs:label xml:lang="en">Country in Landbook</rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="http://purl.org/weso/landbook/ontology#License">
@@ -53,28 +59,9 @@
   <owl:Class rdf:about="http://purl.org/weso/landbook/ontology#User">
     <rdfs:label xml:lang="en">User</rdfs:label>
   </owl:Class>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#indicatorType">
-    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Indicator"/>
-    <rdfs:label xml:lang="en">Indicator type</rdfs:label>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#preferable_tendency">
     <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Indicator"/>
     <rdfs:label xml:lang="en">Preferable tendency: decrease, increase or irrelevant</rdfs:label>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#organization">
-    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#DataSource"/>
-    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Organization"/>
-    <rdfs:label xml:lang="en">UN code</rdfs:label>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#faoURI">
-    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Country"/>
-    <rdfs:label xml:lang="en">URI in Geopolitical FAO Ontology</rdfs:label>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#is_part_of">
-    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Region"/>
-    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Region"/>
-    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/isPartOf"/>
-    <rdfs:label xml:lang="en">Is part of</rdfs:label>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#observation">
     <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Upload"/>
@@ -86,24 +73,43 @@
     <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Upload"/>
     <rdfs:label xml:lang="en">Source of observation</rdfs:label>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#user">
-    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Upload"/>
-    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#User"/>
-    <rdfs:label xml:lang="en">User that has done an upload</rdfs:label>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#measurement">
+    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Indicator"/>
+    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Measurement"/>
+    <rdfs:label xml:lang="en">Measurement</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#dimension">
+    <rdfs:domain rdf:resource="http://purl.org/linked-data/cube#Slice"/>
+    <rdfs:label xml:lang="en">Dimension of a slice in landbook</rdfs:label>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#topic">
     <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Indicator"/>
     <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Topic"/>
     <rdfs:label xml:lang="en">Landbook topic</rdfs:label>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#dimension">
-    <rdfs:domain rdf:resource="http://purl.org/linked-data/cube#Slice"/>
-    <rdfs:label xml:lang="en">Dimension of a slice in landbook</rdfs:label>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#measurement">
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#indicatorType">
     <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Indicator"/>
-    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Measurement"/>
-    <rdfs:label xml:lang="en">Measurement</rdfs:label>
+    <rdfs:label xml:lang="en">Indicator type</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#organization">
+    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#DataSource"/>
+    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Organization"/>
+    <rdfs:label xml:lang="en">UN code</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#is_part_of">
+    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Region"/>
+    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#Region"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/isPartOf"/>
+    <rdfs:label xml:lang="en">Is part of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#faoURI">
+    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Country"/>
+    <rdfs:label xml:lang="en">URI in Geopolitical FAO Ontology (HTML link)</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#user">
+    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Upload"/>
+    <rdfs:range rdf:resource="http://purl.org/weso/landbook/ontology#User"/>
+    <rdfs:label xml:lang="en">User that has done an upload</rdfs:label>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#dataSource">
     <rdfs:domain rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
@@ -111,6 +117,11 @@
     <rdfs:label xml:lang="en">Data source of a DataSet</rdfs:label>
     <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Upload"/>
     <rdfs:label xml:lang="en">DataSource made in an Upload</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#faoReference">
+    <rdfs:domain rdf:resource="http://purl.org/weso/landbook/ontology#Country"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
+    <rdfs:label xml:lang="en">URI in Geopolitical FAO Ontology</rdfs:label>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://purl.org/weso/landbook/ontology#license">
     <rdfs:domain rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
