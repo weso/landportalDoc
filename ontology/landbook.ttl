@@ -89,9 +89,15 @@ lb:license a owl:ObjectProperty ;
 		
 lb:faoURI a owl:ObjectProperty ;
         rdfs:domain lb:Country ;
-		rdfs:label "URI in Geopolitical FAO Ontology"@en ;
+		rdfs:label "URI in Geopolitical FAO Ontology (HTML link)"@en ;
 	    .
 		
+lb:faoReference a owl:ObjectProperty ;
+        rdfs:domain lb:Country ;
+		rdfs:subPropertyOf rdfs:seeAlso ; 
+		rdfs:label "URI in Geopolitical FAO Ontology"@en ;
+	    .
+
 lb:iso3 a owl:DataProperty ;
         rdfs:domain lb:Country ;
 	    rdfs:range xsd:string ;
