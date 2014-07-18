@@ -124,9 +124,9 @@ Its init method may be a bit complex. We will explain the meaning and expected c
  
 The schema describing the xml's structure could be accesed here_, and this xml_ would be an example of a final xml produced by the IFPRI importer.
 
-.. _here: https://raw.githubusercontent.com/weso/landportalDoc/gh-pages/interfaces/xml/sample.xml
+.. _xml: https://raw.githubusercontent.com/weso/landportalDoc/gh-pages/interfaces/xml/sample.xml
 
-.. _schema describing the xml's structure: https://github.com/weso/landportalDoc/blob/gh-pages/interfaces/xml/landportalDataset.xsd
+.. _here: https://github.com/weso/landportalDoc/blob/gh-pages/interfaces/xml/landportalDataset.xsd
 
 FAO Agricultural Censues
 """"""""""""""""""""""""
