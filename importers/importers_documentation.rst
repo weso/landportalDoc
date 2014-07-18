@@ -87,6 +87,7 @@ In general, every information that is not directly downloaded from the sources i
 Each piece of information is related to a section with the name of an entity of the model. Example: every data referred to indicators (name, translations,...) will be placed in a section "INDICATOR" of the configuration.ini file. The same with LICENSE, DATASET, DATASOURCE, ORGANIZATION and USER.
 
 This file also contains some specific fields that some concrete importers need to do their task, such as an url, an API pattern or a relative path calculated from the root directory of the importer. However, these fields are not always used and are different for each importer module, so they will be mentioned in other sections.
+
 This is an example_ of a real config file for UNDP importer.
 
 .. _example: https://github.com/weso/landportal-importers/blob/master/UNDPExtractor/files/configuration.ini
@@ -120,7 +121,10 @@ Its init method may be a bit complex. We will explain the meaning and expected c
      + The base URL of a web page, if scrapping techniques were used.
 
  - indicator_relations: list of objects IndicatorRelation, as they are represented in the model. It is really uncommon to have indicator relations so, by default, this param is None.
-
+ 
+ The `schema describing the xml's structure`_ could be accesed here. This would be an `example of a final xml produced by an importer`_
+ .. example of a final xml produced by an importer: https://raw.githubusercontent.com/weso/landportalDoc/gh-pages/interfaces/xml/sample.xml
+ .. schema describing the xml's structure: https://github.com/weso/landportalDoc/blob/gh-pages/interfaces/xml/landportalDataset.xsd
 FAO Agricultural Censues
 """"""""""""""""""""""""
 FAO organization has four different importers, depending on where we have find the data. This one in particular handles three different excel files, which represents the same indicators through time. Every excel file has a different format which made impossible the development of an homogeneous importer, driving to this situation:
