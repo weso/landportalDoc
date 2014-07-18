@@ -122,8 +122,8 @@ Its init method may be a bit complex. We will explain the meaning and expected c
 
  - indicator_relations: list of objects IndicatorRelation, as they are represented in the model. It is really uncommon to have indicator relations so, by default, this param is None.
  
-The 'schema describing the xml's structure'_ could be accesed here. This would be an 'example of a final xml produced by an importer'_
-.. _example of a final xml produced by an importer: https://raw.githubusercontent.com/weso/landportalDoc/gh-pages/interfaces/xml/sample.xml
+The schema describing the xml's structure could be accesed here_, and this xml_ would be an example of a final xml produced by the IFPRI importer.
+.. _here: https://raw.githubusercontent.com/weso/landportalDoc/gh-pages/interfaces/xml/sample.xml
 .. _schema describing the xml's structure: https://github.com/weso/landportalDoc/blob/gh-pages/interfaces/xml/landportalDataset.xsd
 
 FAO Agricultural Censues
