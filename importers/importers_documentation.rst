@@ -87,6 +87,9 @@ In general, every information that is not directly downloaded from the sources i
 Each piece of information is related to a section with the name of an entity of the model. Example: every data referred to indicators (name, translations,...) will be placed in a section "INDICATOR" of the configuration.ini file. The same with LICENSE, DATASET, DATASOURCE, ORGANIZATION and USER.
 
 This file also contains some specific fields that some concrete importers need to do their task, such as an url, an API pattern or a relative path calculated from the root directory of the importer. However, these fields are not always used and are different for each importer module, so they will be mentioned in other sections.
+This is an example_ of a real config file for UNDP importer.
+
+.. _example: https://github.com/weso/landportal-importers/blob/master/UNDPExtractor/files/configuration.ini
 
 
 Land portal entities
